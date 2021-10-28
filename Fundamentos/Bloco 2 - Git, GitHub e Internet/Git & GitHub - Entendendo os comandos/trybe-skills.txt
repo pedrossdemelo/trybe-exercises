@@ -4,3 +4,5 @@ O que eu vou aprender na Trybe:
 - Bash
 - Git
 - React
+- HTML
+- CSS

@@ -1,3 +1,19 @@
 div:hover {
   border: 1px solid grey;
 }
+
+#a {
+  background-color: #42999b;
+}
+#b {
+  background-color: #83C5BE;
+}
+#c {
+  background-color: #ffddd2;
+}
+#d {
+  background-color: #006d77;
+}
+#e {
+  background-color: #edf6f9;
+}

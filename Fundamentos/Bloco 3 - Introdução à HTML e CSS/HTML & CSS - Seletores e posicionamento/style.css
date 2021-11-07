@@ -4,3 +4,6 @@ p {
 h1 {
   text-align: center;
 }
+ol:hover {
+  background-color: #f5f5f5;
+}

@@ -3,6 +3,9 @@
 }
 
 .goomba {
+  position: absolute;
+  top: 350px;
+  left: 50px;
   width: 100px;
 }
 

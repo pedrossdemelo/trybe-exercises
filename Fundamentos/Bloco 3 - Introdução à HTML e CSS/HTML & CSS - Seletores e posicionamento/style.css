@@ -10,3 +10,6 @@ ol:hover {
 a:focus {
   font-family: Arial, Helvetica, sans-serif;
 }
+ul, ol {
+  list-style: none;
+}

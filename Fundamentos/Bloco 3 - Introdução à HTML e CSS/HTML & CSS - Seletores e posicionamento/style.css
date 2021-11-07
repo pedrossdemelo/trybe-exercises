@@ -1,3 +1,6 @@
 ol li {
   background-color: lightgoldenrodyellow;
 }
+ol li.odd {
+  color: darkgreen;
+}

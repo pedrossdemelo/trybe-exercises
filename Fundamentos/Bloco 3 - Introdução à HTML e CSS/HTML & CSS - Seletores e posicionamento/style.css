@@ -14,6 +14,9 @@
 }
 
 .speach {
+  position: absolute;
+  top: 425px;
+  left: 25px;
   font-size: 25px;
 }
 

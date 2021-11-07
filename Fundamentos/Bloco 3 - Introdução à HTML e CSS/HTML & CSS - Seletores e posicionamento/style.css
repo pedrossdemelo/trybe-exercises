@@ -12,3 +12,7 @@ h1, h2, h3, h4, h5, h6 em {
   font-size: 40px;
   border: 1px solid black;
 }
+
+li {
+  font-size: 20px;
+}

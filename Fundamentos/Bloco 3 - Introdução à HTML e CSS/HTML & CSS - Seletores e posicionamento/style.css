@@ -7,3 +7,7 @@ h1 {
 ol:hover {
   background-color: #f5f5f5;
 }
+a:focus {
+  font-family: Arial, Helvetica, sans-serif;
+}
+

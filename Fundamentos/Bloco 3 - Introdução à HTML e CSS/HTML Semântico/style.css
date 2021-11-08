@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Esteban&family=Montserrat:wght@200;400;500;600&display=swap');
+body {
+  background-color: aliceblue;
+  color: #002652;
+  font-family: Esteban, sans-serif;
+  margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+}
+a {
+  text-decoration: none;
+  color: #002652;
+}
+header {
+  margin: 0 40px;
+  line-height: 0.75;
+  text-align: center;
+}
+#top-nav {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  display: flex;
+  background-color: aliceblue;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#nav-items {
+  list-style: none;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+#nav-items li {
+  float: left;
+}
+#nav-items li a {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+}
+

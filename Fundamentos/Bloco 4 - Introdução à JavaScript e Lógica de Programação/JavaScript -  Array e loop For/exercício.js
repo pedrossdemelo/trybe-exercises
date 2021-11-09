@@ -111,4 +111,13 @@ function sortArray(array) {
   return array;
 }
 
+// Ordene o array numbers em ordem decrescente e imprima seus valores;
+
+function sortArrayDescending(array) {
+  array.sort(function (a, b) {
+    return b - a;
+  });
+  console.log(array);
+  return array;
+}
 

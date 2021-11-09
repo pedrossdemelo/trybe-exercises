@@ -55,3 +55,15 @@ function maior3(a, b, c) {
   }
   return "Dois ou mais números são iguais";
 }
+
+// Faça um programa que, dado um valor definido numa constante, retorne "positive" se esse valor for positivo, "negative" se for negativo e "zero" caso contrário.
+
+function positivoOuNegativo(a) {
+  if (a > 0) {
+    return "positive";
+  }
+  if (a < 0) {
+    return "negative";
+  }
+  return "zero";
+}

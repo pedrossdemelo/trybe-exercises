@@ -87,4 +87,16 @@ function createAndLog1to25Array() {
     array.push(i + 1);
   }
   console.log(array);
+  return array;
 }
+
+// Utilizando o array criado no exercício anterior imprima o resultado da divisão de cada um dos elementos por 2 .
+
+function divideElementsBy2(array) {
+  for (let i = 0; i < array.length; i++) {
+    array[i] = array[i] / 2;
+  }
+  console.log(array);
+  return array;
+}
+

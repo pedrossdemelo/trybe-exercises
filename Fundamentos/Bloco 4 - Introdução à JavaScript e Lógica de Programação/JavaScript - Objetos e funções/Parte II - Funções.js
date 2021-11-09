@@ -71,3 +71,27 @@ function retornaNomeComMaiorQuantidadeDeCaracteres(array) {
 }
 
 console.log(retornaNomeComMaiorQuantidadeDeCaracteres(['José', 'Lucas', 'Nádia', 'Fernanda', 'Cairo', 'Joana']));
+
+// Crie uma função que receba um array de inteiros e retorne o inteiro que mais se repete.
+// Array de teste: [2, 3, 2, 5, 8, 2, 3]; .
+// Valor esperado no retorno da função: 2 .
+
+function retornaInteiroQueMaisRepete(array) {
+  let inteiroQueMaisRepete = array[0];
+  let quantidadeDeOcorrencias = 0;
+  for (let i = 0; i < array.length; i++) {
+    let quantidadeDeOcorrenciasAtual = 0;
+    for (let j = 0; j < array.length; j++) {
+      if (array[i] === array[j]) {
+        quantidadeDeOcorrenciasAtual++;
+      }
+    }
+    if (quantidadeDeOcorrenciasAtual > quantidadeDeOcorrencias) {
+      quantidadeDeOcorrencias = quantidadeDeOcorrenciasAtual;
+      inteiroQueMaisRepete = array[i];
+    }
+  }
+  return inteiroQueMaisRepete;
+}
+
+console.log(retornaInteiroQueMaisRepete([2, 3, 2, 5, 8, 2, 3]));

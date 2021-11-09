@@ -20,10 +20,21 @@ function sumArray(array) {
 
 // Para o terceiro exercício, calcule e imprima a média aritmética dos valores contidos no array;
 
-function averageArray(array) {
+function average(array) {
   let sum = 0;
   for (let i = 0; i < array.length; i++) {
     sum += array[i];
   }
   return sum / array.length;
+}
+
+// Com o mesmo código do exercício anterior, caso o valor final seja maior que 20, imprima a mensagem: "valor maior que 20". Caso não seja, imprima a mensagem: "valor menor ou igual a 20";
+
+function averageArrayBiggerThan20(array) {
+  let average = average(array);
+  if (average > 20) {
+    console.log("valor maior que 20");
+  } else {
+    console.log("valor menor ou igual a 20");
+  }
 }

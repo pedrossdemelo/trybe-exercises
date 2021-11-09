@@ -100,3 +100,15 @@ function divideElementsBy2(array) {
   return array;
 }
 
+// Bonus
+// Ordene o array numbers em ordem crescente e imprima seus valores;
+
+function sortArray(array) {
+  array.sort(function (a, b) {
+    return a - b;
+  });
+  console.log(array);
+  return array;
+}
+
+

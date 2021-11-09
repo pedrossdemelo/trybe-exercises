@@ -17,3 +17,13 @@ function sumArray(array) {
   }
   return sum;
 }
+
+// Para o terceiro exercício, calcule e imprima a média aritmética dos valores contidos no array;
+
+function averageArray(array) {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i];
+  }
+  return sum / array.length;
+}

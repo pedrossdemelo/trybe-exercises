@@ -123,3 +123,14 @@ function notaParaConceito(nota) {
   if (nota >= 50) return "E";
   if (nota < 50) return "F";
 }
+
+// Escreva um programa que defina três números em constantes e retorne true se pelo menos uma das três for par. Caso contrário, ele retorna false .
+// Bonus: use somente um if .
+
+function parOuImpar(a, b, c) {
+  if (a % 2 === 0 || b % 2 === 0 || c % 2 === 0) {
+    return true;
+  }
+  return false;
+}
+

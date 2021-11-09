@@ -194,3 +194,21 @@ console.log(romanToInt('MCMXCIV'));
 // https://leetcode.com/submissions/detail/572726655/
 // Obs: o meu runtime é mais rápido que 87,32% das submissões do leetcode e meu uso de memória é menor que 96,87% das submissões também 🤓.
 // Obs2: essa função só é valida pra números romanos de 1 a 3999, como o leetcode especificou.
+
+// Crie uma função chamada arrayOfNumbers que receberá a variável vector como parâmetro. Através de um loop for , percorra essa variável, busque os números pares e os adicione a um novo array que deverá ser retornado ao final pela pela função.
+
+let vector = [[1, 2], [3,4,5,6], [7,8,9,10]];
+
+function arrayOfNumbers(vector) {
+  let arrayPares = [];
+  for (let i = 0; i < vector.length; i++) {
+    for (let i2 = 0; i2 < vector[i].length; i2++) {
+      if (vector[i][i2] % 2 === 0) {
+        arrayPares.push(vector[i][i2]);
+      }
+    }
+  }
+  return arrayPares;
+}
+
+console.log(arrayOfNumbers(vector));

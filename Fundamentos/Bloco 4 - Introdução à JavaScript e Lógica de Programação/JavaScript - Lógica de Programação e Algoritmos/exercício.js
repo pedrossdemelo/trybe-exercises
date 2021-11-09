@@ -26,7 +26,7 @@ function asteriskTriangle(n) {
   }
 }
 
-// Agora inverta o lado do triângulo. Por exemplo:
+// Agora espelhe o lado do triângulo. Por exemplo:
 // n = 5
 //     *
 //    **
@@ -34,9 +34,24 @@ function asteriskTriangle(n) {
 //  ****
 // *****
 
-function asteriskTriangleInverted(n) {
+function asteriskTriangleMirrored(n) {
   for (let i = 0; i < n; i++) {
     console.log(`${' '.repeat(n - i - 1)}${'*'.repeat(i + 1)}`);
   }
 }
 
+// Depois, faça uma pirâmide com n asteriscos de base. Por exempo:
+// n = 5
+//   *
+//  ***
+// *****
+
+function asteriskPyramid(n) {
+  if (n % 2 !== 0) {
+    for (let i = 0; i < n; i++) {
+      nAsterisk = 1 + 2 * i;
+      nSpace = (n - nAsterisk) / 2;
+      if (nAsterisk <= n) console.log(`${' '.repeat(nSpace)}${'*'.repeat(nAsterisk)}`);
+    }
+  }
+}

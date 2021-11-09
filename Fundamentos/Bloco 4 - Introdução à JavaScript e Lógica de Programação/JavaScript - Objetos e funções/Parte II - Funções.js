@@ -55,3 +55,19 @@ function retornaIndiceMenorValor(array) {
 }
 
 console.log(retornaIndiceMenorValor([2, 4, 6, 7, 10, 0, -3]));
+
+// Crie uma função que receba um array de nomes e retorne o nome com a maior quantidade de caracteres.
+// Array de teste: ['José', 'Lucas', 'Nádia', 'Fernanda', 'Cairo', 'Joana']; .
+// Valor esperado no retorno da função: Fernanda .
+
+function retornaNomeComMaiorQuantidadeDeCaracteres(array) {
+  let nomeComMaiorQuantidadeDeCaracteres = array[0];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].length > nomeComMaiorQuantidadeDeCaracteres.length) {
+      nomeComMaiorQuantidadeDeCaracteres = array[i];
+    }
+  }
+  return nomeComMaiorQuantidadeDeCaracteres;
+}
+
+console.log(retornaNomeComMaiorQuantidadeDeCaracteres(['José', 'Lucas', 'Nádia', 'Fernanda', 'Cairo', 'Joana']));

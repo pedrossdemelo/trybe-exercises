@@ -7,3 +7,13 @@ function printArray(array) {
     console.log(array[i]);
   }
 }
+
+// Para o segundo exercício, some todos os valores contidos no array e imprima o resultado;
+
+function sumArray(array) {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i];
+  }
+  return sum;
+}

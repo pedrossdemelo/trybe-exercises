@@ -37,3 +37,21 @@ function retornaIndiceMaiorValor(array) {
 }
 
 console.log(retornaIndiceMaiorValor([2, 3, 6, 7, 10, 1]));
+
+// Crie uma função que receba um array de inteiros e retorne o índice do menor valor.
+// Array de teste: [2, 4, 6, 7, 10, 0, -3]; .
+// Valor esperado no retorno da função: 6 .
+
+function retornaIndiceMenorValor(array) {
+  let menorValor = array[0];
+  let indiceMenorValor = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] < menorValor) {
+      menorValor = array[i];
+      indiceMenorValor = i;
+    }
+  }
+  return indiceMenorValor;
+}
+
+console.log(retornaIndiceMenorValor([2, 4, 6, 7, 10, 0, -3]));

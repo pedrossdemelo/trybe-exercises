@@ -66,3 +66,15 @@ function countOdd(array) {
     console.log(count);
   }
 }
+
+// Utilizando for , descubra qual o menor valor contido no array e imprima-o;
+
+function smallerValue(array) {
+  let smaller = array[0];
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < smaller) {
+      smaller = array[i];
+    }
+  }
+  return smaller;
+}

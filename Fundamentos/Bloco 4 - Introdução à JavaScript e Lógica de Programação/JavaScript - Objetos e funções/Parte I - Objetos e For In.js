@@ -121,3 +121,11 @@ function addFavoriteBookHarryPotter(obj) {
 }
 
 addFavoriteBookHarryPotter(leitor);
+
+// Acesse as chaves nome e livrosFavoritos e faça um console.log no seguinte formato: "Julia tem 2 livros favoritos".
+
+function printNumberOfFavoriteBooks(obj) {
+  console.log(`${obj.nome} tem ${obj.livrosFavoritos.length} livros favoritos`);
+}
+
+printNumberOfFavoriteBooks(leitor);

@@ -50,3 +50,19 @@ function biggerValue(array) {
   }
   return bigger;
 }
+
+// Descubra quantos valores ímpares existem no array e imprima o resultado. Caso não exista nenhum, imprima a mensagem: "nenhum valor ímpar encontrado";
+
+function countOdd(array) {
+  let count = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 !== 0) {
+      count++;
+    }
+  }
+  if (count === 0) {
+    console.log("nenhum valor ímpar encontrado");
+  } else {
+    console.log(count);
+  }
+}

@@ -26,3 +26,17 @@ function asteriskTriangle(n) {
   }
 }
 
+// Agora inverta o lado do triângulo. Por exemplo:
+// n = 5
+//     *
+//    **
+//   ***
+//  ****
+// *****
+
+function asteriskTriangleInverted(n) {
+  for (let i = 0; i < n; i++) {
+    console.log(`${' '.repeat(n - i - 1)}${'*'.repeat(i + 1)}`);
+  }
+}
+

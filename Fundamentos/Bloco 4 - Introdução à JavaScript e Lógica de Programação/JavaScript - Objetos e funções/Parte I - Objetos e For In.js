@@ -25,3 +25,17 @@ function addRecorrente(obj) {
 }
 
 addRecorrente(info);
+
+// Faça um for/in que mostre todas as chaves do objeto. Valor esperado no console:
+// personagem
+// origem
+// nota
+// recorrente
+
+function showKeys(obj) {
+  for (let key in obj) {
+    console.log(key);
+  }
+}
+
+showKeys(info);

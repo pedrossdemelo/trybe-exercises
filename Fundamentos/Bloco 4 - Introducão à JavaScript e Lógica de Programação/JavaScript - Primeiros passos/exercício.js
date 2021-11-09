@@ -80,3 +80,27 @@ function angulosTriangulo(a, b, c) {
   return false;
 }
 
+// Escreva um programa que receba o nome de uma peça de xadrez e retorne os movimentos que ela faz.
+// Como desafio, faça o programa funcionar tanto se receber o nome de uma peça com letras maiúsculas quanto com letras minúsculas, sem aumentar a quantidade de condicionais.
+// Como dica, você pode pesquisar uma função que faz uma string ficar com todas as letras minúsculas (lower case) .
+// Se a peça passada for inválida, o programa deve retornar uma mensagem de erro.
+// Exemplo: bishop (bispo) -> diagonals (diagonais)
+
+function pecaXadrez(peca) {
+  switch (peca.toLowerCase()) {
+    case "peão":
+      return "Movimentar apenas uma casa para frente";
+    case "bispo":
+      return "Movimentar nas diagonais";
+    case "cavalo":
+      return "Movimentar em L";
+    case "rainha":
+      return "Movimentar nas diagonais e horizontais";
+    case "rei":
+      return "Movimentar nas diagonais, horizontais e na vertical";
+    case "torre":
+      return "Movimentar nas horizontais e na vertical";
+    default:
+      return "Peça inválida";
+  }
+}

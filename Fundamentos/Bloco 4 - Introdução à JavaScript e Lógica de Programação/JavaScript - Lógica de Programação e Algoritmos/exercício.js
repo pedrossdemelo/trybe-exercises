@@ -55,3 +55,26 @@ function asteriskPyramid(n) {
     }
   }
 }
+
+// Bonus
+// Faça uma pirâmide com n asteriscos de base que seja vazia no meio. Assuma que o valor de n será sempre ímpar:
+// Por último, façamos com que a variável seja incrementada com o valor correspondente a cada loop;
+// n = 7
+//    *
+//   * *
+//  *   *
+// *******
+
+function asteriskPyramidEmpty(n) {
+  if (n % 2 !== 0) {
+    for (let i = 0; i < n; i++) {
+      nAsterisk = 1 + 2 * i;
+      nSpace = (n - nAsterisk) / 2;
+      if (nAsterisk <= n) {
+        if (i === 0) console.log(`${' '.repeat(nSpace)}*`);
+        if (nAsterisk < n && i > 0) console.log(`${' '.repeat(nSpace)}*${' '.repeat(nAsterisk - 2)}*`);
+        if (nAsterisk === n) console.log(`${'*'.repeat(nAsterisk)}`);
+      }
+    }
+  }
+}

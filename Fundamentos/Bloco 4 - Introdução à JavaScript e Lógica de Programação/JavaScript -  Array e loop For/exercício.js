@@ -78,3 +78,13 @@ function smallerValue(array) {
   }
   return smaller;
 }
+
+// Utilizando for , crie um array que vá de 1 até 25 e imprima o resultado;
+
+function createAndLog1to25Array() {
+  let array = [];
+  for (let i = 0; i < 25; i++) {
+    array.push(i + 1);
+  }
+  console.log(array);
+}

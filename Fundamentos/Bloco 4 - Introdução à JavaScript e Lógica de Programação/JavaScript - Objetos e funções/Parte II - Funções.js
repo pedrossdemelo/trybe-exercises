@@ -133,3 +133,64 @@ function verificaFimPalavra(word, ending) {
 
 console.log(verificaFimPalavra('trybe', 'be'));
 console.log(verificaFimPalavra('joaofernando', 'fernan'));
+
+// Bonus
+// (Difícil) Faça um programa que receba uma string em algarismos romanos e retorne o número que a string representa.
+// Atenção! Esse exercício já apareceu no processo seletivo de uma grande multinacional!
+// Dicas:
+// Uma string é um array de caracteres, então cada elemento do array é uma letra.
+// O valor de cada numeral romano é:
+// Copiar
+// | I   | 1    |
+// | --- | ---- |
+// | IV  | 4    |
+// | V   | 5    |
+// | IX  | 9    |
+// | X   | 10   |
+// | XL  | 40   |
+// | L   | 50   |
+// | XC  | 90   |
+// | C   | 100  |
+// | CD  | 400  |
+// | D   | 500  |
+// | CM  | 900  |
+// | M   | 1000 |
+// Que tal criar um objeto que associe cada letra a um numeral para fácil consulta?
+// Atenção! Quando você tem um número pequeno à direita de um número grande, eles devem ser somados. Exemplo: XI = 10 + 1 = 11. No entanto, se o número pequeno está à esquerda de um número maior que ele, ele deve ser subtraído. Exemplo: IX = 10 - 1 = 9.
+
+var romanToInt = function(s) {
+  let result = 0;
+  for (let i=0;i<s.length;i++){
+      switch (s[i]) {
+          case "I":
+              result+=1;
+              break;
+          case "V":
+              result+= s[i-1] !== "I" ? 5 : 3;
+              break;
+          case "X":
+              result+= s[i-1] !== "I" ? 10 : 8;
+              break;
+          case "L":
+              result+= s[i-1] !== "X" ? 50 : 30;
+              break;
+          case "C":
+              result+= s[i-1] !== "X" ? 100 : 80;
+              break;
+          case "D":
+              result+= s[i-1] !== "C" ? 500 : 300;
+              break;
+          case "M":
+              result+= s[i-1] !== "C" ? 1000 : 800;
+              break;
+      }
+  }
+  return result;
+};
+
+console.log(romanToInt('MCMXCIV'));
+
+// Disclaimer: Eu já fiz esse exercício no leetcode antes mesmo de entrar pra Trybe 😂, o link pro source é esse aqui:
+// https://leetcode.com/submissions/detail/572726655/
+// Obs: o meu runtime é mais rápido que 87,32% das submissões do leetcode e meu uso de memória é menor que 96,87% das submissões também 🤓.
+// Obs2: essa função só é valida pra números romanos de 1 a 3999, como o leetcode especificou.

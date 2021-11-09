@@ -38,3 +38,15 @@ function averageArrayBiggerThan20(array) {
     console.log("valor menor ou igual a 20");
   }
 }
+
+// Utilizando for , descubra qual o maior valor contido no array e imprima-o;
+
+function biggerValue(array) {
+  let bigger = array[0];
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] > bigger) {
+      bigger = array[i];
+    }
+  }
+  return bigger;
+}

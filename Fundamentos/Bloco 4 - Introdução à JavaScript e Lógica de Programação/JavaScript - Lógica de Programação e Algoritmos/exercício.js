@@ -12,3 +12,17 @@ function asteriskSquare(n) {
   }
 }
 
+// Para o segundo exercício, faça o mesmo que antes, mas que imprima um triângulo retângulo com 5 asteriscos de base. Por exemplo:
+// n = 5
+// *
+// **
+// ***
+// ****
+// *****
+
+function asteriskTriangle(n) {
+  for (let i = 0; i < n; i++) {
+    console.log('*'.repeat(i + 1));
+  }
+}
+

@@ -95,3 +95,17 @@ function retornaInteiroQueMaisRepete(array) {
 }
 
 console.log(retornaInteiroQueMaisRepete([2, 3, 2, 5, 8, 2, 3]));
+
+// Crie uma função que receba um número inteiro N e retorne o somatório de todos os números de 1 até N.
+// Valor de teste: N = 5 .
+// Valor esperado no retorno da função: 1+2+3+4+5 = 15 .
+
+function somatorioDeNumerosDe1AteN(n) {
+  let somatorio = 0;
+  for (let i = 1; i <= n; i++) {
+    somatorio += i;
+  }
+  return somatorio;
+}
+
+console.log(somatorioDeNumerosDe1AteN(5));

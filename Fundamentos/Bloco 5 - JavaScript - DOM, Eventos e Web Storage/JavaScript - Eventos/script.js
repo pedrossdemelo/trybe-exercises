@@ -157,3 +157,18 @@ function selectTask(event) {
 document.querySelectorAll('.task').forEach(task => {
   task.addEventListener('click', selectTask);
 });
+
+// Implemente uma função que adiciona um evento que, ao clicar em um dia do mês no calendário, atribua a este dia a cor da legenda da sua tarefa selecionada.
+// Ao clicar novamente no dia com a cor da legenda, a sua cor deverá voltar à configuração inicial rgb(119,119,119) .
+
+function changeDayColor(event) {
+  if (event.target.style.color === document.querySelector('.task.selected').style.backgroundColor) {
+    event.target.style.color = 'rgb(119,119,119)';
+  } else {
+    event.target.style.color = document.querySelector('.task.selected').style.backgroundColor;
+  }
+}
+
+document.querySelectorAll('.day').forEach(day => {
+  day.addEventListener('click', changeDayColor);
+});

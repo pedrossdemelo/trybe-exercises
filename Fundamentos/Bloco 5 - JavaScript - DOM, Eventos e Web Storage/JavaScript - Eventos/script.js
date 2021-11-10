@@ -40,3 +40,16 @@ function createDaysOfTheMonth() {
   };
 }
 createDaysOfTheMonth();
+
+// Implemente uma função que receba como parâmetro a string "Feriados" e crie dinamicamente um botão com o nome "Feriados".
+// Adicione a este botão a ID "btn-holiday" .
+// Adicione este botão como filho/filha da tag <div> com classe "buttons-container" .
+
+function createHolidayButton(string) {
+  const buttonsContainer = document.querySelector('.buttons-container');
+  const holidayButton = document.createElement('button');
+  holidayButton.innerText = string;
+  holidayButton.id = 'btn-holiday';
+  buttonsContainer.appendChild(holidayButton);
+}
+createHolidayButton('Feriados');

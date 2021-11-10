@@ -20,3 +20,10 @@ function changeBackgroundColor() {
 
 changeBackgroundColor();
 
+function changeTextColor() {
+  document.body.style.color = "red";
+  const a = document.getElementsByTagName('a');
+  [...a].forEach(a => a.style.color = "red");
+}
+
+changeTextColor();

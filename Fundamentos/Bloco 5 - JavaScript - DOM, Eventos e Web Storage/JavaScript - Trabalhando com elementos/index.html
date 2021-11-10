@@ -105,6 +105,9 @@
       document.getElementsByTagName('section')[1].style.marginRight = 'auto';
       // Troque a cor de fundo do elemento pai da section criada no passo 3 (aquela que possui a classe center-content ) para a cor verde;
       document.getElementsByTagName('section')[0].style.backgroundColor = 'green';
+      // Remova os dois últimos elementos ( nove e dez ) da lista criada no passo 8.
+      document.getElementsByTagName('ul')[0].removeChild(document.getElementsByTagName('li')[9]);
+      document.getElementsByTagName('ul')[0].removeChild(document.getElementsByTagName('li')[8]);
     </script>
   </body>
 </html>

@@ -69,6 +69,9 @@
       document.getElementsByTagName('main')[0].appendChild(document.createElement('section')).className = 'left-content';
       // Adicione a tag section com a classe right-content como filho da tag main criada no passo 2;
       document.getElementsByTagName('main')[0].appendChild(document.createElement('section')).className = 'right-content';
+      // Adicione uma imagem com src configurado para o valor https://picsum.photos/200 e classe small-image . Esse elemento deve ser filho do section criado no passo 5;
+      document.getElementsByTagName('section')[1].appendChild(document.createElement('img')).src = 'https://picsum.photos/200';
+      document.getElementsByTagName('img')[0].className = 'small-image';
     </script>
   </body>
 </html>

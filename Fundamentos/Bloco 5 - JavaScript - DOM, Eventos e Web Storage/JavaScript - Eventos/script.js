@@ -108,12 +108,23 @@ document.getElementById('btn-friday').addEventListener('click', changeFridayText
 // Dica - Propriedade: event.target .
 
 function zoomIn(event) {
-  event.target.style.fontSize = '2em';
+  event.target.style.fontSize = '30px';
 }
 function zoomOut(event) {
-  event.target.style.fontSize = '1em';
+  event.target.style.fontSize = '20px';
 }
 document.querySelectorAll('.day').forEach(day => {
   day.addEventListener('mouseover', zoomIn);
   day.addEventListener('mouseout', zoomOut);
 });
+
+// Implemente uma função que adiciona uma tarefa personalizada ao calendário. A função deve receber como parâmetro a string com o nome da tarefa (ex: "cozinhar") e criar dinamicamente um elemento com a tag <span> contendo a tarefa.
+// O elemento criado deverá ser adicionado como filho/filha da tag <div> que possui a classe "my-tasks" .
+
+function addCustomTask(string) {
+  const myTasks = document.getElementsByClassName('my-tasks')[0];
+  const customTask = document.createElement('span');
+  customTask.innerText = string;
+  myTasks.appendChild(customTask);
+}
+addCustomTask('teste');

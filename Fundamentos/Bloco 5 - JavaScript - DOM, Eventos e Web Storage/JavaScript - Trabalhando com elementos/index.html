@@ -89,6 +89,10 @@
           case 10: li.innerText = 'dez'; break;
         }
       }
+      // Adicione 3 tags h3 , todas sendo filhas do main criado no passo 2.
+      for (let i = 0; i < 3; i++) {
+        document.getElementsByTagName('main')[0].appendChild(document.createElement('h3')).innerText = 'Título ' + (i + 1);
+      }
     </script>
   </body>
 </html>

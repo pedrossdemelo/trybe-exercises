@@ -98,3 +98,21 @@ footer {
   margin-top: 20px;
   margin-bottom: 90px;
 }
+
+.button {
+  background-color: #EBF4FF;
+  border: none;
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  color: black;
+  padding: 7px;
+  border-radius: 30px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+}
+
+.button:hover {
+  background-color: #002652;
+  color: white;
+}

@@ -47,6 +47,18 @@ if (lineHeight === 'changed') {
   document.getElementById('line-height').classList.add('selected');
   document.body.style.lineHeight = "1.5";
 }
+if (fontFamily === 'changed') {
+  document.getElementById('font-family').classList.add('selected');
+  document.body.style.fontFamily = "Arial";
+  const h1 = document.getElementsByTagName('h1');
+  [...h1].forEach(h1 => h1.style.fontFamily = "Times New Roman");
+  const h2 = document.getElementsByTagName('h2');
+  [...h2].forEach(h2 => h2.style.fontFamily = "Times New Roman");
+  const h3 = document.getElementsByTagName('h3');
+  [...h3].forEach(h3 => h3.style.fontFamily = "Times New Roman");
+  const navItems = document.querySelectorAll('#nav-items li a');
+  [...navItems].forEach(navItem => navItem.style.fontFamily = "Times New Roman");
+}
 
 function setBackground(string) {
   localStorage.setItem('background', string);
@@ -133,15 +145,31 @@ function changeLineHeight(event) {
 document.getElementById('line-height').addEventListener('click', changeLineHeight);
 
 function changeFontFamily(event) {
-  document.body.style.fontFamily = "Arial";
-  const h1 = document.getElementsByTagName('h1');
-  [...h1].forEach(h1 => h1.style.fontFamily = "Times New Roman");
-  const h2 = document.getElementsByTagName('h2');
-  [...h2].forEach(h2 => h2.style.fontFamily = "Times New Roman");
-  const h3 = document.getElementsByTagName('h3');
-  [...h3].forEach(h3 => h3.style.fontFamily = "Times New Roman");
-  const navItems = document.querySelectorAll('#nav-items li a');
-  [...navItems].forEach(navItem => navItem.style.fontFamily = "Times New Roman");
+  if (event.target.classList.contains('selected')) {
+    setFontFamily('default');
+    event.target.classList.remove('selected');
+    document.body.style.fontFamily = "Esteban";
+    const h1 = document.getElementsByTagName('h1');
+    [...h1].forEach(h1 => h1.style.fontFamily = "Montserrat");
+    const h2 = document.getElementsByTagName('h2');
+    [...h2].forEach(h2 => h2.style.fontFamily = "Montserrat");
+    const h3 = document.getElementsByTagName('h3');
+    [...h3].forEach(h3 => h3.style.fontFamily = "Montserrat");
+    const navItems = document.querySelectorAll('#nav-items li a');
+    [...navItems].forEach(navItem => navItem.style.fontFamily = "Montserrat");
+  } else {
+    setFontFamily('changed');
+    event.target.classList.add('selected');
+    document.body.style.fontFamily = "Arial";
+    const h1 = document.getElementsByTagName('h1');
+    [...h1].forEach(h1 => h1.style.fontFamily = "Times New Roman");
+    const h2 = document.getElementsByTagName('h2');
+    [...h2].forEach(h2 => h2.style.fontFamily = "Times New Roman");
+    const h3 = document.getElementsByTagName('h3');
+    [...h3].forEach(h3 => h3.style.fontFamily = "Times New Roman");
+    const navItems = document.querySelectorAll('#nav-items li a');
+    [...navItems].forEach(navItem => navItem.style.fontFamily = "Times New Roman");
+  }
 }
 
 document.getElementById('font-family').addEventListener('click', changeFontFamily);

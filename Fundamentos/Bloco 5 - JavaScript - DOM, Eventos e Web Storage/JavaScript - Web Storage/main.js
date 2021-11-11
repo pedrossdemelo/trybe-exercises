@@ -32,6 +32,12 @@ if (background === 'changed') {
   document.getElementById('top-nav').style.backgroundColor = "#FAFAFA";
   document.getElementById('background').classList.add('selected');
 }
+if (fontColor === 'changed') {
+  document.body.style.color = "black";
+  const a = document.getElementsByTagName('a');
+  [...a].forEach(a => a.style.color = "black");
+  document.getElementById('font-color').classList.add('selected');
+}
 
 function setBackground(string) {
   localStorage.setItem('background', string);
@@ -70,9 +76,19 @@ function changeBackgroundColor(event) {
 document.getElementById('background').addEventListener('click', changeBackgroundColor);
 
 function changeTextColor(event) {
-  document.body.style.color = "red";
-  const a = document.getElementsByTagName('a');
-  [...a].forEach(a => a.style.color = "red");
+  if (event.target.classList.contains('selected')) {
+    setFontColor('default');
+    event.target.classList.remove('selected');
+    document.body.style.color = "#002652";
+    const a = document.getElementsByTagName('a');
+    [...a].forEach(a => a.style.color = "#002652");
+  } else {
+    setFontColor('changed');
+    event.target.classList.add('selected');
+    document.body.style.color = "black";
+    const a = document.getElementsByTagName('a');
+    [...a].forEach(a => a.style.color = "black");
+  }
 }
 
 document.getElementById('font-color').addEventListener('click', changeTextColor);

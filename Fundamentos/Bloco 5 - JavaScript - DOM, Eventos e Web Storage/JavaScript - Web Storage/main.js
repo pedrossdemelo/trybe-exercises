@@ -27,3 +27,19 @@ function changeTextColor() {
 }
 
 changeTextColor();
+
+function changeFontSize() {
+  // default is 16px
+  document.body.style.fontSize = "18px";
+  // default is 14px
+  document.getElementById('location').style.fontSize = "16px"
+}
+
+changeFontSize();
+
+function changeLineHeight() {
+  // default is 1.3
+  document.body.style.lineHeight = "1.3";
+}
+
+changeLineHeight();

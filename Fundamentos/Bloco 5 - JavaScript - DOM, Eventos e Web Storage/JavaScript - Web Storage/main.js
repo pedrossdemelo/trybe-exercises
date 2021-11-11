@@ -17,6 +17,7 @@ if (!localStorage.getItem('background')) {
   localStorage.setItem('font-size', 'default');
   localStorage.setItem('line-height', 'default');
   localStorage.setItem('font-family', 'default');
+  localStorage.setItem('zoom', 'default');
 };
 
 var background = localStorage.getItem('background');
@@ -24,6 +25,7 @@ var fontColor = localStorage.getItem('font-color');
 var fontSize = localStorage.getItem('font-size');
 var lineHeight = localStorage.getItem('line-height');
 var fontFamily = localStorage.getItem('font-family');
+var zoom = localStorage.getItem('zoom');
 
 if (background === 'changed') {
   document.body.style.backgroundColor = "white";
@@ -59,6 +61,10 @@ if (fontFamily === 'changed') {
   const navItems = document.querySelectorAll('#nav-items li a');
   [...navItems].forEach(navItem => navItem.style.fontFamily = "Times New Roman");
 }
+if (zoom === 'changed') {
+  document.getElementById('zoom').classList.add('selected');
+  document.body.style.zoom = "1.1";
+}
 
 function setBackground(string) {
   localStorage.setItem('background', string);
@@ -74,6 +80,9 @@ function setLineHeight(string) {
 }
 function setFontFamily(string) {
   localStorage.setItem('font-family', string);
+}
+function setZoom(string) {
+  localStorage.setItem('zoom', string);
 }
 
 function changeBackgroundColor(event) {
@@ -173,3 +182,17 @@ function changeFontFamily(event) {
 }
 
 document.getElementById('font-family').addEventListener('click', changeFontFamily);
+
+function changeZoom(event) {
+  if (event.target.classList.contains('selected')) {
+    setZoom('default');
+    event.target.classList.remove('selected');
+    document.body.style.zoom = 1.0;
+  } else {
+    setZoom('changed');
+    event.target.classList.add('selected');
+    document.body.style.zoom = 1.1;
+  }
+}
+
+document.getElementById('zoom').addEventListener('click', changeZoom);

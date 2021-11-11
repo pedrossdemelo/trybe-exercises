@@ -43,7 +43,10 @@ if (fontSize === 'changed') {
   document.body.style.fontSize = "18px";
   document.getElementById('location').style.fontSize = "16px"
 }
-
+if (lineHeight === 'changed') {
+  document.getElementById('line-height').classList.add('selected');
+  document.body.style.lineHeight = "1.5";
+}
 
 function setBackground(string) {
   localStorage.setItem('background', string);
@@ -116,8 +119,15 @@ function changeFontSize(event) {
 document.getElementById('font-size').addEventListener('click', changeFontSize);
 
 function changeLineHeight(event) {
-  // default is 1.3
-  document.body.style.lineHeight = "1.3";
+  if (event.target.classList.contains('selected')) {
+    setLineHeight('default');
+    event.target.classList.remove('selected');
+    document.body.style.lineHeight = "1.325";
+  } else {
+    setLineHeight('changed');
+    event.target.classList.add('selected');
+    document.body.style.lineHeight = "1.5";
+  }
 }
 
 document.getElementById('line-height').addEventListener('click', changeLineHeight);

@@ -38,6 +38,12 @@ if (fontColor === 'changed') {
   [...a].forEach(a => a.style.color = "black");
   document.getElementById('font-color').classList.add('selected');
 }
+if (fontSize === 'changed') {
+  document.getElementById('font-size').classList.add('selected');
+  document.body.style.fontSize = "18px";
+  document.getElementById('location').style.fontSize = "16px"
+}
+
 
 function setBackground(string) {
   localStorage.setItem('background', string);
@@ -94,10 +100,17 @@ function changeTextColor(event) {
 document.getElementById('font-color').addEventListener('click', changeTextColor);
 
 function changeFontSize(event) {
-  // default is 16px
-  document.body.style.fontSize = "18px";
-  // default is 14px
-  document.getElementById('location').style.fontSize = "16px"
+  if (event.target.classList.contains('selected')) {
+    setFontSize('default');
+    event.target.classList.remove('selected');
+    document.body.style.fontSize = "16px";
+    document.getElementById('location').style.fontSize = "14px"
+  } else {
+    setFontSize('changed');
+    event.target.classList.add('selected');
+    document.body.style.fontSize = "18px";
+    document.getElementById('location').style.fontSize = "16px"
+  }
 }
 
 document.getElementById('font-size').addEventListener('click', changeFontSize);

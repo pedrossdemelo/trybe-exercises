@@ -43,3 +43,17 @@ function changeLineHeight() {
 }
 
 changeLineHeight();
+
+function changeFontFamily() {
+  document.body.style.fontFamily = "Arial";
+  const h1 = document.getElementsByTagName('h1');
+  [...h1].forEach(h1 => h1.style.fontFamily = "Times New Roman");
+  const h2 = document.getElementsByTagName('h2');
+  [...h2].forEach(h2 => h2.style.fontFamily = "Times New Roman");
+  const h3 = document.getElementsByTagName('h3');
+  [...h3].forEach(h3 => h3.style.fontFamily = "Times New Roman");
+  const navItems = document.querySelectorAll('#nav-items li a');
+  [...navItems].forEach(navItem => navItem.style.fontFamily = "Times New Roman");
+}
+
+changeFontFamily();

@@ -69,25 +69,31 @@ function changeBackgroundColor(event) {
 
 document.getElementById('background').addEventListener('click', changeBackgroundColor);
 
-function changeTextColor() {
+function changeTextColor(event) {
   document.body.style.color = "red";
   const a = document.getElementsByTagName('a');
   [...a].forEach(a => a.style.color = "red");
 }
 
-function changeFontSize() {
+document.getElementById('font-color').addEventListener('click', changeTextColor);
+
+function changeFontSize(event) {
   // default is 16px
   document.body.style.fontSize = "18px";
   // default is 14px
   document.getElementById('location').style.fontSize = "16px"
 }
 
-function changeLineHeight() {
+document.getElementById('font-size').addEventListener('click', changeFontSize);
+
+function changeLineHeight(event) {
   // default is 1.3
   document.body.style.lineHeight = "1.3";
 }
 
-function changeFontFamily() {
+document.getElementById('line-height').addEventListener('click', changeLineHeight);
+
+function changeFontFamily(event) {
   document.body.style.fontFamily = "Arial";
   const h1 = document.getElementsByTagName('h1');
   [...h1].forEach(h1 => h1.style.fontFamily = "Times New Roman");
@@ -98,3 +104,5 @@ function changeFontFamily() {
   const navItems = document.querySelectorAll('#nav-items li a');
   [...navItems].forEach(navItem => navItem.style.fontFamily = "Times New Roman");
 }
+
+document.getElementById('font-family').addEventListener('click', changeFontFamily);

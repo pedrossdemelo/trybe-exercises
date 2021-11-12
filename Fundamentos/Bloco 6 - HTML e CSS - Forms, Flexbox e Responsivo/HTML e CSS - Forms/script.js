@@ -92,7 +92,6 @@ function areFieldsFilled() {
   let result = true;
   let inputs = document.querySelectorAll('input');
   for (let index = 0; index < inputs.length; index++) {
-    console.log(inputs[index]);
     if (inputs[index].value === '') {
       result = false;
       break;
@@ -149,3 +148,12 @@ function handleSubmit(event) {
 }
 
 document.getElementById('submit').addEventListener('click', handleSubmit);
+
+function removeDivs() {
+  let divs = document.querySelectorAll('div');
+  for (let index = 0; index < divs.length; index++) {
+    divs[index].remove();
+  }
+}
+
+document.getElementById('reset').addEventListener('click', removeDivs);

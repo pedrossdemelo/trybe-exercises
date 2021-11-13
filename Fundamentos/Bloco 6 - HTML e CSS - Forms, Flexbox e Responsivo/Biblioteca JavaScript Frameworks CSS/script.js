@@ -1,4 +1,3 @@
-// add all brazillian states as options to the element with id 'estado'
 function addEstados() {
   let states = [
     'Acre',
@@ -69,25 +68,6 @@ function addEstados() {
 
 addEstados();
 
-function isDataValid() {
-  let data = document.getElementById('data');
-  let dataSplit = data.value.split('/');
-  let dia = Number(dataSplit[0]);
-  let mes = Number(dataSplit[1]);
-  let ano = Number(dataSplit[2]);
-  let dataValida = true;
-  if (dia < 1 || dia > 31 || !dia) {
-    dataValida = false;
-  }
-  if (mes < 1 || mes > 12 || !mes) {
-    dataValida = false;
-  }
-  if (ano < 0 || !ano) {
-    dataValida = false;
-  }
-  return dataValida;
-}
-
 function areFieldsFilled() {
   let result = true;
   let inputs = document.querySelectorAll('input');
@@ -99,7 +79,7 @@ function areFieldsFilled() {
   }
   return result;
 }
-areFieldsFilled();
+
 function handleSubmit(event) {
   event.preventDefault();
   let div = document.createElement('div');
@@ -115,33 +95,24 @@ function handleSubmit(event) {
   let resumo = document.getElementById('resumo').value;
   let cargo = document.getElementById('cargo').value;
   let descricao = document.getElementById('descricao').value;
-  let data = document.getElementById('data').value;
+  let data = document.getElementById('datepicker').value;
   let divDados = document.createElement('div');
-  console.log(areFieldsFilled());
   if (areFieldsFilled()) {
-    if (isDataValid()) {
-      divDados.innerHTML = `
-        <p>Nome: ${nome}</p>
-        <p>Email: ${email}</p>
-        <p>CPF: ${cpf}</p>
-        <p>Endereço: ${endereco}</p>
-        <p>Cidade: ${cidade}</p>
-        <p>Estado: ${estado}</p>
-        <p>Tipo: ${tipo}</p>
-        <p>Resumo: ${resumo}</p>
-        <p>Cargo: ${cargo}</p>
-        <p>Descrição: ${descricao}</p>
-        <p>Data: ${data}</p>
-      `;
-      div.appendChild(divDados);
-      document.body.appendChild(div);
-    }
-    if (!isDataValid()) {
-      divDados.innerHTML = `<p>Data inválida</p>`;
-      div.appendChild(divDados);
-      document.body.appendChild(div);
-      alert('Data inválida');
-    }
+    divDados.innerHTML = `
+      <p>Nome: ${nome}</p>
+      <p>Email: ${email}</p>
+      <p>CPF: ${cpf}</p>
+      <p>Endereço: ${endereco}</p>
+      <p>Cidade: ${cidade}</p>
+      <p>Estado: ${estado}</p>
+      <p>Tipo: ${tipo}</p>
+      <p>Resumo: ${resumo}</p>
+      <p>Cargo: ${cargo}</p>
+      <p>Descrição: ${descricao}</p>
+      <p>Data: ${data}</p>
+    `;
+    div.appendChild(divDados);
+    document.body.appendChild(div);
   } else {
     divDados.innerHTML = `<p>Preencha todos os campos</p>`;
     div.appendChild(divDados);

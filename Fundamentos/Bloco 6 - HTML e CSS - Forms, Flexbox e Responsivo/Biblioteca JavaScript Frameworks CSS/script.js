@@ -80,8 +80,7 @@ function areFieldsFilled() {
   return result;
 }
 
-function handleSubmit(event) {
-  event.preventDefault();
+function printResult() {
   let div = document.createElement('div');
   div.classList.add('printForm');
   div.classList.add('container-sm');
@@ -113,14 +112,10 @@ function handleSubmit(event) {
     `;
     div.appendChild(divDados);
     document.body.appendChild(div);
-  } else {
-    divDados.innerHTML = `<p>Preencha todos os campos</p>`;
-    div.appendChild(divDados);
-    document.body.appendChild(div);
   }
 }
 
-document.getElementById('submit').addEventListener('click', handleSubmit);
+document.getElementById('print').addEventListener('click', printResult);
 
 function removeDivs() {
   let divs = document.querySelectorAll('.printForm');

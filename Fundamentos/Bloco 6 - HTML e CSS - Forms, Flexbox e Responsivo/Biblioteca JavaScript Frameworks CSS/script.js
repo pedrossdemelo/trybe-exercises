@@ -103,6 +103,8 @@ areFieldsFilled();
 function handleSubmit(event) {
   event.preventDefault();
   let div = document.createElement('div');
+  div.classList.add('printForm');
+  div.classList.add('container-sm');
   let nome = document.getElementById('nome').value;
   let email = document.getElementById('email').value;
   let cpf = document.getElementById('cpf').value;
@@ -150,7 +152,7 @@ function handleSubmit(event) {
 document.getElementById('submit').addEventListener('click', handleSubmit);
 
 function removeDivs() {
-  let divs = document.querySelectorAll('div');
+  let divs = document.querySelectorAll('.printForm');
   for (let index = 0; index < divs.length; index++) {
     divs[index].remove();
   }

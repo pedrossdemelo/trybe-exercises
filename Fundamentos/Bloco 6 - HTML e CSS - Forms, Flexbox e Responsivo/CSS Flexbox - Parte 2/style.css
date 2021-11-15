@@ -78,6 +78,9 @@ body {
 .aside-container {
   display: flex;
   flex-direction: column;
+  /* justify-content: center;
+  flex-grow: 1; */
+  flex-basis: 350px;
   margin: 20px;
 }
 

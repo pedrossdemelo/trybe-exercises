@@ -71,6 +71,7 @@ body {
   align-items: center;
   background-color: #5C687C;
   border: black solid 1px;
+  flex-grow: 1;
   display: flex;
   flex-basis: 16%;
   height: 150px;

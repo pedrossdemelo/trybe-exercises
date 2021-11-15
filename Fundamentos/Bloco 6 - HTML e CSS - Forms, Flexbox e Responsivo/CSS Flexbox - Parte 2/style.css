@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -17,10 +18,12 @@ body {
 .logo-container {
   display: flex;
   justify-content: center;
+  flex-basis: 268px;
 }
 
 .menu-container {
   display: flex;
+  flex-basis: 500px;
 }
 
 .menu-container ul {

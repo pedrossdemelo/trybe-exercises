@@ -17,3 +17,30 @@ img {
 figure {
     margin: 0;
 }
+
+@media screen and (min-width: 800px) {
+  body {
+    background-color: lightgoldenrodyellow;
+    margin: 10px;
+    font-size: 1em;
+    display: flex;
+    flex-flow: column wrap;
+  }
+  main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 960px;
+    align-self: center;
+  }
+  img {
+    margin: 10px 10px;
+  }
+  main h2 {
+    width: 100%;
+  }
+  h1 {
+    font-size: 2em;
+  }
+}

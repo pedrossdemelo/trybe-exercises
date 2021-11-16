@@ -59,3 +59,13 @@ console.log(getValueByNumber(lesson1, 0));
 const checkKeyValue = (obj, key, value) => Object.keys(obj).includes(key) && obj[key] === value;
 
 console.log(checkKeyValue(lesson1, 'materia', 'Matemática'));
+
+const totalMathStudents = obj => {
+  let total = 0;
+  for (let lesson in obj) {
+    if (obj[lesson].materia === 'Matemática') total += obj[lesson].numeroEstudantes;
+  }
+  return total;
+}
+
+console.log(totalMathStudents(allLessons(lesson1, lesson2, lesson3)));

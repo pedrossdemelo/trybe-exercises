@@ -7,4 +7,9 @@ describe('Sums two values', () => {
   test('0 + 0 = 0', () => {
     expect(sum(0, 0)).toBe(0);
   });
+  test('4 + "5" = TypeError', () => {
+    expect(() => {
+      sum(4, '5');
+    }).toThrow();
+  });
 });

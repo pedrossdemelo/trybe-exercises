@@ -90,3 +90,26 @@
     display: block;
   }
 }
+
+@media screen and (max-width: 480px)  {
+  html {
+    overflow: scroll;
+  }
+  html body {
+    margin: 0;
+    display: flex;
+  }
+  #aside {
+    display: none;
+  }
+  img {
+    max-width: 100%;
+  }
+  #navigation ul li a{
+    float: none;
+  }
+  header {
+    position: sticky;
+    top: 0;
+  }
+}

@@ -12,4 +12,9 @@ describe('Sums two values', () => {
       sum(4, '5');
     }).toThrow();
   });
+  test('4 + "5" = TypeError', () => {
+    expect(() => {
+      sum(4, '5');
+    }).toThrowError(new TypeError('parameters must be numbers'));
+  });
 });

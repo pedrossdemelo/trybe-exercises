@@ -1,4 +1,3 @@
-const { describe } = require('jest-circus');
 const myRemove = require('./myRemove');
 
 describe('Remove item from array', () => {

@@ -13,6 +13,4 @@ testingScope(true);
 
 const oddsAndEvens = [13, 3, 4, 10, 7, 2];
 
-// Seu código aqui.
-
-console.log(oddsAndEvens); // será necessário alterar essa linha 😉
+console.log(`${oddsAndEvens.sort((a,b)=>a-b)}`); // será necessário alterar essa linha 😉

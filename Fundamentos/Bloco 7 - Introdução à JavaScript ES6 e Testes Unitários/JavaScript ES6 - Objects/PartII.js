@@ -17,3 +17,11 @@ const lesson3 = {
   professor: 'Maria Clara',
   turno: 'noite',
 };
+
+const addShift = (obj, key, value) => {
+  obj[key] = value;
+}
+
+addShift(lesson2, 'turno', 'noite');
+
+console.log(lesson2);

@@ -6,6 +6,12 @@ const longestWord = str => str.split(' ').reduce((acc, word) => word.length > ac
 
 console.log(longestWord("Antônio foi no banheiro e não sabemos o que aconteceu")) // retorna 'aconteceu'
 
-const replaceX = (str, newStr) => str.replace(/ x /g, ` ${newStr} `);
+const replaceX = str => `Tryber ${str} aqui!`;
 
-console.log(replaceX("Tryber x aqui!", "Bebeto"));
+console.log(replaceX("Bebeto"));
+
+const skills = ["Javascript", "ReactJS", "React Native", "NodeJS", "MongoDB"];
+
+const addSkills = (skArr, str) => `${str} Minha cinco principais habilidades são:\r\n${skArr.sort().slice(0, skArr.length).join('\r\n')}`;
+
+console.log(addSkills(skills, replaceX("Pedro")));

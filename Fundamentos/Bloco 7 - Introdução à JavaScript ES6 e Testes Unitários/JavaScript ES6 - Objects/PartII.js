@@ -25,3 +25,7 @@ const addShift = (obj, key, value) => {
 addShift(lesson2, 'turno', 'noite');
 
 console.log(lesson2);
+
+const listKeys = obj => Object.keys(obj);
+
+console.log(listKeys(lesson2));

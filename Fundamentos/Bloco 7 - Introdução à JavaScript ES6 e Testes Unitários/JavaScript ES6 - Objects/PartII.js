@@ -29,3 +29,7 @@ console.log(lesson2);
 const listKeys = obj => Object.keys(obj);
 
 console.log(listKeys(lesson2));
+
+const size = obj => Object.keys(obj).length;
+
+console.log(size(lesson2));

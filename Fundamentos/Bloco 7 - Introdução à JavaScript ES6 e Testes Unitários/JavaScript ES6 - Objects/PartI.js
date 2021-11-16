@@ -40,8 +40,16 @@ const customerInfo = order => `Olá ${order.order.delivery.deliveryPerson}, entr
 console.log(customerInfo(order));
 
 const orderModifier = (order) => {
-  // Adicione abaixo as informações necessárias.
-
+  order.name = 'Luiz Silva';
+  order.payment.total = 50;
+  const pizza = order.order.pizza;
+  const drinks = order.order.drinks;
+  let itemsArray = Object.keys(pizza);
+  for (let drink in drinks) {
+    itemsArray.push(drinks[drink].type);
+  }
+  const itemsArrayFormatted = itemsArray.length >= 2 ? `${itemsArray.slice(0, itemsArray.length - 1).join(', ')} e ${itemsArray[itemsArray.length - 1]}` : itemsArray.join('');
+  return `Olá ${order.name}, o total do seu pedido de ${itemsArrayFormatted} é R$ ${order.payment.total}`;
 }
 
-orderModifier(order);
+console.log(orderModifier(order));

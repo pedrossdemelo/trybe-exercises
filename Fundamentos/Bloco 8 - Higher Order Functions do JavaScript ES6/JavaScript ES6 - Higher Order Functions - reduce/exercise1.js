@@ -72,3 +72,5 @@ const books = [
 ];
 
 const reduceNames = (books) => books.reduce((acc, book) => (acc + book.author.name + ', '), '').slice(0, -2) + '.';
+
+const averageAge = (books) => books.reduce((acc, book) => (acc + (book.releaseYear - book.author.birthYear)), 0) / books.length;

@@ -69,8 +69,6 @@ const battleResult = (battleMembers) => {
   return battleMembers;
 }
 
-battleResult();
-
 const gameActions = {
   mageTurn: mageTurn(mage),
   warriorTurn: warriorTurn(warrior),

@@ -19,3 +19,20 @@ const giveaway = (num, f) => {
 };
 
 console.log(giveaway(3, isWinner));
+
+const RIGHT_ANSWERS = ['A', 'C', 'B', 'D', 'A', 'A', 'D', 'A', 'D', 'C'];
+const STUDENT_ANSWERS = ['A', 'N.A', 'B', 'D', 'A', 'C', 'N.A', 'A', 'D', 'B'];
+
+const totalPoints = (correctAnswers, answers) => {
+  let points = 0;
+  answers.forEach((answer, index) => {
+    if (answer === correctAnswers[index]) points++;
+    if (answer === 'N.A') points += 0;
+    if (answer !== correctAnswers[index] && answer !== 'N.A') points-= 0.5;
+  });
+  return points > 0 ? points : 0;
+}
+
+const evaluate = (correctAnswers, answers, validation) => validation(correctAnswers, answers);
+
+console.log(evaluate(RIGHT_ANSWERS, STUDENT_ANSWERS, totalPoints));

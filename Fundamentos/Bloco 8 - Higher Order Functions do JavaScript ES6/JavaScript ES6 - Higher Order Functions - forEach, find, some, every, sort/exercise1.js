@@ -64,3 +64,5 @@ const books = [
 const authorBornIn1947 = () => books.find(book => book.author.birthYear === 1947).author.name;
 
 const smallerName = () => books.sort((a, b) => a.name.length - b.name.length)[0].name;
+
+const getNamedBook = () => books.find(book => book.name.length === 26);

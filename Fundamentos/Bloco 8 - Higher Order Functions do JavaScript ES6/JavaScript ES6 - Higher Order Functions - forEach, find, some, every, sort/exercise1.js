@@ -72,3 +72,5 @@ const booksOrderedByReleaseYearDesc = () => books.sort((a, b) => b.releaseYear -
 const everyoneWasBornOnSecXX = () => books.every(book => book.author.birthYear <= 2000 && book.author.birthYear > 1900);
 
 const someBookWasReleasedOnThe80s = () => books.some(book => book.releaseYear >= 1980 && book.releaseYear < 1990);
+
+const authorUnique = () => books.every(book => book.author.birthYear !== books.find(book => book.author.birthYear === books.find(book => book.author.birthYear === book.author.birthYear).author.birthYear).author.birthYear);

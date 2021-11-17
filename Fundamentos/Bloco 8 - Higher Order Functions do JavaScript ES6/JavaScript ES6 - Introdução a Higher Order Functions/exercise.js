@@ -10,3 +10,12 @@ const newEmployees = (f) => {
 };
 
 console.log(newEmployees(returnName));
+
+const isWinner = (num, randomNumber) => num === randomNumber;
+
+const giveaway = (num, f) => {
+  const randomNumber = Math.floor(Math.random() * 4) + 1;
+  return f(num, randomNumber) ? 'Parabéns você ganhou' : 'Tente novamente';
+};
+
+console.log(giveaway(3, isWinner));

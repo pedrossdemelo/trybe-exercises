@@ -61,4 +61,4 @@ const books = [
   },
 ];
 
-// Adicione o código do exercício aqui:
+const authorBornIn1947 = () => books.find(book => book.author.birthYear === 1947).author.name;

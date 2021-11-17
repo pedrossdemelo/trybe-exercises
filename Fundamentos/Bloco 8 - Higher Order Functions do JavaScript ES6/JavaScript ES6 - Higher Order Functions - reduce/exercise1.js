@@ -71,4 +71,4 @@ const books = [
   },
 ];
 
-// Adicione o código do exercício aqui:
+const reduceNames = (books) => books.reduce((acc, book) => (acc + book.author.name + ', '), '').slice(0, -2) + '.';

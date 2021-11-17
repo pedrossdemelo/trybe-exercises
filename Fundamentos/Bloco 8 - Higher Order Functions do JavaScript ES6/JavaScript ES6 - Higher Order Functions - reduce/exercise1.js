@@ -76,3 +76,11 @@ const reduceNames = (books) => books.reduce((acc, book) => (acc + book.author.na
 const averageAge = (books) => books.reduce((acc, book) => (acc + (book.releaseYear - book.author.birthYear)), 0) / books.length;
 
 const longestNamedBook = (books) => books.reduce((acc, book) => (acc.name.length > book.name.length ? acc : book.name));
+
+const names = [
+  'Aanemarie', 'Adervandes', 'Akifusa',
+  'Abegildo', 'Adicellia', 'Aladonata',
+  'Abeladerco', 'Adieidy', 'Alarucha',
+];
+
+const containsA = (names) => names.reduce((acc, name) => (acc + name.toLowerCase().split('a').length - 1), 0);

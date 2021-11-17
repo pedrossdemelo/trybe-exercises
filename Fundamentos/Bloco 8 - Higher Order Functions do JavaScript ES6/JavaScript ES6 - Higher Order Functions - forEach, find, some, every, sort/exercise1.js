@@ -70,3 +70,5 @@ const getNamedBook = () => books.find(book => book.name.length === 26);
 const booksOrderedByReleaseYearDesc = () => books.sort((a, b) => b.releaseYear - a.releaseYear);
 
 const everyoneWasBornOnSecXX = () => books.every(book => book.author.birthYear <= 2000 && book.author.birthYear > 1900);
+
+const someBookWasReleasedOnThe80s = () => books.some(book => book.releaseYear >= 1980 && book.releaseYear < 1990);

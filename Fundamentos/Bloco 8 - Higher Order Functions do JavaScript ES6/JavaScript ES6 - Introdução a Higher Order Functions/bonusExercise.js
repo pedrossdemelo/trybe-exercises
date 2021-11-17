@@ -38,3 +38,9 @@ const getMageDamage = (mage) => {
     mana: mage.mana - manaCost,
   };
 }
+
+// Part II
+
+const gameActions = {
+  
+};

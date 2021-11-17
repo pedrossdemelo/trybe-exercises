@@ -64,3 +64,11 @@ const filterPeople = (people) => people.filter(person => person.bornIn <= 2000 &
 const myList = [1, 2, 3];
 
 const swap = ([first, second, third]) => [third, second, first];
+
+const palio = ['Palio', 'Fiat', 2019];
+const shelbyCobra = ['Shelby Cobra', 'Ford', 1963];
+const chiron = ['Chiron', 'Bugatti', 2016];
+
+const toObject = ([name, brand, year]) => ({name, brand, year});
+
+console.log(toObject(palio));

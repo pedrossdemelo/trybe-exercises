@@ -9,3 +9,5 @@ rectangles.forEach((rectangle) => {
   rectangleArea(...rectangle)
   console.log(rectangle[0] * rectangle[1]);
 });
+
+const sum = (...numbers) => numbers.reduce((acc, curr) => acc + curr);

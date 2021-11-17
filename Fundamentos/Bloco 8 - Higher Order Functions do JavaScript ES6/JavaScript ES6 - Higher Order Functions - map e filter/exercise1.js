@@ -70,3 +70,5 @@ const fantasyOrScienceFiction = () => books.filter(book => book.genre === 'Fanta
 const oldBooksOrdered = () => books.filter(book => book.releaseYear <= 1960).sort((a,b) => a.releaseYear - b.releaseYear);
 
 const fantasyOrScienceFictionAuthors = () => books.filter(book => book.genre === 'Fantasia' || book.genre === 'Ficção Científica').map(book => book.author.name).sort();
+
+const oldBooks = () => books.filter(book => book.releaseYear <= 1960).map(book => book.name);

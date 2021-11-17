@@ -68,3 +68,5 @@ const smallerName = () => books.sort((a, b) => a.name.length - b.name.length)[0]
 const getNamedBook = () => books.find(book => book.name.length === 26);
 
 const booksOrderedByReleaseYearDesc = () => books.sort((a, b) => b.releaseYear - a.releaseYear);
+
+const everyoneWasBornOnSecXX = () => books.every(book => book.author.birthYear <= 2000 && book.author.birthYear > 1900);

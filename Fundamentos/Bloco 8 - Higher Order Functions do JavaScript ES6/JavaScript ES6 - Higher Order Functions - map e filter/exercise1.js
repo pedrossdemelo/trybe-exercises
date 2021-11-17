@@ -66,3 +66,5 @@ const formatedBookNames = () => books.map(book => `${book.name} - ${book.genre} 
 const nameAndAge = () => books.map(book => ({age: book.releaseYear - book.author.birthYear, author: book.author.name})).sort((a,b) => a.age - b.age);
 
 const fantasyOrScienceFiction = () => books.filter(book => book.genre === 'Fantasia' || book.genre === 'Ficção Científica');
+
+const oldBooksOrdered = () => books.filter(book => book.releaseYear <= 1960).sort((a,b) => a.releaseYear - b.releaseYear);

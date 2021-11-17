@@ -61,4 +61,6 @@ const people = [
 
 const filterPeople = (people) => people.filter(person => person.bornIn <= 2000 && person.bornIn >= 1901 && person.nationality === 'Australian');
 
-console.log(filterPeople(people));
+const myList = [1, 2, 3];
+
+const swap = ([first, second, third]) => [third, second, first];

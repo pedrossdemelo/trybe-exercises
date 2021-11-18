@@ -1,12 +1,16 @@
-const getPlanet = () => {
-  const mars = {
-    name: "Mars",
-    distanceFromSun: {
-      value: 227900000,
-      measurementUnit: "kilometers",
-    },
-  };
-  console.log("Returned planet: ", mars);
+const messageDelay = () => Math.floor(Math.random() * 5000);
+
+const getMarsTemperature = () => {
+  const maxTemperature = 58;
+  return Math.floor(Math.random() * maxTemperature);
 };
 
-setTimeout(() => getPlanet(), 4000); // imprime Marte depois de 4 segundos
+const sendMarsTemperature = () => {
+  setTimeout(() => {
+    const temperature = getMarsTemperature();
+    const msg = `Mars temperature is: ${temperature} degree Celsius`;
+    console.log(msg);
+  }, messageDelay());
+};
+
+sendMarsTemperature(); // imprime "Mars temperature is: 20 degree Celsius", por exemplo

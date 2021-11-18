@@ -1,30 +1,12 @@
-const planetDistanceFromSun = ({ name, distanceFromSun: { value, measurementUnit } }) =>
-  `${name} is ${value} ${measurementUnit} apart from the Sun`;
-
-const mars = {
-  name: "Mars",
-  distanceFromSun: {
-    value: 227900000,
-    measurementUnit: "kilometers",
-  },
+const getPlanet = () => {
+  const mars = {
+    name: "Mars",
+    distanceFromSun: {
+      value: 227900000,
+      measurementUnit: "kilometers",
+    },
+  };
+  console.log("Returned planet: ", mars);
 };
 
-const venus = {
-  name: "Venus",
-  distanceFromSun: {
-    value: 108200000,
-    measurementUnit: "kilometers",
-  },
-};
-
-const jupiter = {
-  name: "Jupiter",
-  distanceFromSun: {
-    value: 778500000,
-    measurementUnit: "kilometers",
-  },
-};
-
-console.log(planetDistanceFromSun(mars)); // A #1
-setTimeout(() => console.log(planetDistanceFromSun(venus)), 3000); // B #3
-setTimeout(() => console.log(planetDistanceFromSun(jupiter)), 2000); // C #2
+setTimeout(() => getPlanet(), 4000); // imprime Marte depois de 4 segundos

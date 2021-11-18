@@ -16,9 +16,17 @@ const pokemons = [
   },
 ];
 
+const filter = (pokemon) => pokemon.name === 'Bulbasaur';
+
+const printMessage = (error, message) => {
+  if (error) throw error;
+  else console.log(message);
+};
+
 function getPokemonDetails(filter, callback) {
   setTimeout(() => {
     if (pokemons.find(filter) === undefined) {
+      console.log('Pokemon not found');
       return callback(new Error('Não temos esse pokémon para você :('), null);
     }
     const pokemon = pokemons.find(filter);
@@ -31,7 +39,7 @@ function getPokemonDetails(filter, callback) {
   }, 2000);
 }
 
-getPokemonDetails();
+getPokemonDetails(filter, printMessage);
 
 module.exports = {
   getPokemonDetails,

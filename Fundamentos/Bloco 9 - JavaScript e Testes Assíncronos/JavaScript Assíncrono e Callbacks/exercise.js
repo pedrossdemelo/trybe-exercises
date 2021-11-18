@@ -26,5 +26,5 @@ const jupiter = {
 };
 
 console.log(planetDistanceFromSun(mars)); // A #1
-console.log(planetDistanceFromSun(venus)); // B #2
-console.log(planetDistanceFromSun(jupiter)); // C #3
+setTimeout(() => console.log(planetDistanceFromSun(venus)), 3000); // B #3
+setTimeout(() => console.log(planetDistanceFromSun(jupiter)), 2000); // C #2

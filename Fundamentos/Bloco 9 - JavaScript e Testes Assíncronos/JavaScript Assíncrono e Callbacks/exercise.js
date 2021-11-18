@@ -13,12 +13,20 @@ const temperatureInFahrenheit = (temperature) =>
 const greet = (temperature) =>
   console.log(`Hi there! Curiosity here. Right now is ${temperature}ºC at Mars`);
 
-const sendMarsTemperature = (callBack) => {
+const handleError = (errorReason) =>
+  console.log(`Error getting temperature: ${errorReason}`);
+
+const sendMarsTemperature = (callBack, onError) => {
   setTimeout(() => {
+    let willError = Math.random() >= 0.4;
     const temperature = getMarsTemperature();
-    callBack(temperature);
+    if (willError) onError('Robot is busy.');
+    else callBack(temperature);
   }, messageDelay());
 };
 
-sendMarsTemperature(temperatureInFahrenheit); // imprime "It is currently 47ºF at Mars", por exemplo
-sendMarsTemperature(greet); // imprime "Hi there! Curiosity here. Right now is 53ºC at Mars", por exemplo
+// imprime "It is currently 47ºF at Mars", por exemplo, ou "Error getting temperature: Robot is busy"
+sendMarsTemperature(temperatureInFahrenheit, handleError);
+
+// imprime "Hi there! Curiosity here. Right now is 53ºC at Mars", por exemplo, ou "Error getting temperature: Robot is busy"
+sendMarsTemperature(greet, handleError);

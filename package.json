@@ -4,7 +4,7 @@
   "description": "This repository is a store for all projects and exercises made during the XP Inc. sponsored Trybe full stack web development course",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

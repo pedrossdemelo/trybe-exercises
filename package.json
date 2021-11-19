@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/PedroSSM2000/trybe-exercises#readme",
   "dependencies": {
-    "jest": "^27.3.1"
+    "jest": "^27.3.1",
+    "node-fetch": "^2.6.6"
   }
 }

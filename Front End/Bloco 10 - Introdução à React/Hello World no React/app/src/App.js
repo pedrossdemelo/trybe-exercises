@@ -7,11 +7,21 @@ const Task = ({value}) => {
   );
 }
 
+const conteudos = [
+  "Regar plantas",
+  "Lavar pratos",
+  "Limpar banheiro",
+  "Lavar roupa",
+  "Lavar louça"
+];
+
 function App() {
   return (
     <div className="App">
       <ul>
-        <Task value="Hello World" />
+        {conteudos.map(conteudo => (
+          <Task value={conteudo} />
+        ))}
       </ul>
     </div>
   );

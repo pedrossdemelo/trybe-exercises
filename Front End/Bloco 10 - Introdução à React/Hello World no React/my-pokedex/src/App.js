@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import pokemons from './data.js'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {pokemons.map(pokemon => (
+        <div key={pokemon.id}>
+          <h1>{pokemon.name}</h1>
+          <img src={pokemon.image} alt={pokemon.name} />
+          <p>{pokemon.type}</p>
+          <p>{pokemon.averageWeight.value} {pokemon.averageWeight.measurementUnit}</p>
+          <a href={pokemon.moreInfo}>More Info</a>
+        </div>
+      ))}
     </div>
   );
 }

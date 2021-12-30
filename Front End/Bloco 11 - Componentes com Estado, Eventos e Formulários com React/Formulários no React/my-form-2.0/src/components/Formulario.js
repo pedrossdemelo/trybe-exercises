@@ -32,7 +32,22 @@ class Formulario extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} onReset={() => {
+        this.setState({
+          nome: "",
+          email: "",
+          senha: "",
+          endereco: "",
+          cidade: "",
+          estado: "",
+          tipo: "",
+          resumo: "",
+          cargo: "",
+          descricao: "",
+          printed: false,
+          formSnapshot: [],
+        });
+      }}>
         <fieldset>
           <input
             type="text"
@@ -185,9 +200,8 @@ class Formulario extends React.Component {
             required
           ></textarea>
         </fieldset>
-        {/* Crie um botão que, ao ser clicado, monta uma <div> com o consolidado dos dados que foram inseridos no formulário.
-         Crie um botão Limpar que limpa todos os campos do formulário e a <div> com seu currículo também. */}
         <button type="submit">Enviar</button>
+        <button type="reset">Limpar</button>
         {this.state.printed && (
           <div>
             {this.state.formSnapshot.map((value, index) => (

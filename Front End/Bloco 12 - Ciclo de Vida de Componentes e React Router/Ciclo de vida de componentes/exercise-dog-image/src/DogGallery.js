@@ -68,15 +68,15 @@ class DogGallery extends React.Component {
         <header>
           <h1 className="text-3xl py-4">Dog Gallery</h1>
         </header>
-        <div>
+        <div className="flex w-[408px] justify-between">
           <button
-            className="rounded py-0.5 px-3 bg-sky-400 text-white font-bold disabled:bg-slate-200 disabled:text-gray-400 disabled:font-normal pb-[3px] mx-[6px]"
+            className="mr-[6px] grow rounded py-0.5 px-3 bg-sky-400 text-white font-bold disabled:bg-slate-200 disabled:text-gray-400 disabled:font-normal pb-[3px]"
             onClick={this.fetchDog}
           >
             Get a new dog
           </button>
           <button
-            className="rounded py-0.5 px-3 bg-sky-400 text-white font-bold disabled:bg-slate-200 disabled:text-gray-400 disabled:font-normal pb-[3px] mx-[6px]"
+            className="ml-[6px] grow rounded py-0.5 px-3 bg-sky-400 text-white font-bold disabled:bg-slate-200 disabled:text-gray-400 disabled:font-normal pb-[3px]"
             onClick={this.clearDogGallery}
           >
             Clear gallery

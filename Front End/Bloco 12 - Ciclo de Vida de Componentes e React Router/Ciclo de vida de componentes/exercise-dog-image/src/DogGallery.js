@@ -1,10 +1,11 @@
 import React from "react";
 
 class DogGallery extends React.Component {
+  // add a button to clear local storage and dogs array
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
     this.handleDogName = this.handleDogName.bind(this);
+    this.clearDogGallery = this.clearDogGallery.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       imgUrl: "",
@@ -29,11 +30,12 @@ class DogGallery extends React.Component {
       });
   }
 
-  componentDidMount() {
-    this.fetchDog();
+  clearDogGallery() {
+    localStorage.clear();
+    this.setState({ dogs: [] });
   }
 
-  handleClick() {
+  componentDidMount() {
     this.fetchDog();
   }
 
@@ -66,7 +68,8 @@ class DogGallery extends React.Component {
         <header>
           <h1>Dog Gallery</h1>
         </header>
-        <button onClick={this.handleClick}>Get a new dog</button>
+        <button onClick={this.fetchDog}>Get a new dog</button>
+        <button onClick={this.clearDogGallery}>Clear gallery</button>
         {loading ? <p>Loading...</p> : <img src={imgUrl} alt="dog" />}
         <form onSubmit={this.handleSubmit}>
           <input

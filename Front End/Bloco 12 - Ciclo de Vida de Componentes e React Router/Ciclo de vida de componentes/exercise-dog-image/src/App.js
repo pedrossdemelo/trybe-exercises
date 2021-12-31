@@ -1,9 +1,8 @@
-import './App.css';
 import DogGallery from './DogGallery';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <DogGallery />
     </div>
   );

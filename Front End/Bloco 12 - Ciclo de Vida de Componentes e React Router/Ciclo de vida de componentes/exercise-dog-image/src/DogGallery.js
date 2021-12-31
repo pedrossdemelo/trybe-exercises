@@ -1,12 +1,12 @@
 import React from "react";
 
 class DogGallery extends React.Component {
-  // add a button to clear local storage and dogs array
   constructor(props) {
     super(props);
     this.handleDogName = this.handleDogName.bind(this);
     this.clearDogGallery = this.clearDogGallery.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchDog = this.fetchDog.bind(this);
     this.state = {
       imgUrl: "",
       loading: false,
@@ -64,33 +64,68 @@ class DogGallery extends React.Component {
   render() {
     const { imgUrl, loading, dogName, dogs, submitDisabled } = this.state;
     return (
-      <>
+      <div className="flex flex-col text-center items-center">
         <header>
-          <h1>Dog Gallery</h1>
+          <h1 className="text-3xl py-4">Dog Gallery</h1>
         </header>
-        <button onClick={this.fetchDog}>Get a new dog</button>
-        <button onClick={this.clearDogGallery}>Clear gallery</button>
-        {loading ? <p>Loading...</p> : <img src={imgUrl} alt="dog" />}
-        <form onSubmit={this.handleSubmit}>
+        <div>
+          <button
+            className="rounded py-0.5 px-3 bg-sky-400 text-white font-bold disabled:bg-slate-200 disabled:text-gray-400 disabled:font-normal pb-[3px] mx-[6px]"
+            onClick={this.fetchDog}
+          >
+            Get a new dog
+          </button>
+          <button
+            className="rounded py-0.5 px-3 bg-sky-400 text-white font-bold disabled:bg-slate-200 disabled:text-gray-400 disabled:font-normal pb-[3px] mx-[6px]"
+            onClick={this.clearDogGallery}
+          >
+            Clear gallery
+          </button>
+        </div>
+        {loading ? (
+          <div className="h-[408px] w-[408px] leading-[24rem] m-3">
+            Loading...
+          </div>
+        ) : (
+          <img
+            className="h-[408px] w-[408px] object-cover text-[0px] rounded m-3"
+            src={imgUrl}
+            alt="dog"
+          />
+        )}
+        <form className="flex w-[408px] h-10" onSubmit={this.handleSubmit}>
           <input
+            className={`focus:outline-none rounded-l border-r-0 border-2 ${
+              submitDisabled ? "border-slate-200" : "border-sky-400"
+            } px-3 grow`}
             type="text"
-            placeholder="Name"
+            placeholder="Give your dog a name"
             value={dogName}
             onChange={this.handleDogName}
           />
-          <button type="submit" disabled={submitDisabled}>
+          <button
+            className={`rounded-r py-0.5 px-3 bg-sky-400 text-white font-bold disabled:bg-slate-200 disabled:text-gray-400 disabled:font-normal`}
+            type="submit"
+            disabled={submitDisabled}
+          >
             Add
           </button>
         </form>
         <ul>
           {dogs.map((dog) => (
             <li key={dog.name}>
-              <img src={dog.imageUrl} alt="dog" />
-              <p>{dog.name}</p>
+              <div className="p-3 rounded border-2 border-slate-200 m-3 bg-slate-50 max-w-[408px]">
+                <img
+                  className={`h-96 w-96 object-cover text-[0px] rounded mb-3`}
+                  src={dog.imageUrl}
+                  alt="dog"
+                />
+                <p className="font-bold text-slate-700">{dog.name}</p>
+              </div>
             </li>
           ))}
         </ul>
-      </>
+      </div>
     );
   }
 }

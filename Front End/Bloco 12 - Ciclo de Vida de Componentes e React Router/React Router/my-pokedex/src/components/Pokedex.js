@@ -29,6 +29,7 @@ export default function Pokedex(props) {
           setLoading(false);
         })
         .catch(() => {
+          console.error("Pokemon not found");
           setPokemonID(pokemon.id);
           setPokemonSearch(pokemon.name);
           setLoading(false);
@@ -86,15 +87,15 @@ export default function Pokedex(props) {
           className="bg-white py-1 px-2 rounded shadow-md mt-8"
           type="submit"
         >
-          Get Pokemon
+          Search
         </button>
       </form>
       <div className="relative">
         <button
-          className="absolute top-1/2 -left-8 -translate-y-1/2 -translate-x-full bg-white py-1 px-2 rounded shadow-md"
+          className="absolute top-1/2 -left-8 -translate-y-1/2 -translate-x-full bg-white py-1 px-2 rounded shadow-md hover:bg-slate-50"
           onClick={() => {
             setLastChanged("id");
-            fetchPokemon(Number(pokemonID) + 1, pokemonSearch);
+            fetchPokemon(pokemonID + 1, pokemonSearch);
           }}
         >
           Previous
@@ -108,10 +109,10 @@ export default function Pokedex(props) {
           <Pokemon pokemon={pokemon} />
         )}
         <button
-          className="absolute top-1/2 -right-8 -translate-y-1/2 translate-x-full bg-white py-1 px-2 rounded shadow-md"
+          className="absolute top-1/2 -right-8 -translate-y-1/2 translate-x-full bg-white py-1 px-2 rounded shadow-md transition hover:bg-slate-50"
           onClick={() => {
             setLastChanged("id");
-            fetchPokemon(Number(pokemonID) + 1, pokemonSearch);
+            fetchPokemon(pokemonID + 1, pokemonSearch);
           }}
         >
           Next

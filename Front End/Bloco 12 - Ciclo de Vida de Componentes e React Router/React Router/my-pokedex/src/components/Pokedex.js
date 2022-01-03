@@ -1,12 +1,14 @@
 import React from "react";
 import Pokemon from "./Pokemon";
 
+let lastChanged = "id";
+
 export default function Pokedex(props) {
   const fetchPokemon = (id, name) => {
     if (pokemonSearch !== name) setPokemonSearch(name);
     if (pokemonID !== id) setPokemonID(id);
     if (lastChanged === "id") {
-      if (id === "") return;
+      if (!id) return;
       if (id < 1 || id > 898)
         return id < 1 ? setPokemonID(1) : setPokemonID(898);
       setLoading(true);
@@ -19,7 +21,8 @@ export default function Pokedex(props) {
         });
     }
     if (lastChanged === "nameSearch") {
-      if (name === "") return;
+      console.log("nameSearch");
+      if (!name) return;
       setLoading(true);
       fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`)
         .then((response) => response.json())
@@ -37,7 +40,6 @@ export default function Pokedex(props) {
     }
   };
 
-  const [lastChanged, setLastChanged] = React.useState("id");
   const [loading, setLoading] = React.useState(true);
   const [pokemon, setPokemon] = React.useState(null);
   const [pokemonID, setPokemonID] = React.useState(1);
@@ -65,26 +67,26 @@ export default function Pokedex(props) {
           <label>
             #
             <input
-              className="ml-2 w-10"
+              className="ml-2 w-9"
               type="number"
               value={pokemonID}
               onChange={({ target: { value } }) => {
-                setLastChanged("id");
-                if (value < 1000) setPokemonID(value);
+                lastChanged = "id";
+                if (value < 1000) setPokemonID(Number(value));
               }}
             />
           </label>
           <input
-            className="mr-2 w-24 text-center capitalize"
+            className="ml-2 w-24 text-center capitalize"
             value={pokemonSearch}
             onChange={({ target: { value } }) => {
-              setLastChanged("nameSearch");
+              lastChanged = "nameSearch";
               setPokemonSearch(value);
             }}
           />
         </div>
         <button
-          className="bg-white py-1 px-2 rounded shadow-md mt-8"
+          className="bg-white py-1 px-2 rounded shadow-md mt-8 transition hover:bg-slate-50"
           type="submit"
         >
           Search
@@ -94,8 +96,8 @@ export default function Pokedex(props) {
         <button
           className="absolute top-1/2 -left-8 -translate-y-1/2 -translate-x-full bg-white py-1 px-2 rounded shadow-md hover:bg-slate-50"
           onClick={() => {
-            setLastChanged("id");
-            fetchPokemon(pokemonID + 1, pokemonSearch);
+            lastChanged = "id";
+            if (pokemonID > 1) fetchPokemon(pokemonID - 1, pokemonSearch);
           }}
         >
           Previous
@@ -111,8 +113,8 @@ export default function Pokedex(props) {
         <button
           className="absolute top-1/2 -right-8 -translate-y-1/2 translate-x-full bg-white py-1 px-2 rounded shadow-md transition hover:bg-slate-50"
           onClick={() => {
-            setLastChanged("id");
-            fetchPokemon(pokemonID + 1, pokemonSearch);
+            lastChanged = "id";
+            if (pokemonID < 898) fetchPokemon(pokemonID + 1, pokemonSearch);
           }}
         >
           Next

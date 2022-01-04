@@ -3,6 +3,7 @@ import Header from "./Header";
 import Pokemon from "./Pokemon";
 import pokedexLoadingGIF from "./../pokedexLoading.gif";
 import { Link } from "react-router-dom";
+import { Heart, Star1 } from "iconsax-react";
 
 let lastChanged = "id";
 if (localStorage.getItem("favorites") === null) localStorage.setItem("favorites", JSON.stringify(new Array(899).fill(false)));
@@ -131,7 +132,7 @@ export default function Pokedex({location: { id = 1 }}) {
         >
           Next
         </button>
-        <button onClick={() => {
+        <button className="absolute top-10 left-2" onClick={() => {
           if (favorite) {
             const favorites = JSON.parse(localStorage.getItem("favorites"));
             favorites[pokemon.id] = false;
@@ -142,7 +143,7 @@ export default function Pokedex({location: { id = 1 }}) {
             favorites[pokemon.id] = true;
             localStorage.setItem("favorites", JSON.stringify(favorites));
           }
-          setFavorite(!favorite)}}>{favorite ? "Favorited" : "Set as favorite"}</button>
+          setFavorite(!favorite)}}>{favorite ? (<Heart size="28" color="black" variant="Bold"/>) : <Heart size="28" color="black" variant="Linear"/>}</button>
       </div>
     </div>
   );

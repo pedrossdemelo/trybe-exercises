@@ -1,9 +1,13 @@
 import React from "react";
+import Header from "./Header";
 import Pokemon from "./Pokemon";
+import pokedexLoadingGIF from "./../pokedexLoading.gif";
+import { Link } from "react-router-dom";
 
 let lastChanged = "id";
+if (localStorage.getItem("favorites") === null) localStorage.setItem("favorites", JSON.stringify(new Array(899).fill(false)));
 
-export default function Pokedex(props) {
+export default function Pokedex({location: { id = 1 }}) {
   const fetchPokemon = (id, name) => {
     if (pokemonSearch !== name) setPokemonSearch(name);
     if (pokemonID !== id) setPokemonID(id);
@@ -17,6 +21,7 @@ export default function Pokedex(props) {
         .then((pokemon) => {
           setPokemon(pokemon);
           setPokemonSearch(pokemon.name);
+          JSON.parse(localStorage.getItem("favorites"))[pokemon.id] ? setFavorite(true) : setFavorite(false);
           setLoading(false);
         });
     }
@@ -29,6 +34,7 @@ export default function Pokedex(props) {
         .then((pokemon) => {
           setPokemon(pokemon);
           setPokemonID(pokemon.id);
+          JSON.parse(localStorage.getItem("favorites"))[pokemon.id] ? setFavorite(true) : setFavorite(false);
           setLoading(false);
         })
         .catch(() => {
@@ -40,22 +46,28 @@ export default function Pokedex(props) {
     }
   };
 
+  const [favorite, setFavorite] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
   const [pokemon, setPokemon] = React.useState(null);
-  const [pokemonID, setPokemonID] = React.useState(1);
-  const [pokemonSearch, setPokemonSearch] = React.useState("Bulbasaur");
+  const [pokemonID, setPokemonID] = React.useState(id);
+  const [pokemonSearch, setPokemonSearch] = React.useState("");
 
   React.useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/1`)
+    fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then((response) => response.json())
-      .then((data) => {
-        setPokemon(data);
+      .then((pokemon) => {
+        setPokemon(pokemon);
+        JSON.parse(localStorage.getItem("favorites"))[pokemon.id] ? setFavorite(true) : setFavorite(false);
         setLoading(false);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="flex flex-col items-center text-center bg-slate-50 min-h-screen">
+      <Header />
+      <Link to={`/pokemon/${pokemonID}`}>Details</Link>
+      <Link to={`/about`}>About page</Link>
+      <Link to={`/favorites`}>Favorites</Link>
       <form
         className="flex flex-col items-center justify-center w-full max-w-sm mt-8"
         onSubmit={(e) => {
@@ -78,6 +90,7 @@ export default function Pokedex(props) {
           </label>
           <input
             className="ml-2 w-24 text-center capitalize"
+            placeholder="Search"
             value={pokemonSearch}
             onChange={({ target: { value } }) => {
               lastChanged = "nameSearch";
@@ -103,9 +116,8 @@ export default function Pokedex(props) {
           Previous
         </button>
         {loading ? (
-          <div className="shadow-xl rounded-xl h-36 aspect-[2/1] bg-white flex items-center justify-center my-8">
-            {" "}
-            Loading...{" "}
+          <div className="shadow-xl rounded-xl h-36 aspect-[2/1] bg-white flex items-center justify-center my-8 overflow-hidden">
+            <img src={pokedexLoadingGIF} className="h-36 opacity-10" alt="Loading..." />
           </div>
         ) : (
           <Pokemon pokemon={pokemon} />
@@ -119,6 +131,18 @@ export default function Pokedex(props) {
         >
           Next
         </button>
+        <button onClick={() => {
+          if (favorite) {
+            const favorites = JSON.parse(localStorage.getItem("favorites"));
+            favorites[pokemon.id] = false;
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+          }
+          if (!favorite) {
+            const favorites = JSON.parse(localStorage.getItem("favorites"));
+            favorites[pokemon.id] = true;
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+          }
+          setFavorite(!favorite)}}>{favorite ? "Favorited" : "Set as favorite"}</button>
       </div>
     </div>
   );

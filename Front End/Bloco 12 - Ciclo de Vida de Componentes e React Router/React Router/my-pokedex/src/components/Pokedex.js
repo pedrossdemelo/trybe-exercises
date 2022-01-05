@@ -344,7 +344,7 @@ export default function Pokedex({ location: { id = 1 } }) {
           className="absolute top-1/2 -left-8 -translate-y-1/2 -translate-x-full bg-white py-1 px-2 rounded shadow-md hover:bg-slate-50"
           onClick={() => {
             lastChanged = "id";
-            if (pokemonID < 1) return;
+            if (pokemonID <= 1) return;
             fetchPokemon(getPreviousSameTypePokemon(selected, pokemonID), pokemonSearch);
           }}
         >
@@ -365,7 +365,7 @@ export default function Pokedex({ location: { id = 1 } }) {
           className="absolute top-1/2 -right-8 -translate-y-1/2 translate-x-full bg-white py-1 px-2 rounded shadow-md transition hover:bg-slate-50"
           onClick={() => {
             lastChanged = "id";
-            if (pokemonID > 898) return;
+            if (pokemonID >= 898) return;
             fetchPokemon(getNextSameTypePokemon(selected, pokemonID), pokemonSearch);
           }}
         >

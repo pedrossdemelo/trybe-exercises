@@ -1,6 +1,8 @@
 import { Heart } from "iconsax-react";
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
+import pokedexLoadingGIF from "../pokedexLoading.gif";
+import { Link } from "react-router-dom";
 
 if (localStorage.getItem("favorites") === null)
   localStorage.setItem("favorites", JSON.stringify(new Array(899).fill(false)));
@@ -13,12 +15,16 @@ export default function Favorites() {
   return (
     <div className="flex flex-col items-center text-center bg-slate-50 min-h-screen">
       <Header />
+      <Link
+        className="inline-block mt-8 bg-white py-1 px-2 rounded shadow-md transition hover:bg-slate-50"
+        to="/"
+      >
+        Go to Pokedex
+      </Link>
       <div className="mt-4" />
-      {favorites.map((favorite, index) => {
-        return (
-          <div key={index}>{favorite && <FavoritePokemon id={index} />}</div>
-        );
-      })}
+      {favorites.map((favorite, index) =>
+        favorite ? <FavoritePokemon key={index} id={index} /> : null
+      )}
     </div>
   );
 }
@@ -49,7 +55,11 @@ function FavoritePokemon({ id }) {
       }`}
     >
       {loading ? (
-        <h1>loading...</h1>
+        <img
+          src={pokedexLoadingGIF}
+          className="h-36 opacity-10"
+          alt="Loading..."
+        />
       ) : (
         <>
           <img

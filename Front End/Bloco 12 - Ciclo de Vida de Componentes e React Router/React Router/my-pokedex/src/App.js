@@ -8,7 +8,7 @@ import NotFound from "./components/NotFound";
 
 function App() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Pokedex} />

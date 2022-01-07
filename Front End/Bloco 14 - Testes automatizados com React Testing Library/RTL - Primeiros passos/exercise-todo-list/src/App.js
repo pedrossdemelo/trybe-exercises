@@ -7,7 +7,6 @@ class App extends Component {
     super(props);
     this.state = {
       listTodo: [],
-      removedTodo: [],
       selectedTodo: [],
     };
 
@@ -21,11 +20,22 @@ class App extends Component {
   }
 
   selectTodo(todo) {
-
+    const { selectedTodo } = this.state;
+    if (!selectedTodo.includes(todo)) {
+      return this.setState((state) => ({ selectedTodo: [...state.selectedTodo, todo] }));
+    }
+    const filteredSelected = selectedTodo.filter((item) => item !== todo);
+    this.setState({ selectedTodo: filteredSelected });
   }
 
   removeTodo(todo) {
-
+    const { selectedTodo, listTodo } = this.state;
+    if (selectedTodo.includes(todo)) {
+      const filteredList = listTodo.filter((item) => item !== todo);
+      const filteredSelected = selectedTodo.filter((item) => item !== todo);
+      this.setState({ listTodo: filteredList });
+      this.setState({ selectedTodo: filteredSelected });
+    }
   }
 
   render() {
@@ -34,17 +44,27 @@ class App extends Component {
     return (
       <div className="App">
         <InputTodo addTodo={ (todo) => this.addTodo(todo) } />
-        {listTodo
-          && <ul>
-            {
-              listTodo.map((todo, index) => (
-                <li key={ index + 1 }>
-                  <Item content={ todo } selectCallBack={ this.selectTodo } />
-                  {/* Coloque o botão aqui */}
-                </li>
-              ))
-            }
-          </ul>}
+        {
+          listTodo
+            && (
+              <ul>
+                {
+                  listTodo.map((todo, index) => (
+                    <li key={ index }>
+                      <Item content={ todo } selectCallBack={ this.selectTodo } />
+                      <button
+                        disabled={ !selectedTodo.includes(todo) }
+                        type="button"
+                        onClick={ () => this.removeTodo(todo) }
+                      >
+                        Remover
+                      </button>
+                    </li>
+                  ))
+                }
+              </ul>
+            )
+        }
       </div>
     );
   }

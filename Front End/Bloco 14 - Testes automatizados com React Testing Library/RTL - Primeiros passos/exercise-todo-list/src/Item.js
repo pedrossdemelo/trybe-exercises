@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Item(props) {
-  const { content } = props;
+  const { content, selectCallBack } = props;
+
   return (
-    <div className="Item">
-      {content}
+    <div
+      className="Item"
+      onClick={ () => selectCallBack(content) }
+    >
+      { content }
     </div>
   );
 }

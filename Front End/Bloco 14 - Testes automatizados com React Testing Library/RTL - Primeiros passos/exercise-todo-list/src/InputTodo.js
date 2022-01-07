@@ -25,15 +25,13 @@ class InputTodo extends Component {
     const { textTodo } = this.state;
     return (
       <div className="InputTodo">
-        <label htmlFor="inputTodo">
-          Tarefa:
-          <input
-            id="inputTodo"
-            type="text"
-            value={ textTodo }
-            onChange={ (e) => this.changeTextTodo(e.target.value) }
-          />
-        </label>
+        <label htmlFor="inputTodo">Tarefa:</label>
+        <input
+          id="inputTodo"
+          type="text"
+          value={ textTodo }
+          onChange={ (e) => this.changeTextTodo(e.target.value) }
+        />
         <input
           id="btnAdd"
           type="button"

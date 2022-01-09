@@ -6,9 +6,7 @@ jest.mock("./service", () => {
   };
 });
 describe("generateRandomNumber", () => {
-  it("should be called x amount of times", () => {
-    // Mock the return value of the function to 10
-    generateRandomNumber.mockReturnValue(10);
+  it("should be called x amount of times and return a mocked value", () => {
     // Call the function 10 times
     for (let i = 0; i < 10; i++) {
       generateRandomNumber();
@@ -16,5 +14,9 @@ describe("generateRandomNumber", () => {
     // Validate that it was called and called 10 times
     expect(generateRandomNumber).toHaveBeenCalled();
     expect(generateRandomNumber).toHaveBeenCalledTimes(10);
+    // Mock the return value of the function to be 10
+    generateRandomNumber.mockReturnValue(10);
+    // Validate that the return value is 10
+    expect(generateRandomNumber()).toBe(10);
   });
 });

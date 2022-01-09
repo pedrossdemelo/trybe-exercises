@@ -19,4 +19,14 @@ describe("generateRandomNumber", () => {
     // Validate that the return value is 10
     expect(generateRandomNumber()).toBe(10);
   });
+  it("should obey the mocked implementation once", () => {
+    // Mock the implementation of the function to be a division
+    generateRandomNumber.mockImplementationOnce((num, num2) => {
+      return num / num2;
+    });
+    const result = generateRandomNumber(10, 2);
+    expect(result).toBe(5);
+    expect(generateRandomNumber).toHaveBeenCalledTimes(12);
+    expect(generateRandomNumber()).toBe(10);
+  })
 });

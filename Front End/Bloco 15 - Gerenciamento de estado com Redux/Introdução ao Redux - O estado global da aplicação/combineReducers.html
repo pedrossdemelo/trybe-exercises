@@ -74,12 +74,33 @@
           window.__REDUX_DEVTOOLS_EXTENSION__()
       );
 
-      const getByID = (id) => document.getElementById(id);
-      const nome1 = getByID("nome-1");
-      const sobrenome1 = getByID("sobrenome-1");
-      const nome2 = getByID("nome-2");
-      const sobrenome2 = getByID("sobrenome-2");
-
+      const getByID = (id) => document.getElementById(id),
+        nome1 = getByID("nome-1"),
+        sobrenome1 = getByID("sobrenome-1"),
+        endereco1 = getByID("endereco-1"),
+        cidade1 = getByID("cidade-1"),
+        nome2 = getByID("nome-2"),
+        sobrenome2 = getByID("sobrenome-2"),
+        endereco2 = getByID("endereco-2"),
+        cidade2 = getByID("cidade-2"),
+        container = [
+          nome1,
+          sobrenome1,
+          endereco1,
+          cidade1,
+          nome2,
+          sobrenome2,
+          endereco2,
+          cidade2,
+        ];
+      container.forEach((item, index) => {
+        store.subscribe(() => {
+          const states = Object.values(store.getState().first).concat(
+            Object.values(store.getState().second)
+          );
+          item.innerHTML = states[index];
+        });
+      });
       const changeName = (name, index) => ({
         type: `CHANGE_NAME_${index}`,
         payload: {
@@ -91,7 +112,7 @@
       window.onload = () => {
         setTimeout(() => {
           store.dispatch(changeName("Pedro Sousa Soares de Melo", 1));
-        }, 2000);
+        }, 3000);
       };
     </script>
   </body>

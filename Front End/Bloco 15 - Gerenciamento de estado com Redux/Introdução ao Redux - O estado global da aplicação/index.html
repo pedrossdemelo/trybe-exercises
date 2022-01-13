@@ -69,6 +69,10 @@
       previousButton.addEventListener("click", () => {
         store.dispatch({ type: "PREVIOUS_COLOR" });
       });
+      store.subscribe(() => {
+        const { colors, index } = store.getState();
+        getByID("value").innerText = colors[index];
+      });
     </script>
   </body>
 </html>

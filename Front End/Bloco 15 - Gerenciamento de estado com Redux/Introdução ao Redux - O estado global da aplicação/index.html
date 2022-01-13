@@ -31,14 +31,24 @@
       <p>Color: <span id="value">white</span></p>
       <button id="previous">Previous color</button>
       <button id="next">Next color</button>
+      <button id="random">Random color</button>
     </div>
     <script>
-      const getByID = id => document.getElementById(id);
+      const getByID = (id) => document.getElementById(id);
       const nextButton = getByID("next");
       const previousButton = getByID("previous");
+      const randomButton = getByID("random");
+      const value = getByID("value");
       const ESTADO_INICIAL = {
         colors: ["white", "black", "red", "green", "blue", "yellow"],
         index: 0,
+      };
+      const getRandomColor = () => {
+        const hexChars = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++)
+          color += hexChars[Math.floor(Math.random() * 16)];
+        return color;
       };
       const reducer = (state, action) => {
         const { colors, index } = state;
@@ -52,6 +62,11 @@
             return {
               colors,
               index: (index - 1 + colors.length) % colors.length,
+            };
+          case "RANDOM_COLOR":
+            return {
+              colors: [...colors, getRandomColor()],
+              index: colors.length,
             };
           default:
             return state;
@@ -69,9 +84,12 @@
       previousButton.addEventListener("click", () => {
         store.dispatch({ type: "PREVIOUS_COLOR" });
       });
+      randomButton.addEventListener("click", () => {
+        store.dispatch({ type: "RANDOM_COLOR" });
+      });
       store.subscribe(() => {
         const { colors, index } = store.getState();
-        getByID("value").innerText = colors[index];
+        value.innerText = colors[index];
       });
     </script>
   </body>

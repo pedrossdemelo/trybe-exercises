@@ -33,11 +33,14 @@
       <button id="next">Next color</button>
     </div>
     <script>
+      const getByID = id => document.getElementById(id);
+      const nextButton = getByID("next");
+      const previousButton = getByID("previous");
       const ESTADO_INICIAL = {
         colors: ["white", "black", "red", "green", "blue", "yellow"],
         index: 0,
       };
-      const reducer = (state = ESTADO_INICIAL, action) => {
+      const reducer = (state, action) => {
         const { colors, index } = state;
         switch (action.type) {
           case "NEXT_COLOR":
@@ -54,7 +57,18 @@
             return state;
         }
       };
-      const store = Redux.createStore(reducer);
+      const store = Redux.createStore(
+        reducer,
+        ESTADO_INICIAL,
+        window.__REDUX_DEVTOOLS_EXTENSION__ &&
+          window.__REDUX_DEVTOOLS_EXTENSION__()
+      );
+      nextButton.addEventListener("click", () => {
+        store.dispatch({ type: "NEXT_COLOR" });
+      });
+      previousButton.addEventListener("click", () => {
+        store.dispatch({ type: "PREVIOUS_COLOR" });
+      });
     </script>
   </body>
 </html>

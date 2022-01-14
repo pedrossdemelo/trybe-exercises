@@ -1,23 +1,44 @@
-import { createStore } from 'redux';
-import { MOVE_CAR } from './actionCreators';
+import { createStore } from "redux";
+import { MOVE_CAR } from "./actionCreators";
+import { CHANGE_SIGNAL } from "./actionCreators";
+import { combineReducers } from "redux";
 
-const initialState = {
-  cars: {
-    red: false,
-    blue: false,
-    yellow: false,
-  },
+const initialCarState = {
+  red: false,
+  blue: false,
+  yellow: false,
 };
 
-function reducer(state = initialState, action) {
+const initialSignalState = {
+  color: "red",
+};
+
+function reducer(state = initialCarState, action) {
   switch (action.type) {
     case MOVE_CAR:
-      return { ...state, cars: { ...state.cars, [action.car]: action.side } };
+      return { [action.car]: action.side };
     default:
       return state;
   }
 }
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+function reducer1(state = initialSignalState, action) {
+  switch (action.type) {
+    case CHANGE_SIGNAL:
+      return { color: action.payload };
+    default:
+      return state;
+  }
+}
+
+const combinedReducers = combineReducers({
+  cars: reducer,
+  signal: reducer1,
+});
+
+const store = createStore(
+  combinedReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default store;

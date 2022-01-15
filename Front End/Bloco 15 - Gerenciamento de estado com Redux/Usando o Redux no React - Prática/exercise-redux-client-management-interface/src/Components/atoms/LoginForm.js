@@ -1,31 +1,37 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+
+export function Input({value, onChange, type}) {
+  return (
+      <input
+        className="block px-2 py-1 mb-4 border rounded border-slate-300 placeholder:text-slate-400 bg-slate-50"
+        placeholder={type[0].toUpperCase() + type.slice(1)}
+        name={type}
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
+  )
+}
 
 export default function LoginForm() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleSubmit = (e) => { e.preventDefault(); if (email && password) navigate("/clients")}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email && password) navigate("/clients");
+  };
   return (
-    <form className="p-4 rounded-lg shadow-lg bg-white" onSubmit={(e)=>handleSubmit(e)}>
-      <input
-        className="block rounded border border-slate-300 placeholder:text-slate-400 py-1 px-2 mb-4"
-        placeholder="Email"
-        name="email"
-        type="email"
-        value={email}
-        onChange={({ target: { value } }) => setEmail(value)}
-      />
-      <input
-        className="block rounded border border-slate-300 placeholder:text-slate-400 py-1 px-2 mb-4"
-        placeholder="Password"
-        name="password"
-        type="password"
-        value={password}
-        onChange={({ target: { value } }) => setPassword(value)}
-      />
-      <button type="submit" className="ml-auto mr-1 block text-sky-500">Login</button>
+    <form
+      className="p-4 pb-3 bg-white rounded-lg shadow-lg"
+      onSubmit={(e) => handleSubmit(e)}
+    >
+      <Input type="email" onChange={setEmail} value={email}/>
+      <Input type="password" onChange={setPassword} value={password}/>
+      <button type="submit" className="ml-auto -mt-1 mr-0.5 block text-sky-500">
+        Login
+      </button>
     </form>
-
   );
 }

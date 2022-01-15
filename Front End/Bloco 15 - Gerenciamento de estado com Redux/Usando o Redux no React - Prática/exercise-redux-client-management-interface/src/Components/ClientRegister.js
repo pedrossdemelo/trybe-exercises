@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import ClientForm from "./atoms/ClientForm";
 
 export default function ClientRegister() {
   return (
-    <div className='grow flex flex-col items-center justify-center'>
-      Client Register
+    <div className="flex flex-col items-center justify-center grow">
+      <ClientForm />
     </div>
-  )
+  );
 }

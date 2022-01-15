@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import Header from './Header';
+import Header from './Components/Header';
 function App() {
   return (
     <div className='min-h-screen overflow-x-hidden bg-slate-50'>

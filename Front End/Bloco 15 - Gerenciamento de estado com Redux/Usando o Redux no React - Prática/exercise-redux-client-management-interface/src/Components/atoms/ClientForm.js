@@ -1,13 +1,15 @@
 import { Input } from "./LoginForm";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { submitClient } from "../../redux/actions/submitClient";
 import { useNavigate } from "react-router-dom";
+import store from "../../redux/store";
 
 const validForm = ({email, name, age}) =>
   email.length > 12 && name.length > 2 && age > 10;
 
 export default function ClientForm() {
+  const { clients } = store.getState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
@@ -21,6 +23,10 @@ export default function ClientForm() {
     const formData = {email, name, age: Number(age)};
     console.log(formData);
     if (validForm(formData)) {
+      if (clients.find((client) => client.email === email)) {
+        alert("Client already exists");
+        return;
+      }
       dispatch(submitClient(formData));
       navigate("/clients");
     }

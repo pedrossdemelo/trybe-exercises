@@ -17,11 +17,11 @@ const ClientRow = ({ client, index }) => {
         index % 2 ? "bg-slate-50" : ""
       } transition relative h-10 hover:bg-red-100 hover:cursor-pointer`}
     >
-      <th className="pl-4" scope="row">
+      <th scope="row">
         {name}
       </th>
-      <td className="px-8">{age}</td>
-      <td className="pr-4">{hover ? "Remove this client?" : email}</td>
+      <td>{age}</td>
+      <td>{hover ? "Remove this client?" : email}</td>
     </tr>
   );
 };
@@ -31,16 +31,21 @@ export default function ClientTable() {
   if (!clientData.length) return null;
   return (
     <div className="relative overflow-hidden bg-white shadow-xl rounded-xl">
-      <table className="text-center">
-        <thead className="bg-white border-b-2 border-slate-100">
+      <table className="text-center table-fixed">
+        <colgroup>
+          <col className="w-32" />
+          <col className="w-14" />
+          <col className="w-60" />
+        </colgroup>
+        <thead className="bg-white border-b-2">
           <tr className="h-10">
-            <th className="pl-4" scope="col">
+            <th scope="col">
               Name
             </th>
-            <th className="px-2" scope="col">
+            <th scope="col">
               Age
             </th>
-            <th className="pr-4" scope="col">
+            <th scope="col">
               Email
             </th>
           </tr>

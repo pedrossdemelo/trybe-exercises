@@ -13,7 +13,9 @@ const ClientRow = ({ client, index }) => {
       onMouseLeave={() => setHover(false)}
       onClick={remove}
       key={email}
-      className={`${index % 2 ? "bg-slate-50" : ""} relative h-10 hover:bg-red-100 hover:cursor-pointer`}
+      className={`${
+        index % 2 ? "bg-slate-50" : ""
+      } transition relative h-10 hover:bg-red-100 hover:cursor-pointer`}
     >
       <th className="pl-4" scope="row">
         {name}

@@ -11,7 +11,7 @@ export default function Clients() {
         <>
           <ClientTable />
           <Link
-            className="block px-3 py-1.5 font-bold bg-sky-400 rounded text-white"
+            className="m-6 block px-3 py-1.5 font-bold bg-sky-400 rounded text-white"
             to="/clients/register"
           >
             New client

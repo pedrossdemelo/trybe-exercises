@@ -1,4 +1,4 @@
-const submitClient = ({ name, age, email }) => ({
+export const submitClient = ({ name, age, email }) => ({
   type: "SUBMIT_CLIENT",
   payload: {
     name,
@@ -13,5 +13,3 @@ export const removeClient = ({email}) => ({
     email
   }
 });
-
-export default submitClient;

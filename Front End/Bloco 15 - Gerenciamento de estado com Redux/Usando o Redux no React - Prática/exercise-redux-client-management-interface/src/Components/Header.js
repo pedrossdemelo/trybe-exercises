@@ -42,11 +42,6 @@ export default function Header() {
             Clients
           </Link>
         </li>
-        <li>
-          <Link className="p-2" to="/clients/register">
-            Register clients
-          </Link>
-        </li>
         <li className="ml-auto">
           {logged ? <LogoutButton/> : <LoginButton />}
         </li>

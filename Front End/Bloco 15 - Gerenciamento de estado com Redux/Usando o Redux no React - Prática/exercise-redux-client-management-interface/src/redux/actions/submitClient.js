@@ -1,5 +1,5 @@
 export const submitClient = ({ name, age, email }) => ({
-  type: "SUBMIT_CLIENT",
+  type: "ADD_CLIENT",
   payload: {
     name,
     age,

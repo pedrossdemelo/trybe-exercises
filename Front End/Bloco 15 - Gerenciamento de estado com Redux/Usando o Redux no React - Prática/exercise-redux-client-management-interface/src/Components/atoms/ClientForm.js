@@ -15,6 +15,7 @@ export default function ClientForm() {
   const [age, setAge] = useState("");
   const handleAge = (ageInput) =>
     /^([1-9][0-9]{0,1})$|^$/.test(ageInput) && setAge(ageInput);
+  const handleName = (nameInput) => setName(nameInput.replace(/[^a-zA-Z ]/g, ""));
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {email, name, age: Number(age)};
@@ -29,7 +30,7 @@ export default function ClientForm() {
       className="p-4 pb-3 bg-white rounded-lg shadow-lg"
       onSubmit={(e) => handleSubmit(e)}
     >
-      <Input type="name" onChange={setName} value={name} />
+      <Input type="name" onChange={handleName} value={name} />
       <Input type="age" onChange={handleAge} value={age} />
       <Input type="email" onChange={setEmail} value={email} />
       <button type="submit" className="ml-auto -mt-1 mr-0.5 block text-sky-500">

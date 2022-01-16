@@ -18,7 +18,7 @@ export default function ClientForm() {
   const handleAge = (ageInput) =>
     /^([1-9][0-9]{0,1})$|^$/.test(ageInput) && setAge(ageInput);
   const handleName = (nameInput) =>
-    nameInput < 20 && setName(nameInput.replace(/[^a-zA-Z ]/g, ""));
+    nameInput.length < 20 && setName(nameInput.replace(/[^a-zA-Z ]/g, ""));
   const handleEmail = (emailInput) =>
     emailInput.length < 30 && setEmail(emailInput);
   const handleSubmit = (e) => {

@@ -31,7 +31,7 @@ function reducer1(state = initialSignalState, action) {
   }
 }
 
-const combinedReducers = combineReducers({
+export const combinedReducers = combineReducers({
   cars: reducer,
   signal: reducer1,
 });

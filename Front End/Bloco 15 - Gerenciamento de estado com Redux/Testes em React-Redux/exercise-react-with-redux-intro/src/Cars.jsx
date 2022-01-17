@@ -13,6 +13,7 @@ function Cars({ redCar, blueCar, yellowCar, moveCar }) {
           className={redCar ? "car-right" : "car-left"}
           src={carRed}
           alt="red car"
+          data-testid="red-car"
         />
         <button onClick={() => moveCar("red", !redCar)} type="button">
           move
@@ -23,6 +24,7 @@ function Cars({ redCar, blueCar, yellowCar, moveCar }) {
           className={blueCar ? "car-right" : "car-left"}
           src={carBlue}
           alt="blue car"
+          data-testid="blue-car"
         />
         <button onClick={() => moveCar("blue", !blueCar)} type="button">
           move
@@ -33,6 +35,7 @@ function Cars({ redCar, blueCar, yellowCar, moveCar }) {
           className={yellowCar ? "car-right" : "car-left"}
           src={carYellow}
           alt="yellow car"
+          data-testid="yellow-car"
         />
         <button onClick={() => moveCar("yellow", !yellowCar)} type="button">
           move

@@ -6,6 +6,7 @@ import defaultCat from '../images/detCat.gif';
 class Gallery extends Component {
   render() {
     const { imgPath, isLoading, useDefaultImg } = this.props;
+    console.log(imgPath)
     return (
       <div className="gallery-container">
         { isLoading && <div>LOADING...</div> }
@@ -23,7 +24,7 @@ Gallery.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  imgPath: state.gallery.imgURL.file,
+  imgPath: state.gallery.imgURL,
   isLoading: state.gallery.isLoading,
   useDefaultImg: state.gallery.defaultImg,
 });

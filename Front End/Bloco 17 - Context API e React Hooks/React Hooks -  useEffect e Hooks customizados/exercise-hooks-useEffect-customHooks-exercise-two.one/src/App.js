@@ -1,21 +1,16 @@
-
-import React from 'react';
+import React, { useState } from "react";
 
 function Greeting() {
-  // substitua essa variável por uma variável no estado, utilizando useState
-  const name = '';
-
-  function handleChange(event) {
-    // atualize o valor do estado com base no que está em event.target.value
-  }
+  const [name, setName] = useState("");
+  const handleChange = (event) => setName(event.target.value);
 
   return (
     <div>
       <form>
         <label htmlFor="name">Name: </label>
-        <input onChange={handleChange} id="name" />
+        <input onChange={handleChange} id="name" value={name} />
       </form>
-      {name ? <strong>Hello {name}</strong> : 'Please type your name'}
+      {name ? <strong>Hello {name}</strong> : "Please type your name"}
     </div>
   );
 }

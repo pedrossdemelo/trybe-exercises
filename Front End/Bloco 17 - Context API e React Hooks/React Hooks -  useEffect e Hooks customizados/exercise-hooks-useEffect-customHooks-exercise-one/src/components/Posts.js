@@ -1,10 +1,15 @@
-import React from 'react';
-
+import React, { useContext } from "react";
+import { Context } from "../App";
 
 export default function Posts() {
+  const { posts } = useContext(Context);
   return (
     <div className="Posts">
-      <h1>Posts</h1>
+      {posts.map(({ title, link }) => (
+        <div key={link}>
+          <a href={link}>{title}</a>
+        </div>
+      ))}
     </div>
   );
-};
+}

@@ -1,23 +1,21 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { Context } from "../App";
 
-const renderOptions = (options) => (
+const renderOptions = (options) =>
   options.map((option) => (
-    <option
-      value={option}
-      key={option}
-    >
+    <option value={option} key={option}>
       {option}
     </option>
-  ))
-);
+  ));
 
 export default function Selector() {
+  const { sub, setSub } = useContext(Context);
   return (
     <div className="Selector">
-      <h1>Selector</h1>
-      <select>
-        {renderOptions(['Option 1', 'Option 2', 'Option 3'])}
+      <h1>Selected sub: {sub}</h1>
+      <select onChange={(e) => setSub(e.target.value)} value={sub}>
+        {renderOptions(["reactjs", "frontend", "angular", "vuejs"])}
       </select>
     </div>
-  )
-};
+  );
+}

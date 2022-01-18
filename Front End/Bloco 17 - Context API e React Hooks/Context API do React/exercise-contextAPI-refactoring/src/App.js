@@ -1,10 +1,27 @@
-import React from 'react';
-import './App.css';
-import Cars from './Cars';
+import React, { createContext } from "react";
+import "./App.css";
+import Cars from "./Cars";
+
+const initialValue = {
+  redCar: false,
+  blueCar: false,
+  yellowCar: false,
+};
+
+export const CarContext = createContext();
 
 function App() {
+  const [cars, setCars] = React.useState(initialValue);
+  const moveCar = (car) => {
+    setCars({
+      ...cars,
+      [car]: !cars[car],
+    });
+  };
   return (
-    <Cars />
+    <CarContext.Provider value={[cars, moveCar]}>
+      <Cars />
+    </CarContext.Provider>
   );
 }
 

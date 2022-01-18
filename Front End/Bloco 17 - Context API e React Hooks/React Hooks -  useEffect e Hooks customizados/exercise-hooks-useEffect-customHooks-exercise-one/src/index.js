@@ -1,12 +1,12 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from "react";
+import { render } from "react-dom";
+import App, { Provider } from "./App";
+import "./index.css";
 
-import App from './App';
-import { Provider } from './components/RedditContext';
 
 render(
   <Provider>
     <App />
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById("root")
 );

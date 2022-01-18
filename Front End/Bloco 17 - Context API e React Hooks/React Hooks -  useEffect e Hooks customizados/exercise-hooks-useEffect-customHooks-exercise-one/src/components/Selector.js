@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Consumer } from './RedditContext';
-
 const renderOptions = (options) => (
   options.map((option) => (
     <option
@@ -13,20 +11,13 @@ const renderOptions = (options) => (
   ))
 );
 
-const Selector = () => (
-  <Consumer>
-    {({ selectedSubreddit, availableSubreddits, selectSubreddit }) => (
-      <span>
-        <h1>{`Selected: ${selectedSubreddit}`}</h1>
-        <select
-          onChange={(e) => selectSubreddit(e.target.value)}
-          value={selectedSubreddit}
-        >
-          {renderOptions(availableSubreddits)}
-        </select>
-      </span>
-    )}
-  </Consumer>
-);
-
-export default Selector;
+export default function Selector() {
+  return (
+    <div className="Selector">
+      <h1>Selector</h1>
+      <select>
+        {renderOptions(['Option 1', 'Option 2', 'Option 3'])}
+      </select>
+    </div>
+  )
+};

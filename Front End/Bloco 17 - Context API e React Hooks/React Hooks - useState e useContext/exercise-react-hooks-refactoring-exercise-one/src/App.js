@@ -1,27 +1,16 @@
-import React, { createContext } from "react";
-import "./App.css";
-import Cars from "./Cars";
+// src/App.js
 
-const initialValue = {
-  redCar: false,
-  blueCar: false,
-  yellowCar: false,
-};
-
-export const CarContext = createContext();
+import React from 'react';
+import './App.css';
+import Cars from './Cars';
+import TrafficSignal from './TrafficSignal';
 
 function App() {
-  const [cars, setCars] = React.useState(initialValue);
-  const moveCar = (car) => {
-    setCars({
-      ...cars,
-      [car]: !cars[car],
-    });
-  };
   return (
-    <CarContext.Provider value={[cars, moveCar]}>
+    <div className="container">
       <Cars />
-    </CarContext.Provider>
+      <TrafficSignal />
+    </div>
   );
 }
 

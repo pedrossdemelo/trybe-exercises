@@ -5,3 +5,4 @@ services:
     image: ghost:1-alpine
     ports:
       - "2368:2368"
+      # Access the website @ localhost:2368

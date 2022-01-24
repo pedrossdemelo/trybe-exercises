@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "imc": "node imc.js",
-    "speed": "node speed.js"
+    "speed": "node speed.js",
+    "giveaway": "node giveaway.js"
   },
   "author": "Pedro Sousa",
   "license": "ISC",

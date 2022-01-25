@@ -54,3 +54,16 @@ function addNelsonMuntz() {
     });
   });
 }
+
+function replaceNelsonForMaggie() {
+  fs.readFile('simpsonFamily.json', 'utf-8').then((data) => {
+    const simpsons = JSON.parse(data);
+    const newSimpsons = simpsons.map((person) => {
+      if (person.id == 5) person.name = 'Maggie Simpson'; 
+      return person;
+    });
+    fs.writeFile('simpsonFamily.json', JSON.stringify(newSimpsons)).then(() => {
+      console.log('Nelson Muntz substituido por Maggie Simpson');
+    });
+  });
+}

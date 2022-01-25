@@ -17,4 +17,7 @@ app.post('/greetings', (req, res) => {
   return res.status(401).json({ message: "Unauthorized" });
 });
 
+app.put('/users/:name/:age', (req, res) => {
+  res.status(200).json({ message: `Seu nome é ${req.params.name} e você tem ${req.params.age} anos de idade` });
+})
 app.listen(3001, _ => console.log('Server running on port 3001'));

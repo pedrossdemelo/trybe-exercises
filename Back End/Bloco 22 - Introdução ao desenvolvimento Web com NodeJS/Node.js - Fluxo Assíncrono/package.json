@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "fizzbuzz": "node fizzbuzz.js",
     "write": "node changefileCLI.js",
     "read": "node readfileCLI.js",
     "test": "echo \"Error: no test specified\" && exit 1"

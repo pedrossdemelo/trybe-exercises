@@ -31,3 +31,13 @@ function removeSimpson(...ids) {
     });
   });
 }
+
+function getSimpsonFamily() {
+  fs.readFile('simpsons.json', 'utf-8').then((data) => {
+    const simpsons = JSON.parse(data);
+    const simpsonFamily = simpsons.slice(0, 4);
+    fs.writeFile('simpsonFamily.json', JSON.stringify(simpsonFamily)).then(() => {
+      console.log('Simpson Family criado');
+    });
+  });
+}

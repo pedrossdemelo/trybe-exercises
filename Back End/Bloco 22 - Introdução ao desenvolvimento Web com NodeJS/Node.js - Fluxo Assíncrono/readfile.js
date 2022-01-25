@@ -84,4 +84,16 @@ function writeTofiles(strings) {
   });
 }
 
-writeTofiles(stringArray);
+function concatAllFiles() {
+  const promises = stringArray.map((string, index) => {
+    return fs.readFile(`file${index + 1}.txt`, "utf-8");
+  });
+  return Promise.all(promises).then((data) => {
+    const allStrings = data.join(" ");
+    fs.writeFile("fileAll.txt", allStrings).then(() => {
+      console.log("Arquivo fileAll.txt criado");
+    });
+  });
+}
+
+concatAllFiles();

@@ -9,7 +9,7 @@
   "author": "Pedro Sousa",
   "license": "ISC",
   "devDependencies": {
-    "cha": "^0.2.1",
+    "chai": "^4.3.5",
     "mocha": "^9.2.0",
     "sinon": "^12.0.1"
   }

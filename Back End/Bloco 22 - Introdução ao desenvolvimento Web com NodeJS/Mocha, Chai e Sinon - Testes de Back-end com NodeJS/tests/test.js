@@ -32,8 +32,11 @@
 // Garanta que todos os testes escritos no exercício 4 irão passar com sucesso.
 
 const { expect } = require('chai');
+const fs = require('fs').promises;
 const sinon = require('sinon');
-const { evalNum } = require('../utils/index.js');
+const { evalNum, writeFile } = require('../utils/index.js');
+
+sinon.stub(fs, 'writeFile').resolves('ok');
 
 describe('Testando a função evalNum', () => {
   it('Deve retornar "positivo" quando o número for maior que 0', () => {
@@ -56,3 +59,10 @@ describe('Testando a função evalNum', () => {
     expect(result).to.be.equal('o valor deve ser um número');
   })
 });
+
+describe('Testando a função writeFile', () => {
+  it('Deve retornar um ok quando o arquivo for escrito com sucesso', async () => {
+    const result = await writeFile('teste.txt', 'teste');
+    expect(result).to.be.equal('ok');
+  });
+})

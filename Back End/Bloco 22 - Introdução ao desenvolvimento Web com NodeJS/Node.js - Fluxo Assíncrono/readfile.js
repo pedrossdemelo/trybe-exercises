@@ -13,8 +13,6 @@ const getHomer = () => fs.readFile('simpsons.json', 'utf-8').then((data) => {
   console.log(homer.name);
 });
 
-getHomer();
-
 const getSimpson = (id) => new Promise((resolve, reject) => {
   fs.readFile('simpsons.json', 'utf-8').then((data) => {
     const simpsons = JSON.parse(data);
@@ -23,3 +21,13 @@ const getSimpson = (id) => new Promise((resolve, reject) => {
     else reject(`Id ${id} não encontrado`);
   });
 })
+
+function removeSimpson(...ids) {
+  fs.readFile('simpsons.json', 'utf-8').then((data) => {
+    const simpsons = JSON.parse(data);
+    const newSimpsons = simpsons.filter((person) => ids.every((id) => person.id != id));
+    fs.writeFile('simpsons.json', JSON.stringify(newSimpsons)).then(() => {
+      console.log('Simpson removido');
+    });
+  });
+}

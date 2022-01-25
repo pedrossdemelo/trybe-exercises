@@ -14,3 +14,12 @@ const getHomer = () => fs.readFile('simpsons.json', 'utf-8').then((data) => {
 });
 
 getHomer();
+
+const getSimpson = (id) => new Promise((resolve, reject) => {
+  fs.readFile('simpsons.json', 'utf-8').then((data) => {
+    const simpsons = JSON.parse(data);
+    const simpson = simpsons.find((person) => person.id == id);
+    if (simpson) resolve(simpson);
+    else reject(`Id ${id} não encontrado`);
+  });
+})

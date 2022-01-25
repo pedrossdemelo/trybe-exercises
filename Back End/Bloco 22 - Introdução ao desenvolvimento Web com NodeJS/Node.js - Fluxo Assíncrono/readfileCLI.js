@@ -5,4 +5,9 @@
 //         Leia o arquivo indicado.
 //         Caso o arquivo não exista, exiba na tela "Arquivo inexistente" e encerre a execução do script.
 //         Caso o arquivo exista, escreva seu conteúdo na tela.
+const fs = require('fs').promises;
+const readline = require('readline-sync');
 
+const file = readline.question('What file do you want to read? ');
+
+fs.readFile(`./${file}`, 'utf-8').then((data) => console.log(data)).catch((error) => console.error('File not found'));

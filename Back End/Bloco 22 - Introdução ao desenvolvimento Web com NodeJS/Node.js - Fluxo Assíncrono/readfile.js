@@ -41,3 +41,16 @@ function getSimpsonFamily() {
     });
   });
 }
+
+function addNelsonMuntz() {
+  fs.readFile('simpsonFamily.json', 'utf-8').then((data) => {
+    const simpsons = JSON.parse(data);
+    simpsons.push({
+      id: 5,
+      name: 'Nelson Muntz',
+    });
+    fs.writeFile('simpsonFamily.json', JSON.stringify(simpsons)).then(() => {
+      console.log('Nelson Muntz adicionado');
+    });
+  });
+}

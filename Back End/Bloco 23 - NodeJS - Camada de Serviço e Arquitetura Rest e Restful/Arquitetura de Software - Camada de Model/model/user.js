@@ -28,5 +28,19 @@ module.exports = {
       email: user.email,
     }));
     return users;
+  },
+  get: async (id) => {
+    let [user] = await connection.execute(
+      "SELECT id, first_name, last_name, email FROM users WHERE id = ? LIMIT 1",
+      [id]
+    );
+    user = user[0];
+    if (!user) return null;
+    return {
+      id: user.id,
+      firstName: user.first_name,
+      lastName: user.last_name,
+      email: user.email,
+    };
   }
 };

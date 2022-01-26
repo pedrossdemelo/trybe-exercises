@@ -51,4 +51,13 @@ router.get("/", async (_req, res) => {
   res.json(users);
 });
 
+router.get("/:id", async (req, res, next) => {
+  const { id } = req.params;
+  if (isNaN(id))
+    return next({ status: 400, message: "Invalid field type" });
+  const user = await userModel.get(Number(id));
+  if (!user) return next({ status: 404, message: "User not found" });
+  res.json(user);
+});
+
 module.exports = router;

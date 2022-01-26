@@ -68,7 +68,7 @@ app.get("/simpsons/:id", async (req, res) => {
 });
 
 app.post("/simpsons", async (req, res) => {
-  const { name, id } = req.body;
+  let { name, id } = req.body;
   id = id.toString();
   if (typeof name !== "string" || isNaN(id))
     return res.status(400).json({ message: "Invalid post" });

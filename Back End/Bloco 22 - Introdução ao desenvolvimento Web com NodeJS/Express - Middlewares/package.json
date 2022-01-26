@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "express": "^4.17.2",
-    "express-rescue": "^1.1.31"
+    "express-rescue": "^1.1.31",
+    "node-fetch": "2.6"
   },
   "scripts": {
     "start": "node index.js",

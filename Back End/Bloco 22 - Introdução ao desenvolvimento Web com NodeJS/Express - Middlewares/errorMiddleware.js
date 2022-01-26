@@ -1,4 +1,4 @@
-module.exports = (err, req, res, next) => {
+module.exports = (err, _req, res, _next) => {
   if (err.status)
     return res.status(err.status).json({
       code: err.code,

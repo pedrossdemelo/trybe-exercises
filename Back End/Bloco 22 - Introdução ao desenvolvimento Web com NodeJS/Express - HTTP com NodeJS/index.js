@@ -43,4 +43,13 @@ app.put("/simpsons/:id", async (req, res) => {
   }
 });
 
+app.get("/simpsons", async (_, res) => {
+  try {
+    res.setHeader("Content-Type", "application/json");
+    res.send(await fs.readFile("database/simpsons.json", "utf8"));
+  } catch (error) {
+    res.status(500).json({ message: `Internal server error\n${error}` });
+  }
+});
+
 app.listen(3001, (_) => console.log("Server running on port 3001"));

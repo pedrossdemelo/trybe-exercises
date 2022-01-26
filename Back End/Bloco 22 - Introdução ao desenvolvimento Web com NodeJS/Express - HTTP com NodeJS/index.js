@@ -52,4 +52,19 @@ app.get("/simpsons", async (_, res) => {
   }
 });
 
+app.get("/simpsons/:id", async (req, res) => {
+  const { id } = req.params;
+  if (isNaN(id)) return res.status(400).json({ message: "Invalid request" });
+  try {
+    const data = await fs.readFile("database/simpsons.json", "utf8");
+    const json = JSON.parse(data);
+    const index = json.findIndex((character) => character.id === id);
+    if (index === -1)
+      return res.status(404).json({ message: "Character not found" });
+    res.json(json[index]);
+  } catch (error) {
+    res.status(500).json({ message: `Internal server error\n${error}` });
+  }
+});
+
 app.listen(3001, (_) => console.log("Server running on port 3001"));

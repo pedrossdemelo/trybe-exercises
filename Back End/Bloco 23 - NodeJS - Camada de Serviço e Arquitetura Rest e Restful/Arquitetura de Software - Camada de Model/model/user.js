@@ -19,4 +19,14 @@ module.exports = {
     );
     return user.length === 0;
   },
+  getAll: async () => {
+    let [users] = await connection.execute("SELECT id, first_name, last_name, email FROM users");
+    users = users.map((user) => ({
+      id: user.id,
+      firstName: user.first_name,
+      lastName: user.last_name,
+      email: user.email,
+    }));
+    return users;
+  }
 };

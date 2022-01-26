@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const userModel = require("../model/user");
 
-const validateRegisterInput = async (req, res, next) => {
+const validateRegisterInput = async (req, _res, next) => {
   const { firstName, lastName, email, password } = req.body;
   if (!firstName || !lastName || !email || !password)
     return next({ status: 400, message: "Missing required fields" });
@@ -44,6 +44,11 @@ router.post("/", async (req, res, next) => {
     password: undefined,
   };
   res.status(201).json(returnData);
+});
+
+router.get("/", async (_req, res) => {
+  const users = await userModel.getAll();
+  res.json(users);
 });
 
 module.exports = router;

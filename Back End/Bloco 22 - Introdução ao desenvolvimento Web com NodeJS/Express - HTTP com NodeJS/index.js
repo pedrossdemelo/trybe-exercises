@@ -67,4 +67,23 @@ app.get("/simpsons/:id", async (req, res) => {
   }
 });
 
+app.post("/simpsons", async (req, res) => {
+  const { name, id } = req.body;
+  id = id.toString();
+  if (typeof name !== "string" || isNaN(id))
+    return res.status(400).json({ message: "Invalid post" });
+  try {
+    const data = await fs.readFile("database/simpsons.json", "utf8");
+    const json = JSON.parse(data);
+    const index = json.findIndex((character) => character.id === id);
+    if (index !== -1)
+      return res.status(409).json({ message: "Character already exists" });
+    json.push({ name, id });
+    await fs.writeFile("database/simpsons.json", JSON.stringify(json));
+    return res.status(204).json({ message: "Character created" });
+  } catch (error) {
+    res.status(500).json({ message: `Internal server error\n${error}` });
+  }
+});
+
 app.listen(3001, (_) => console.log("Server running on port 3001"));

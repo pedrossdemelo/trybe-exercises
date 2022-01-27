@@ -6,20 +6,20 @@ const add = async (name, brand) => {
       `INSERT INTO products (name, brand) VALUES (?, ?);`,
       [name, brand]
     );
-    return { product: { id: result.insertId, name, brand } };
+    return { newProduct: { id: result.insertId, name, brand } };
   } catch (error) {
     console.error(error);
-    return { error };
+    return { error: error.message };
   }
 };
 
 const getAll = async () => {
   try {
     const [rows] = await connection.query("SELECT * FROM products");
-    return rows;
+    return { products: rows };
   } catch (error) {
     console.error(error);
-    return { error };
+    return { error: error.message };
   }
 };
 
@@ -33,12 +33,14 @@ const getById = async (id) => {
     return { product: result[0] };
   } catch (error) {
     console.error(error);
-    return { error };
+    return { error: error.message };
   }
 };
 
 const update = async (id, name, brand) => {
   try {
+    const product = await getById(id);
+    if (!product) return { error: "Not found" };
     await connection.query(
       "UPDATE products SET name = ?, brand = ? WHERE id = ?",
       [name, brand, id]
@@ -46,7 +48,7 @@ const update = async (id, name, brand) => {
     return { product: { id, name, brand } };
   } catch (error) {
     console.error(error);
-    return { error };
+    return { error: error.message };
   }
 };
 
@@ -58,7 +60,7 @@ const exclude = async (id) => {
     return { product };
   } catch (error) {
     console.error(error);
-    return { error };
+    return { error: error.message };
   }
 };
 

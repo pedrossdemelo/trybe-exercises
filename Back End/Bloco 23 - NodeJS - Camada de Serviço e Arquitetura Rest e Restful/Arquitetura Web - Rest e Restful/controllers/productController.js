@@ -1,40 +1,48 @@
-const express = require('express');
-const ProductModel = require('../models/productModel');
+const express = require("express");
+const ProductService = require("../services/productService");
 
 const router = express.Router();
 
-router.get('/', async (_req, res) => {
-  const products = await ProductModel.getAll();
+router.get("/", async (_req, res) => {
+  const { products, error, status } = await ProductService.getAll();
 
-  res.send(products);
+  res.status(status).json(products || { error });
 });
 
-router.get('/:id', async (req, res) => {
-  const product = await ProductModel.getById(req.params.id);
+router.get("/:id", async (req, res) => {
+  const { product, error, status } = await ProductService.getById(
+    req.params.id
+  );
 
-  res.send(product);
+  res.status(status).json(product || { error });
 });
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   const { name, brand } = req.body;
 
-  const newProduct = await ProductModel.add(name, brand);
+  const { newProduct, error, status } = await ProductService.add(name, brand);
 
-  res.send(newProduct);
+  res.status(status).json(newProduct || { error });
 });
 
-router.delete('/:id', async (req, res) => {
-  const products = await ProductModel.exclude(req.params.id);
+router.delete("/:id", async (req, res) => {
+  const { error, product, status } = await ProductService.exclude(
+    req.params.id
+  );
 
-  res.send(products);
+  res.status(status).json(product || { error });
 });
 
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   const { name, brand } = req.body;
 
-  const products = await ProductModel.update(req.params.id, name, brand);
+  const { product, status, error } = await ProductService.update(
+    req.params.id,
+    name,
+    brand
+  );
 
-  res.send(products);
+  res.status(status).json(product || { error });
 });
 
 module.exports = router;

@@ -1,0 +1,17 @@
+{
+  "name": "cep-lookup",
+  "version": "1.0.0",
+  "description": "An express API to lookup CEP's (a.k.a Brazillian ZIP codes)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "author": "Pedro Sousa",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}

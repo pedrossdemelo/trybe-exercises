@@ -20,4 +20,12 @@ app.get("/book/:id", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+app.post("/book", async (req, res) => {
+  try {
+    const book = await Book.create(req.body);
+    res.status(201).json(book);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 app.listen(3000, () => console.log("Server is running on port 3000"));

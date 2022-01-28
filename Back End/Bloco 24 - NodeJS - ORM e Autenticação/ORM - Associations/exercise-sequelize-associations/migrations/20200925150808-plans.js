@@ -3,11 +3,12 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const PlansTable = queryInterface.createTable("Plans", {
-      plan_id: {
+      planId: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        field: "plan_id",
       },
       coverage: {
         allowNull: false,

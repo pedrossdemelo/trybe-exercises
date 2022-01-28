@@ -3,17 +3,18 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const PatientsTable = queryInterface.createTable("Patients", {
-      patient_id: {
+      patientId: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        field: "patient_id",
       },
       fullname: {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      plan_id: {
+      planId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Plans',

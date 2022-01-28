@@ -2,7 +2,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Patient_surgeries', {
-      patient_id: {
+      patientId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Patients',
@@ -10,8 +10,9 @@ module.exports = {
         },
         onDelete: 'CASCADE',
         primaryKey: true,
+        field: 'patient_id',
       },
-      surgery_id: {
+      surgeryId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Surgeries',
@@ -19,6 +20,7 @@ module.exports = {
         },
         onDelete: 'CASCADE',
         primaryKey: true,
+        field: 'surgery_id',
       },
     });
   },

@@ -28,4 +28,14 @@ app.post("/book", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+app.put("book/:id", async (req, res) => {
+  try {
+    const book = await Book.findByPk(req.params.id);
+    if (!book) res.status(404).json({ message: "Book not found" });
+    await book.update(req.body);
+    res.json(book);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+})
 app.listen(3000, () => console.log("Server is running on port 3000"));

@@ -89,7 +89,7 @@ describe("Ao chamar o controller de get", () => {
       };
 
       response.status = sinon.stub().returns(response);
-      response.send = sinon.stub().returns();
+      response.json = sinon.stub().returns();
 
       sinon.stub(MoviesService, "getById").resolves(resolvedMovie);
     });
@@ -99,15 +99,15 @@ describe("Ao chamar o controller de get", () => {
     });
 
     it("é chamado o status com o código 200", async () => {
-      const response = await MoviesService.getById(1);
+      await MoviesController.getById(request, response);
 
       expect(response.status.calledWith(200)).to.be.equal(true);
     });
 
     it("é chamado o send com o filme encontrado", async () => {
-      const response = await MoviesService.getById(1);
+      await MoviesController.getById(request, response);
 
-      expect(response.send.calledWith(resolvedMovie)).to.be.equal(true);
+      expect(response.json.calledWith(resolvedMovie)).to.be.equal(true);
     });
   });
 
@@ -132,13 +132,13 @@ describe("Ao chamar o controller de get", () => {
     });
 
     it("é chamado o status com o código 404", async () => {
-      const response = await MoviesService.getById(1);
+      await MoviesController.getById(request, response);
 
       expect(response.status.calledWith(404)).to.be.equal(true);
     });
 
     it('é chamado o send com a mensagem "Filme não encontrado"', async () => {
-      const response = await MoviesService.getById(1);
+      await MoviesController.getById(request, response);
 
       expect(response.send.calledWith("Filme não encontrado")).to.be.equal(
         true

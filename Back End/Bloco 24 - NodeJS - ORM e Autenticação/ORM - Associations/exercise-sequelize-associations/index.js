@@ -1,5 +1,5 @@
 const bodyParser = require('body-parser');
-const { Patient, Plan, Surgery, PatientSurgeries } = require('./models');
+const { Patient, Plan, Surgery } = require('./models');
 const express = require('express');
 
 const app = express();
@@ -48,6 +48,21 @@ app.get('/patients', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 })
+app.get("/plans", async (req, res) => {
+  try {
+    const plans = await Plan.findAll({
+      include: [
+        {
+          model: Patient,
+          as: 'patients',
+        },
+      ],
+    });
+    res.json(plans);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 const PORT = 3000;
 
 app.listen(PORT, () => {

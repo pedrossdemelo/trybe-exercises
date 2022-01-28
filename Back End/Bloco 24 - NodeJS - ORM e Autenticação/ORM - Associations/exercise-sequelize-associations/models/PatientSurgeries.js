@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     "PatientSurgeries",
     {},
     {
+      tableName: "Patient_surgeries",
       timestamps: false,
     }
   );

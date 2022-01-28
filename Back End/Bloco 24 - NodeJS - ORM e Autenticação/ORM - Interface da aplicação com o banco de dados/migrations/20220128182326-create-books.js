@@ -20,10 +20,6 @@ module.exports = {
       pageQuantity: {
         type: Sequelize.INTEGER,
       },
-      createdAt: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      }
     });
   },
 

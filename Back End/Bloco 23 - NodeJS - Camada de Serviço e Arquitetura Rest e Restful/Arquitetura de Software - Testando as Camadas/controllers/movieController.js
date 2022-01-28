@@ -17,6 +17,10 @@ const create = async (req, res) => {
     .send('Filme criado com sucesso!');
 };
 
+const getById = async(req, res) => {
+
+}
 module.exports = {
   create,
+  getById
 };

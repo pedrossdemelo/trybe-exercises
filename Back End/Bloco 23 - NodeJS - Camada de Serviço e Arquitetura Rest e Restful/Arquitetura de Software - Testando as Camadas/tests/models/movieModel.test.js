@@ -36,7 +36,6 @@ describe("Insere um novo filme no BD", () => {
 });
 
 describe("Acessa um filme no BD", () => {
-  console.log("lollllllll")
   describe("quando é acessado com sucesso", async () => {
     const resolvedMovie = {
       title: "Example Movie",
@@ -66,7 +65,8 @@ describe("Acessa um filme no BD", () => {
       expect(response).to.have.a.property("releaseYear");
     });
   });
-  describe("quando o filme não é encontrado", () => {
+
+  describe("quando o filme não é encontrado", async () => {
     before(async () => {
       sinon.stub(connection, "execute").resolves([[], []]);
     });
@@ -75,7 +75,7 @@ describe("Acessa um filme no BD", () => {
       connection.execute.restore();
     });
 
-    if("retorna nulo", async () => {
+    it("retorna nulo", async () => {
       const response = await MoviesModel.getById(120495);
 
       expect(response).to.be.null;

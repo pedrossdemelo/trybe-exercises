@@ -93,10 +93,10 @@ describe("Acessa um filme no BD", () => {
       MoviesModel.getById.restore();
     });
 
-    it("retorna nulo", async () => {
+    it("retorna false", async () => {
       const response = await MoviesService.getById(120495);
 
-      expect(response).to.be.null;
+      expect(response).to.be.false;
     });
   });
 });

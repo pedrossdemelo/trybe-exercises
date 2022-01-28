@@ -36,6 +36,7 @@ describe("Insere um novo filme no BD", () => {
 });
 
 describe("Acessa um filme no BD", () => {
+  console.log("lollllllll")
   describe("quando é acessado com sucesso", async () => {
     const resolvedMovie = {
       title: "Example Movie",

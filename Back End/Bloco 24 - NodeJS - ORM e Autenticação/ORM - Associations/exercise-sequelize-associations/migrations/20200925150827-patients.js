@@ -17,10 +17,11 @@ module.exports = {
       planId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Plans',
-          key: 'plan_id',
+          model: "Plans",
+          key: "plan_id",
         },
-        onDelete: 'CASCADE',
+        onDelete: "CASCADE",
+        field: "plan_id",
       },
     });
 

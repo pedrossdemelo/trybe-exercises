@@ -33,7 +33,17 @@ app.put("book/:id", async (req, res) => {
     const book = await Book.findByPk(req.params.id);
     if (!book) res.status(404).json({ message: "Book not found" });
     await book.update(req.body);
-    res.json(book);
+    res.status(200).json(book);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+app.delete("book/:id", async (req, res) => {
+  try {
+    const book = await Book.findByPk(req.params.id);
+    if (!book) res.status(404).json({ message: "Book not found" });
+    await book.destroy();
+    res.status(204).json();
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

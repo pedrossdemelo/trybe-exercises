@@ -11,6 +11,8 @@ const Book = (sequelize, DataTypes) => {
     pageQuantity: {
       type: DataTypes.INTEGER,
     },
+  }, {
+    timestamps: false,
   });
 
   return Book;

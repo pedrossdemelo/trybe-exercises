@@ -44,7 +44,7 @@ describe("Acessa um filme no BD", () => {
     };
 
     before(async () => {
-      sinon.stub(connection, "execute").resolves(resolvedMovie);
+      sinon.stub(connection, "execute").resolves([[resolvedMovie], []]);
     });
 
     after(async () => {
@@ -67,7 +67,7 @@ describe("Acessa um filme no BD", () => {
   });
   describe("quando o filme não é encontrado", () => {
     before(async () => {
-      sinon.stub(connection, "execute").resolves(null);
+      sinon.stub(connection, "execute").resolves([[], []]);
     });
 
     after(async () => {

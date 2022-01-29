@@ -1,0 +1,11 @@
+Instructions to deploy this api to heroku
+
+1. Create a new heroku app
+
+    heroku create
+
+2. Push the branch to heroku
+  
+    git push heroku [your-branch]:master
+
+

@@ -1,0 +1,11 @@
+1. Create new heroku app
+
+    heroku apps:create [app_name]
+
+2. Config heroku to use the container
+
+    heroku stack:set container -a [app_name]
+
+3. Push the app to heroku
+
+    git push heroku master

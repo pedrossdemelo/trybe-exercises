@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
     return next({ statusCode: 401, message: 'Wrong password' });
   }
   const JWT = jwt.sign(
-    { username, admin: username === 'admin' },
+    { username, admin: username === 'admin' && password === 's3nh4S3gur4???' },
     process.env.JWT_SECRET,
     { expiresIn: '1h' },
   );

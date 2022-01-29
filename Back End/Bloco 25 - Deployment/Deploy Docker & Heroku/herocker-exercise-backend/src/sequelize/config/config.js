@@ -1,23 +1,28 @@
+const PASSWORD_POSTGRES = "6MbwqMXAwahu9ef";
+const HOST = "db.zcshdvyqkijqnpqtvkad.supabase.co";
+const DATABASE = "postgres";
+const DB_USERNAME = "postgres";
+const DB_PORT = 5432;
 module.exports = {
   development: {
-    username: 'root',
-    password: null,
-    database: 'database_development',
-    host: '127.0.0.1',
-    dialect: 'postgres',
+    username: DB_USERNAME,
+    password: PASSWORD_POSTGRES,
+    database: DATABASE,
+    host: HOST,
+    dialect: "postgres",
   },
   test: {
-    username: 'root',
-    password: null,
-    database: 'database_test',
-    host: '127.0.0.1',
-    dialect: 'postgres',
+    username: DB_USERNAME,
+    password: PASSWORD_POSTGRES,
+    database: DATABASE,
+    host: HOST,
+    dialect: "postgres",
   },
   production: {
-    username: 'root',
-    password: null,
-    database: 'database_test',
-    host: '127.0.0.1',
-    dialect: 'postgres',
+    username: DB_USERNAME,
+    password: PASSWORD_POSTGRES,
+    database: DATABASE,
+    host: HOST,
+    dialect: "postgres",
   },
 };

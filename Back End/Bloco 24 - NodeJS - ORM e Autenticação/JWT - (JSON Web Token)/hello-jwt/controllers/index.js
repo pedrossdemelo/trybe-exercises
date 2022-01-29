@@ -3,5 +3,5 @@ const login = require('./login');
 
 module.exports = {
   ping,
-  login
+  login,
 };

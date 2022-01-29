@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
     username: Joi.string().alphanum().min(5).required(),
     password: Joi.string().min(5).required(),
   });
-  const { error } = Joi.validate({ username, password }, schema);
+  const { error } = schema.validate({ username, password });
   if (error) return next(error);
   const user = await userModel.getByUsername(username);
   if (!user) return next({ statusCode: 404, message: 'User not found' });

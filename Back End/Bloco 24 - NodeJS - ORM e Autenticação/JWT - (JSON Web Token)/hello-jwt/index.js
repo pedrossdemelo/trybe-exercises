@@ -25,13 +25,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/ping', controllers.ping);
 
 app.post('/login', controllers.login);
-// Crie o endpoint /GET /users/me
-// O endpoint só pode ser acessado por pessoas autenticadas
-// Para realizar a autenticação, a requisição deve conter o header Authorization , cujo valor deve ser um token válido
-// Caso o token não exista, retorne o status 401 Unauthorized 
+
 app.get('/users/me', middlewares.auth, (req, res) => {
   const { username, admin } = req.credentials;
   res.json({ username, admin });
+});
+
+app.get('/top-secret', middlewares.auth, (req, res) => {
+  const { admin } = req.credentials;
+  return admin
+    ? res.json({ secretInfo: 'Peter Parker is Spiderman' })
+    : res.status(403).json({ message: 'Forbidden' });
 });
 
 app.use(middlewares.error);

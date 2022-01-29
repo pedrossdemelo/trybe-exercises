@@ -8,4 +8,7 @@ Instructions to deploy this api to heroku
   
     git push heroku [your-branch]:master
 
+3. Run the following command to set up the heroku environment
+  
+    heroku config:set MESSAGE=Running on Heroku
 

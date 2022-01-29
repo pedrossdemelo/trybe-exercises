@@ -10,5 +10,14 @@ Instructions to deploy this api to heroku
 
 3. Run the following command to set up the heroku environment
   
-    heroku config:set MESSAGE=Running on Heroku
+    heroku config:set MESSAGE=Running_on_homolog
 
+4. Change the current remote heroku to homolog and create a production remote
+
+    git checkout -b homolog
+    git remote rename heroku homolog
+    git push -u homolog homolog:master
+    git checkout master
+    heroku create --remote prod
+    git push -u prod master
+    heroku config:set MESSAGE=Running_on_prod

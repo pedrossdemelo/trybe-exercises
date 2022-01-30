@@ -17,7 +17,6 @@ const selectedHemisphere = readline.keyInSelect(hemisphereOptions, 'Which hemisp
 
 function getSeason(month: Months, hemisphere: Hemisphere): String[] {
   const seasons: Seasons[] = [];
-  console.log(arguments);
   if (hemisphere === Hemisphere.Northern) {
     if (month === Months.January || month === Months.February || month === Months.March) {
       seasons.push(Seasons.Winter);
@@ -43,8 +42,7 @@ function getSeason(month: Months, hemisphere: Hemisphere): String[] {
       seasons.push(Seasons.Spring);
     }
   }
-  console.log(seasons);
   return seasons.map(( season: any ) => Seasons[season]);
 }
 
-console.log(`In the ${Hemisphere[selectedHemisphere]} hemisphere, the month of ${Months[selectedMonth]} is in ${getSeason(selectedMonth, selectedHemisphere)}`);
+console.log(`In the ${Hemisphere[selectedHemisphere]} hemisphere, the month of ${Months[selectedMonth]} is in ${getSeason(selectedMonth, selectedHemisphere)} season`);

@@ -1,5 +1,5 @@
 type CapacityUnit = "kl" | "hl" | "dal" | "l" | "dl" | "cl" | "ml";
-export const convert = (
+export default (
   capacity: number,
   from: CapacityUnit,
   to: CapacityUnit

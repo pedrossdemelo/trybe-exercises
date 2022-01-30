@@ -1,5 +1,5 @@
 type LengthUnit = "km" | "hm" | "dam" | "m" | "dm" | "cm" | "mm";
-export const convert = (
+export default (
   length: number,
   from: LengthUnit,
   to: LengthUnit

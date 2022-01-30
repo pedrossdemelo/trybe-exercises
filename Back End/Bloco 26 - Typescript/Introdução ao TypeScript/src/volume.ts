@@ -1,5 +1,5 @@
 type VolumeUnit = "km3" | "hm3" | "dam3" | "m3" | "dm3" | "cm3" | "mm3";
-export const convert = (
+export default (
   volume: number,
   from: VolumeUnit,
   to: VolumeUnit

@@ -1,5 +1,5 @@
 type MassUnit = "kg" | "hg" | "dag" | "g" | "dg" | "cg" | "mg";
-export const convert = (mass: number, from: MassUnit, to: MassUnit): number => {
+export default (mass: number, from: MassUnit, to: MassUnit): number => {
   if (from === to) return mass;
   const factors = {
     kg: 1000,

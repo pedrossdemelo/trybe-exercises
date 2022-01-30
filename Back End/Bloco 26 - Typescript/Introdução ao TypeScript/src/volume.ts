@@ -17,5 +17,4 @@ export const convert = (
   const fromFactor = factors[from];
   const toFactor = factors[to];
   return volume * fromFactor / toFactor;
-}
-console.log(convert(1, "km3", "m3"));
+};

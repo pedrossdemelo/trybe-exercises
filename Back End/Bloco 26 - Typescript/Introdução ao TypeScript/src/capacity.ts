@@ -1,4 +1,5 @@
-type CapacityUnit = "kl" | "hl" | "dal" | "l" | "dl" | "cl" | "ml";
+export const CapacityUnit = ["kl", "hl", "dal", "l", "dl", "cl", "ml"] as const;
+type CapacityUnit = typeof CapacityUnit[number];
 export default (
   capacity: number,
   from: CapacityUnit,

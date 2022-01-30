@@ -1,4 +1,5 @@
-type LengthUnit = "km" | "hm" | "dam" | "m" | "dm" | "cm" | "mm";
+export const LengthUnit = [ "km" , "hm" , "dam" , "m" , "dm" , "cm" , "mm" ] as const;
+type LengthUnit = typeof LengthUnit[number];
 export default (
   length: number,
   from: LengthUnit,

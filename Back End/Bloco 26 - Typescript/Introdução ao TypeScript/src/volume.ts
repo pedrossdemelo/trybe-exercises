@@ -1,3 +1,4 @@
+export const VolumeUnit = ["km3" , "hm3" , "dam3" , "m3" , "dm3" , "cm3" , "mm3"] as const;
 type VolumeUnit = "km3" | "hm3" | "dam3" | "m3" | "dm3" | "cm3" | "mm3";
 export default (
   volume: number,

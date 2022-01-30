@@ -1,4 +1,5 @@
-type MassUnit = "kg" | "hg" | "dag" | "g" | "dg" | "cg" | "mg";
+export const MassUnit = [ "kg", "hg", "dag", "g", "dg", "cg", "mg" ] as const;
+type MassUnit = typeof MassUnit[number];
 export default (mass: number, from: MassUnit, to: MassUnit): number => {
   if (from === to) return mass;
   const factors = {

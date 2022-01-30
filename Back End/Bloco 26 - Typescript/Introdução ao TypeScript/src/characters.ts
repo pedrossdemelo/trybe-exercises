@@ -1,6 +1,19 @@
-type character = any;
+interface Stats {
+  agi: number;
+  str: number;
+  int: number;
+  hp: number;
+  mp: number;
+}
 
-const characters: any = [
+interface Character {
+  nickname: string;
+  class: string;
+  createdAt: Date;
+  stats: Stats;
+}
+
+const characters: Character[] = [
   {
     nickname: 'xKillerx',
     class: 'warrior',
@@ -21,7 +34,7 @@ const characters: any = [
   },
 ]
 
-function printCharacter(character: any, index: number) {
+function printCharacter(character: Character, index: number) {
   const { nickname, class: cls, createdAt } = character;
 
   console.log(`\n\n===== Character: ${index + 1} ========`);

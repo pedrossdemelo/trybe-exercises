@@ -15,3 +15,20 @@ class Student {
     return this.gradeSum / (this.examGrades.length + this.projectGrades.length);
   }
 }
+
+class Client {
+  constructor(public name: string) {}
+}
+
+class Item {
+  constructor(public name: string, public price: number) {}
+}
+
+class Order {
+  constructor(
+    public client: Client,
+    public items: Item[],
+    public payment: string,
+    public discount: number
+  ) {}
+}

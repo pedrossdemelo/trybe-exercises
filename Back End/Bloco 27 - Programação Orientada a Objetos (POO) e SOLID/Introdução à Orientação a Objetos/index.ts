@@ -31,4 +31,10 @@ class Order {
     public payment: string,
     public discount: number
   ) {}
+  get totalBeforeDiscount(): number {
+    return this.items.reduce((acc, curr) => acc + curr.price, 0);
+  }
+  get total(): number {
+    return this.totalBeforeDiscount * (1 - this.discount);
+  }
 }

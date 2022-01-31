@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "dev": "tsnd index.ts"
+  },
   "dependencies": {
     "express": "^4.17.2",
     "yup": "^0.32.11"

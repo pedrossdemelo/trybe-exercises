@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "nome": "Coca-Cola",
+    "marca": "Coca-Cola",
+    "preco": 2.50,
+    "dataFabricacao": "01/01/2018",
+    "dataValidade": "01/01/2027"
+  },
+  {
+    "id": 2,
+    "nome": "Fanta",
+    "marca": "Coca-Cola",
+    "preco": 3.50,
+    "dataFabricacao": "01/01/2009",
+    "dataValidade": "01/01/2020"
+  },
+  {
+    "id": 3,
+    "nome": "Sprite",
+    "marca": "Sprite",
+    "preco": 8.50,
+    "dataFabricacao": "01/01/2011",
+    "dataValidade": "01/01/2030"
+  },
+  {
+    "id": 4,
+    "nome": "Guaraná",
+    "marca": "Guaraná",
+    "preco": 4.50,
+    "dataFabricacao": "01/01/2019",
+    "dataValidade": "01/01/2029"
+  },
+  {
+    "id": 5,
+    "nome": "Coca-Cola Zero",
+    "marca": "Coca-Cola",
+    "preco": 9.50,
+    "dataFabricacao": "01/01/2019",
+    "dataValidade": "01/01/2021"
+  },
+  {
+    "id": 6,
+    "nome": "Coca-Cola Light",
+    "marca": "Coca-Cola",
+    "preco": 1.50,
+    "dataFabricacao": "01/01/2019",
+    "dataValidade": "01/01/2023"
+  },
+  {
+    "id": 7,
+    "nome": "Coca-Cola Zero Light",
+    "marca": "Coca-Cola",
+    "preco": 10.50,
+    "dataFabricacao": "01/01/2019",
+    "dataValidade": "01/01/2022"
+  },
+  {
+    "id": 8,
+    "nome": "Sanduíche",
+    "marca": "Subway",
+    "preco": 20.90,
+    "dataFabricacao": "01/01/2021",
+    "dataValidade": "04/01/2021"
+  }
+]

@@ -38,3 +38,11 @@ class Order {
     return this.totalBeforeDiscount * (1 - this.discount);
   }
 }
+
+class Data {
+  constructor(
+    public day: number,
+    public month: number,
+    public year: number
+  ) {}
+}

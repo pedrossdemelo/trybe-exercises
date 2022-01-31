@@ -1,6 +1,6 @@
-import { object, string, number, InferType, ValidationError } from "yup";
-import express, { Response, Request, NextFunction } from "express";
+import express, { Response } from "express";
 import { readFileSync, writeFileSync } from "fs";
+import { InferType, object, string } from "yup";
 const router = express.Router();
 
 let UserSchema = object({

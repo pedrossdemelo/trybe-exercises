@@ -106,9 +106,9 @@ router.get("/", (req, res) => {
   const restaurants = readDB();
   const filteredRestaurants = restaurants.filter(
     ({ horarioDeAbertura, horarioDeFechamento }) => {
-      if (openBool && isOpen(horarioDeFechamento, horarioDeAbertura))
-        return true;
-      return false;
+      if (openBool && !isOpen(horarioDeFechamento, horarioDeAbertura))
+        return false;
+      return true;
     }
   );
   res.json(filteredRestaurants);

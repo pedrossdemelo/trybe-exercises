@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "nome": "China in Box",
+    "tipoDeComida": "Japonesa",
+    "horarioDeAbertura": "10:00",
+    "horarioDeFechamento": "22:00"
+  },
+  {
+    "id": 2,
+    "nome": "Los Pollos Hermanos",
+    "tipoDeComida": "Mexicana",
+    "horarioDeAbertura": "06:00",
+    "horarioDeFechamento": "22:00"
+  },
+  {
+    "id": 3,
+    "nome": "Spoleto",
+    "tipoDeComida": "Italiana",
+    "horarioDeAbertura": "12:00",
+    "horarioDeFechamento": "22:00"
+  },
+  {
+    "id": 4,
+    "nome": "John Xina",
+    "tipoDeComida": "Chinesa",
+    "horarioDeAbertura": "10:00",
+    "horarioDeFechamento": "22:00"
+  },
+  {
+    "id": 5,
+    "nome": "Sushi Samba",
+    "tipoDeComida": "Japonesa",
+    "horarioDeAbertura": "18:00",
+    "horarioDeFechamento": "23:59"
+  },
+  {
+    "id": 6,
+    "nome": "Pollo Asado",
+    "tipoDeComida": "Mexicana",
+    "horarioDeAbertura": "08:00",
+    "horarioDeFechamento": "22:00"
+  },
+  {
+    "id": 7,
+    "nome": "Giorno Giovanna",
+    "tipoDeComida": "Italiana",
+    "horarioDeAbertura": "18:00",
+    "horarioDeFechamento": "22:00"
+  }
+]

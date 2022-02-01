@@ -279,3 +279,25 @@ class Order {
     return this.calculateTotal() - this.calculateTotal() * this.discount;
   }
 }
+
+class OrderRepository {
+  private _orders: Order[] = [];
+
+  public addOrder(order: Order): void {
+    this._orders.push(order);
+  }
+
+  public removeOrder(order: Order): void {
+    this._orders.splice(this._orders.indexOf(order), 1);
+  }
+
+  public listByClient(client: Person): Order[] {
+    return this._orders.filter((order) => order.client === client);
+  }
+
+  public listBySortedValue(type: string): Order[] {
+    if (type === "maior") return this._orders.sort((a, b) => b.calculateTotal() - a.calculateTotal());
+    else if (type === "menor") return this._orders.sort((a, b) => a.calculateTotal() - b.calculateTotal());
+    else throw new Error("Type must be 'maior' or 'menor'");
+  }
+}

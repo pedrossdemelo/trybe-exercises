@@ -35,8 +35,9 @@ class Employee extends Person implements Enrollable {
   readonly admissionDate: Date;
 
   generateEnrollment(): string {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
+    const chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
     for (let i = 0; i < 16; i++) {
       result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
@@ -52,7 +53,8 @@ class Employee extends Person implements Enrollable {
     admissionDate: Date
   ) {
     super(name, birthDate);
-    this.admissionDate = admissionDate < new Date() ? admissionDate : new Date();
+    this.admissionDate =
+      admissionDate < new Date() ? admissionDate : new Date();
   }
 }
 
@@ -60,10 +62,23 @@ class Student extends Person implements Enrollable {
   readonly enrollment: string = this.generateEnrollment();
   private _examsGrades: number[];
   private _worksGrades: number[];
+  readonly evaluationResults: EvaluationResult[] = [];
+
+  addEvaluationResult(e: EvaluationResult) {
+    this.evaluationResults.push(e);
+    switch (e.type) {
+      case "exam":
+        this._examsGrades.push(e.score);
+        break;
+      case "work":
+        this._worksGrades.push(e.score);
+    }
+  }
 
   generateEnrollment(): string {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
+    const chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
     for (let i = 0; i < 16; i++) {
       result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
@@ -92,12 +107,16 @@ class Student extends Person implements Enrollable {
   }
 
   public sumNotes(): number {
-    return this._examsGrades.reduce((acc, cur) => acc + cur, 0) +
-      this._worksGrades.reduce((acc, cur) => acc + cur, 0);
+    return (
+      this._examsGrades.reduce((acc, cur) => acc + cur, 0) +
+      this._worksGrades.reduce((acc, cur) => acc + cur, 0)
+    );
   }
 
   public sumAverageNotes(): number {
-    return this.sumNotes() / (this._examsGrades.length + this._worksGrades.length);
+    return (
+      this.sumNotes() / (this._examsGrades.length + this._worksGrades.length)
+    );
   }
 }
 
@@ -125,3 +144,57 @@ class Teacher extends Employee {
     super(name, birthDate, salary, admissionDate);
   }
 }
+
+class Evaluation {
+  get score(): number {
+    return this._score;
+  }
+  set score(score: number) {
+     switch (this.type) {
+      case "exam":
+        if (score >= 0 && score <= 25) this._score = score;
+        else throw new Error("Invalid score");
+        break;
+      case "work":
+        if (score >= 0 && score <= 50) this._score = score;
+        else throw new Error("Invalid score");
+        break;
+    }
+ }
+  
+  constructor(
+    private _score: number,
+    public teacher: Teacher,
+    public type: "exam" | "work"
+  ) {}
+}
+
+class EvaluationResult {
+  readonly type = this.evaluation.type;
+  get score() {
+    return this._score;
+  }
+  set score(score: number) {
+    if (score > this.evaluation.score)
+      throw new Error("Score cannot be higher than evaluation score");
+  }
+  constructor(public evaluation: Evaluation, private _score: number) {
+    this.score = _score;
+  }
+}
+
+const PrimaryExam = new Evaluation(
+  10,
+  new Teacher(
+    "Teacher",
+    new Date(1999, 1, 1),
+    1000,
+    new Date(2018, 1, 1),
+    new Subject("Math")
+  ),
+  "exam"
+);
+
+const myResult = new EvaluationResult(PrimaryExam, 10);
+
+console.log(myResult.score);

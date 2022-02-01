@@ -152,8 +152,7 @@ abstract class Evaluation {
     if (score >= 0) this._score = score;
   }
 
-  constructor(protected _score: number, public teacher: Teacher) {
-  }
+  constructor(protected _score: number, public teacher: Teacher) {}
 }
 
 class Exam extends Evaluation {
@@ -195,5 +194,88 @@ class Work extends Evaluation {
   constructor(score: number, teacher: Teacher) {
     super(score, teacher);
     this.score = score;
+  }
+}
+
+class OrderItem {
+  get name() {
+    return this._name;
+  }
+  set name(name: string) {
+    if (name.length > 3) this._name = name;
+    else throw new Error("Name must have at least 3 characters");
+  }
+
+  get price() {
+    return this._price;
+  }
+  set price(price: number) {
+    if (price > 0) this._price = price;
+    else throw new Error("Price must be greater than 0");
+  }
+
+  constructor(private _name: string, private _price: number) {
+    this.name = _name;
+    this.price = _price;
+  }
+}
+
+class Order {
+  get client() {
+    return this._client;
+  }
+  set client(client: Person) {
+    if (client instanceof Person) this._client = client;
+    else throw new Error("Client must be a Person");
+  }
+
+  get items() {
+    return this._items;
+  }
+  set items(items: OrderItem[]) {
+    if (items.length > 0) this._items = items;
+    else throw new Error("Order must have at least one item");
+  }
+
+  get paymentMethod() {
+    return this._paymentMethod;
+  }
+  set paymentMethod(paymentMethod: string) {
+    const validPayments = ["dinheiro", "cartao", "vale"];
+    const isValid = (
+      paymentMethod: string
+    ): paymentMethod is "dinheiro" | "cartão" | "vale" =>
+      validPayments.includes(paymentMethod);
+    if (isValid(paymentMethod)) this._paymentMethod = paymentMethod;
+    else
+      throw new Error('Payment method must be "dinheiro", "cartão" or "vale"');
+  }
+
+  get discount() {
+    return this._discount;
+  }
+  set discount(discount: number) {
+    if (discount >= 0) this._discount = discount;
+    else throw new Error("Discount must be greater than 0");
+  }
+
+  constructor(
+    private _client: Person,
+    private _items: OrderItem[],
+    private _paymentMethod: "dinheiro" | "cartão" | "vale",
+    private _discount: number = 0
+  ) {
+    this.client = _client;
+    this.items = _items;
+    this.paymentMethod = _paymentMethod;
+    this.discount = _discount;
+  }
+
+  public calculateTotal(): number {
+    return this.items.reduce((acc, cur) => acc + cur.price, 0);
+  }
+
+  public calculateTotalWithDiscount(): number {
+    return this.calculateTotal() - this.calculateTotal() * this.discount;
   }
 }

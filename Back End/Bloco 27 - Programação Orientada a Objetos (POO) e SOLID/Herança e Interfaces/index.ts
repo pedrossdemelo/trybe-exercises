@@ -25,3 +25,47 @@ class Person {
       this._birthDate = birthDate;
   }
 }
+
+class Student extends Person {
+  readonly enrollment: string;
+  private _examsGrades: number[];
+  private _worksGrades: number[];
+  private generateEnrollment(): string {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < 16; i++) {
+      result += chars.at(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+  }
+
+  constructor(name: string, birthDate: Date) {
+    super(name, birthDate);
+    this._examsGrades = [];
+    this._worksGrades = [];
+    this.enrollment = this.generateEnrollment();
+  }
+
+  get examsGrades(): number[] {
+    return this._examsGrades;
+  }
+  set examsGrades(examsGrades: number[]) {
+    if (examsGrades.length <= 4) this._examsGrades = examsGrades;
+  }
+
+  get worksGrades(): number[] {
+    return this._worksGrades;
+  }
+  set worksGrades(worksGrades: number[]) {
+    if (worksGrades.length <= 2) this._worksGrades = worksGrades;
+  }
+
+  public sumNotes(): number {
+    return this._examsGrades.reduce((acc, cur) => acc + cur, 0) +
+      this._worksGrades.reduce((acc, cur) => acc + cur, 0);
+  }
+
+  public sumAverageNotes(): number {
+    return this.sumNotes() / (this._examsGrades.length + this._worksGrades.length);
+  }
+}

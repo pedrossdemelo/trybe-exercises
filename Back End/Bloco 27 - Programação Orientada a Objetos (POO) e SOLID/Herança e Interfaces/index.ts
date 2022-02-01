@@ -69,3 +69,10 @@ class Student extends Person {
     return this.sumNotes() / (this._examsGrades.length + this._worksGrades.length);
   }
 }
+
+interface Employee {
+  registration: string;
+  salary: number;
+  admissionDate: Date;
+  generateRegistration(): string;
+}

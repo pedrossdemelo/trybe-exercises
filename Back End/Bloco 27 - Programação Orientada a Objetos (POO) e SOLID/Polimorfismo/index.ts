@@ -221,6 +221,19 @@ class OrderItem {
 }
 
 class Order {
+  readonly createdAt: Date;
+  readonly id: string;
+
+  private createId(): string {
+    const chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    for (let i = 0; i < 16; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+  }
+
   get client() {
     return this._client;
   }
@@ -256,7 +269,7 @@ class Order {
   }
   set discount(discount: number) {
     if (discount >= 0) this._discount = discount;
-    else throw new Error("Discount must be greater than 0");
+    else throw new Error("Discount cannot be negative");
   }
 
   constructor(
@@ -269,6 +282,8 @@ class Order {
     this.items = _items;
     this.paymentMethod = _paymentMethod;
     this.discount = _discount;
+    this.createdAt = new Date();
+    this.id = this.createId();
   }
 
   public calculateTotal(): number {

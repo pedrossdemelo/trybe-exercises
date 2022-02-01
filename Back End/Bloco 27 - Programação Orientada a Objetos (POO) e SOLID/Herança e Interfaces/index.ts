@@ -76,3 +76,16 @@ interface Employee {
   admissionDate: Date;
   generateRegistration(): string;
 }
+
+class Subject {
+  constructor(protected _name: string) {
+    if (_name.length > 3) this._name = _name;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+  set name(name: string) {
+    if (name.length > 3) this._name = name;
+  }
+}

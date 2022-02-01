@@ -1,4 +1,4 @@
-class Person {
+abstract class Person {
   constructor(protected _name: string, protected _birthDate: Date) {
     if (_name.length > 3) this._name = _name;
     if (

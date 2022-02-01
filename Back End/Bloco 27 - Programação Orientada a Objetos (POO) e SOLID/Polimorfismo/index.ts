@@ -26,11 +26,42 @@ abstract class Person {
   }
 }
 
-class Student extends Person {
-  readonly enrollment: string;
+interface Enrollable {
+  enrollment: string;
+  generateEnrollment(): string;
+}
+
+class Employee extends Person implements Enrollable {
+  readonly admissionDate: Date;
+
+  generateEnrollment(): string {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < 16; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+  }
+
+  readonly enrollment: string = this.generateEnrollment();
+
+  constructor(
+    name: string,
+    birthDate: Date,
+    readonly salary: number,
+    admissionDate: Date
+  ) {
+    super(name, birthDate);
+    this.admissionDate = admissionDate < new Date() ? admissionDate : new Date();
+  }
+}
+
+class Student extends Person implements Enrollable {
+  readonly enrollment: string = this.generateEnrollment();
   private _examsGrades: number[];
   private _worksGrades: number[];
-  private generateEnrollment(): string {
+
+  generateEnrollment(): string {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
     for (let i = 0; i < 16; i++) {
@@ -70,13 +101,6 @@ class Student extends Person {
   }
 }
 
-interface Employee {
-  registration: string;
-  salary: number;
-  admissionDate: Date;
-  generateRegistration(): string;
-}
-
 class Subject {
   constructor(protected _name: string) {
     if (_name.length > 3) this._name = _name;
@@ -90,54 +114,14 @@ class Subject {
   }
 }
 
-class Teacher extends Person implements Employee {
-  private _subject: Subject;
-  private _registration: string;
-  private _salary: number;
-  private _admissionDate: Date;
+class Teacher extends Employee {
   constructor(
     name: string,
     birthDate: Date,
     salary: number,
-    subject: Subject
+    admissionDate: Date,
+    public subject: Subject
   ) {
-    super(name, birthDate);
-    this._subject = subject;
-    this._registration = this.generateRegistration();
-    this._salary = salary;
-    this._admissionDate = new Date();
-  }
-  get subject(): Subject {
-    return this._subject;
-  }
-  set subject(subject: Subject) {
-    this._subject = subject;
-  }
-  get registration(): string {
-    return this._registration;
-  }
-  set registration(registration: string) {
-    if (registration.length > 16) this._registration = registration;
-  }
-  get salary(): number {
-    return this._salary;
-  }
-  set salary(salary: number) {
-    if (salary > 0) this._salary = salary;
-  }
-  get admissionDate(): Date {
-    return this._admissionDate;
-  }
-  set admissionDate(admissionDate: Date) {
-    if (admissionDate.getFullYear() < new Date().getFullYear())
-      this._admissionDate = admissionDate;
-  }
-  generateRegistration(): string {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for (let i = 0; i < 16; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return result;
+    super(name, birthDate, salary, admissionDate);
   }
 }

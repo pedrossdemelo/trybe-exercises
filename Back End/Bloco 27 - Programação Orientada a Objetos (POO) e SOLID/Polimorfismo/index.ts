@@ -66,12 +66,11 @@ class Student extends Person implements Enrollable {
 
   addEvaluationResult(e: EvaluationResult) {
     this.evaluationResults.push(e);
-    switch (e.type) {
-      case "exam":
-        this._examsGrades.push(e.score);
-        break;
-      case "work":
-        this._worksGrades.push(e.score);
+    if (this._examsGrades.length < 4 && e.evaluation instanceof Exam) {
+      this._examsGrades.push(e.score);
+    }
+    if (this._worksGrades.length < 2 && e.evaluation instanceof Work) {
+      this._worksGrades.push(e.score);
     }
   }
 
@@ -145,32 +144,34 @@ class Teacher extends Employee {
   }
 }
 
-class Evaluation {
+abstract class Evaluation {
   get score(): number {
     return this._score;
   }
   set score(score: number) {
-     switch (this.type) {
-      case "exam":
-        if (score >= 0 && score <= 25) this._score = score;
-        else throw new Error("Invalid score");
-        break;
-      case "work":
-        if (score >= 0 && score <= 50) this._score = score;
-        else throw new Error("Invalid score");
-        break;
-    }
- }
-  
-  constructor(
-    private _score: number,
-    public teacher: Teacher,
-    public type: "exam" | "work"
-  ) {}
+    if (score >= 0) this._score = score;
+  }
+
+  constructor(protected _score: number, public teacher: Teacher) {
+  }
+}
+
+class Exam extends Evaluation {
+  get score(): number {
+    return this._score;
+  }
+  set score(score: number) {
+    if (score >= 0 && score < 25) this._score = score;
+    else throw new Error("Exam score must be between 0 and 25");
+  }
+
+  constructor(score: number, teacher: Teacher) {
+    super(score, teacher);
+    this.score = score;
+  }
 }
 
 class EvaluationResult {
-  readonly type = this.evaluation.type;
   get score() {
     return this._score;
   }
@@ -178,23 +179,21 @@ class EvaluationResult {
     if (score > this.evaluation.score)
       throw new Error("Score cannot be higher than evaluation score");
   }
-  constructor(public evaluation: Evaluation, private _score: number) {
+  constructor(readonly evaluation: Evaluation, private _score: number) {
     this.score = _score;
   }
 }
+class Work extends Evaluation {
+  get score(): number {
+    return this._score;
+  }
+  set score(score: number) {
+    if (score >= 0 && score < 50) this._score = score;
+    else throw new Error("Work score must be between 0 and 50");
+  }
 
-const PrimaryExam = new Evaluation(
-  10,
-  new Teacher(
-    "Teacher",
-    new Date(1999, 1, 1),
-    1000,
-    new Date(2018, 1, 1),
-    new Subject("Math")
-  ),
-  "exam"
-);
-
-const myResult = new EvaluationResult(PrimaryExam, 10);
-
-console.log(myResult.score);
+  constructor(score: number, teacher: Teacher) {
+    super(score, teacher);
+    this.score = score;
+  }
+}

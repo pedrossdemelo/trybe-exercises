@@ -2,8 +2,6 @@ env:
   node: true
   es2021: true
   mocha: true
-extends:
-  - trybe-backend
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaVersion: 12

@@ -1,7 +1,5 @@
-import { IVehicle } from "./interfaces";
+import { IDrivingVehicle } from "./interfaces";
 
-export default class Car implements IVehicle {
+export default class Car implements IDrivingVehicle {
   drive(): void { console.log('Drive a car'); }
-
-  fly(): void {}
 }

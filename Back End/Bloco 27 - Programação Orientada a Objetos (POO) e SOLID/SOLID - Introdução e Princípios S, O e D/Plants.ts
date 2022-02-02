@@ -1,8 +1,5 @@
 import fs from "fs/promises";
 
-const plantsPath = "./plants.json";
-const internalsPath = "./opsInfo.json";
-
 const read = async (path: string): Promise<any> => {
   const data = await fs.readFile(path, "utf-8");
   return JSON.parse(data);
@@ -54,7 +51,7 @@ class Database<T> {
     await write(this.path, data);
   }
 }
-class PlantDatabase extends Database<Plant> {
+export default class Plants extends Database<Plant> {
   constructor (path: string, public internalsPath: string) {
     super(path);
   }
@@ -96,7 +93,7 @@ class PlantDatabase extends Database<Plant> {
       if (plant.id === plantId) return newPlant;
       return plant;
     });
-    await fs.writeFile(plantsPath, JSON.stringify(updatedPlants));
+    await this.write(updatedPlants);
     return newPlant;
   }
 
@@ -108,5 +105,3 @@ class PlantDatabase extends Database<Plant> {
     return plant;
   }
 }
-
-export default new PlantDatabase(plantsPath, internalsPath);

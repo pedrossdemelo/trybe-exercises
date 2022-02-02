@@ -88,7 +88,14 @@ export default class PlantDatabase extends Database<Plant> {
     return filteredPlants;
   }
 
-  async editPlant(plantId: string, newPlant: Plant) {
+  async editPlant(plantId: string, plant: PlantInfo) {
+    const { id, breed, needsSun, origin, size, specialCare } = plant;
+    let newPlant: Plant;
+    try {
+      newPlant = new Plant(id, breed, needsSun, origin, size, specialCare);
+    } catch (error) {
+      return error;
+    }
     const plants = await this.read();
     const updatedPlants = plants.map((plant) => {
       if (plant.id === plantId) return newPlant;

@@ -1,11 +1,7 @@
 import FooCepAPI from './FooCepAPI';
 
 class CepService {
-  private readonly cepApi: FooCepAPI;
-
-  constructor() {
-    this.cepApi = new FooCepAPI();
-  }
+  constructor(private readonly cepApi: FooCepAPI = new FooCepAPI()) {}
 
   addressByCep(cep: string, num: number) {
     return this.cepApi.getAddressByCEP(cep, num);

@@ -1,110 +1,112 @@
-import fs from 'fs/promises';
+import fs from "fs/promises";
 
-const plantsPath = './plants.json';
+const plantsPath = "./plants.json";
+const internalsPath = "./opsInfo.json";
 
-interface IPlant {
-  id: string,
-  breed: string,
-  needsSun: Boolean,
-  origin: string,
-  size: number,
-  specialCare?: { waterFrequency: number }
+const read = async (path: string): Promise<any> => {
+  const data = await fs.readFile(path, "utf-8");
+  return JSON.parse(data);
+};
+
+const write = async (path: string, data: any): Promise<void> => {
+  await fs.writeFile(path, JSON.stringify(data));
+};
+
+interface PlantInfo {
+  id: string;
+  breed: string;
+  needsSun: Boolean;
+  origin: string;
+  size: number;
+  specialCare?: { waterFrequency: number };
 }
 
-interface IOpsInfo { createdPlants: number }
+class Plant implements PlantInfo {
+  constructor(
+    public id: string,
+    public breed: string,
+    public needsSun: Boolean,
+    public origin: string,
+    public size: number,
+    public specialCare?: { waterFrequency: number }
+  ) {
+    if (!this.specialCare) {
+      const waterFrequency = needsSun
+        ? size * 0.77 + (origin === "Brazil" ? 8 : 7)
+        : (size / 2) * 1.33 + (origin === "Brazil" ? 8 : 7);
+      this.specialCare = { waterFrequency };
+    }
+  }
+}
 
-class Plants {
-  initPlant(plant: IPlant) {
-    const { id, breed, needsSun, origin, specialCare, size } = plant;
+interface IOpsInfo {
+  createdPlants: number;
+}
 
-    const waterFrequency = needsSun
-      ? size * 0.77 + (origin === 'Brazil' ? 8 : 7)
-      : (size / 2) * 1.33 + (origin === 'Brazil' ? 8 : 7);
+class Database<T> {
+  constructor(public path: string) {}
 
-    const newPlant: IPlant = {
-      id,
-      breed,
-      needsSun,
-      origin,
-      specialCare: {
-        ...specialCare,
-        waterFrequency,
-      },
-      size,
-    };
-    return newPlant;
+  async read(): Promise<T[]> {
+    return await read(this.path);
   }
 
-  async getPlants() {
-    const plantsRaw = await fs.readFile(plantsPath, { encoding: 'utf8' });
-    const plants: IPlant[] = JSON.parse(plantsRaw);
-    return plants;
+  async write(data: object[]) {
+    await write(this.path, data);
+  }
+}
+class PlantDatabase extends Database<Plant> {
+  constructor (path: string, public internalsPath: string) {
+    super(path);
+  }
+
+  private async _updateOpsInfo() {
+    let { createdPlants }: IOpsInfo = await read(this.internalsPath);
+    createdPlants++;
+    await write(this.internalsPath, { createdPlants });
   }
 
   async getPlantById(id: string) {
-    const plantsRaw = await fs.readFile(plantsPath, { encoding: 'utf8' });
-    const plants: IPlant[] = JSON.parse(plantsRaw);
-
+    const plants = await this.read();
     const plantById = plants.find((plant) => plant.id === id);
-    if (!plantById) return null;
-    return plantById;
+    return plantById ? plantById : null;
   }
 
   async removePlantById(id: string) {
-    const plantsRaw = await fs.readFile(plantsPath, { encoding: 'utf8' });
-    const plants: IPlant[] = JSON.parse(plantsRaw);
-
-    const removedPlant = plants.find((plant) => plant.id === id);
-    if (!removedPlant) return null;
-
-    const newPlants = plants.filter((plant) => plant.id !== id);
-    await fs.writeFile(plantsPath, JSON.stringify(newPlants));
-
-    return removedPlant;
+    const plants = await this.read();
+    const plantToBeRemoved = plants.find((plant) => plant.id === id);
+    if (!plantToBeRemoved) return null;
+    else await this.write(plants.filter((plant) => plant.id !== id));
+    return plantToBeRemoved;
   }
 
   async getPlantsThatNeedsSunWithId(id: string) {
-    const plantsRaw = await fs.readFile(plantsPath, { encoding: 'utf8' });
-    const plants: IPlant[] = JSON.parse(plantsRaw);
-
+    const plants = await this.read();
     const filteredPlants = plants.filter((plant) => {
       if (plant.needsSun && plant.id === id) {
-        return (!plant.specialCare || plant.specialCare.waterFrequency > 2);
+        return !plant.specialCare || plant.specialCare.waterFrequency > 2;
       }
-
       return false;
     });
     return filteredPlants;
   }
 
-  async editPlant(plantId: string, newPlant: IPlant) {
-    const plantsRaw = await fs.readFile(plantsPath, { encoding: 'utf8' });
-    const plants: IPlant[] = JSON.parse(plantsRaw);
-
+  async editPlant(plantId: string, newPlant: Plant) {
+    const plants = await this.read();
     const updatedPlants = plants.map((plant) => {
       if (plant.id === plantId) return newPlant;
       return plant;
     });
-
     await fs.writeFile(plantsPath, JSON.stringify(updatedPlants));
     return newPlant;
   }
 
-  async savePlant(plant: IPlant) {
-    const plantsRaw = await fs.readFile(plantsPath, { encoding: 'utf8' });
-    const plants: IPlant[] = JSON.parse(plantsRaw);
-
-    const newPlant = this.initPlant({ ...plant });
-    plants.push(newPlant);
-
-    const opsInfoRaw = await fs.readFile('opsInfo.json', { encoding: 'utf8' });
-    let { createdPlants }: IOpsInfo = JSON.parse(opsInfoRaw);
-    createdPlants += 1;
-    await fs.writeFile('opsInfo.json', JSON.stringify({ createdPlants }));
-
-    await fs.writeFile(plantsPath, JSON.stringify(plants));
-    return newPlant;
+  async savePlant(plant: Plant) {
+    const plants = await this.read();
+    plants.push(plant);
+    this._updateOpsInfo();
+    await this.write(plants);
+    return plant;
   }
 }
 
-export default Plants;
+export default new PlantDatabase(plantsPath, internalsPath);

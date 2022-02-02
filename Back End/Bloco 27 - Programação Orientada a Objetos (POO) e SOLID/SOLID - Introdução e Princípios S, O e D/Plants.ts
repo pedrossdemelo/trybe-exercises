@@ -88,7 +88,7 @@ export default class PlantDatabase extends Database<Plant> {
     return filteredPlants;
   }
 
-  async editPlant(plantId: string, plant: PlantInfo) {
+  async editPlant(plantId: string, plant: PlantInfo): Promise<Plant | unknown> {
     const { id, breed, needsSun, origin, size, specialCare } = plant;
     let newPlant: Plant;
     try {
@@ -97,6 +97,9 @@ export default class PlantDatabase extends Database<Plant> {
       return error;
     }
     const plants = await this.read();
+    if (!plants.find((plant) => plant.id === plantId)) {
+      return null;
+    }
     const updatedPlants = plants.map((plant) => {
       if (plant.id === plantId) return newPlant;
       return plant;
@@ -105,7 +108,7 @@ export default class PlantDatabase extends Database<Plant> {
     return newPlant;
   }
 
-  async savePlant(plant: PlantInfo) {
+  async savePlant(plant: PlantInfo): Promise<Plant | unknown> {
     const { id, breed, needsSun, origin, size, specialCare } = plant;
     let newPlant;
     try {

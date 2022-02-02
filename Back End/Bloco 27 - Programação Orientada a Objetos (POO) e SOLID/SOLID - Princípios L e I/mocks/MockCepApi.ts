@@ -1,6 +1,6 @@
 import { IFooCepAPI } from "../FooCepAPI";
 
-class MockCepApi implements IFooCepAPI {
+export default class MockCepApi implements IFooCepAPI {
   async getAddressByCEP(cep: string, number: number): Promise<string> {
     return `O endereço para o "CEP:${cep}, n°:${number}" é "endereço foo"`;
   }

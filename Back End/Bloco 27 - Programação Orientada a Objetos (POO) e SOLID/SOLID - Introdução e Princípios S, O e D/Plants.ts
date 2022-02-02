@@ -27,6 +27,7 @@ class Plant implements PlantInfo {
     public size: number,
     public specialCare?: { waterFrequency: number }
   ) {
+    // TODO: Throw errors when invalid data is passed in
     if (!this.specialCare) {
       const waterFrequency = needsSun
         ? size * 0.77 + (origin === "Brazil" ? 8 : 7)
@@ -51,7 +52,7 @@ class Database<T> {
     await write(this.path, data);
   }
 }
-export default class Plants extends Database<Plant> {
+export default class PlantDatabase extends Database<Plant> {
   constructor (path: string, public internalsPath: string) {
     super(path);
   }
@@ -97,11 +98,18 @@ export default class Plants extends Database<Plant> {
     return newPlant;
   }
 
-  async savePlant(plant: Plant) {
+  async savePlant(plant: PlantInfo) {
+    const { id, breed, needsSun, origin, size, specialCare } = plant;
+    let newPlant;
+    try {
+      newPlant = new Plant(id, breed, needsSun, origin, size, specialCare);
+    } catch (error) {
+      return error;
+    }
     const plants = await this.read();
-    plants.push(plant);
+    plants.push(newPlant);
     this._updateOpsInfo();
     await this.write(plants);
-    return plant;
+    return newPlant;
   }
 }

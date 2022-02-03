@@ -30,6 +30,10 @@ const { MongoClient } = require("mongodb");
         imdbRating: 7.4,
       },
     ]);
+
+    console.log("Exercise 1");
+    console.log(await movies.updateOne({ title: "Batman" }, { $set: { imdbRating: 7.7 } }))
+    console.log("Updated Batman imdbRating to 7.7");
   } catch (error) {
   } finally {
     await client.close();

@@ -89,6 +89,13 @@ const { MongoClient } = require("mongodb");
     ));
     console.log("Removed adventure from Godzilla category list, set imdbRating to 8.6 and added thriller to categories");
 
+    console.log("Exercise 10");
+    console.log(await movies.updateOne(
+      { title: "Home Alone" },
+      { $currentDate: { lastUpdated: true } }
+    ));
+    console.log("Set lastUpdated to current date on Home Alone");
+
   } catch (error) {
     console.error(error);
   } finally {

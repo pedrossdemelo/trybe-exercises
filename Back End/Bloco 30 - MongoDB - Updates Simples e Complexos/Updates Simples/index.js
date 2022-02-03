@@ -49,7 +49,9 @@ const { MongoClient } = require("mongodb");
     console.log("Updated Home Alone budget and imdbRating to 15 and 5.5");
 
     console.log("Exercise 4");
-    movies.updateOne({ title: "Batman" }, { $inc: { imdbRating: 2 } });
+    console.log(
+      await movies.updateOne({ title: "Batman" }, { $inc: { imdbRating: 2 } })
+    )
     console.log("Increased Batman imdbRating by 2");
 
   } catch (error) {

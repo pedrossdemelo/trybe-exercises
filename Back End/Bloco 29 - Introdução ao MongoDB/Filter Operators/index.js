@@ -145,6 +145,11 @@ const { MongoClient } = require('mongodb');
     console.log(await superheroes.deleteOne({
       publisher: "Sony Pictures"
     }));
+
+    console.log("Exercise 19");
+    console.log(await superheroes.deleteMany({
+      publisher: "George Lucas"
+    }));
   } catch (error) {
     console.log(`Something went wrong: ${error}`);
   } finally {

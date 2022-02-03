@@ -11,7 +11,7 @@ const { MongoClient } = require("mongodb");
     const db = client.db("class");
     const movies = db.collection("movies");
 
-    [...await movies.find({}).toArray()].length === 0 &&
+    await db.dropCollection("movies");
     await movies.insertMany([
       {
         title: "Batman",

@@ -19,6 +19,13 @@ const { MongoClient } = require('mongodb');
       }
     }).toArray());
 
+    console.log("Exercise 3")
+    console.log(await superheroes.find({
+      "aspects.height": {
+        $lt: 180
+      }
+    }).count());
+
   } catch (error) {
     console.log(`Something went wrong: ${error}`);
   } finally {

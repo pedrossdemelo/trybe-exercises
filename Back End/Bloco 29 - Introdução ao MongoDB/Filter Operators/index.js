@@ -100,6 +100,15 @@ const { MongoClient } = require('mongodb');
         }
       }
     }).toArray());
+
+    console.log("Exercise 14")
+    console.log(await superheroes.find({
+      publisher: "Marvel Comics",
+      $or: [
+        {"aspects.height": 180},
+        {"aspects.height": 200}
+      ]
+    }).toArray())
   } catch (error) {
     console.log(`Something went wrong: ${error}`);
   } finally {

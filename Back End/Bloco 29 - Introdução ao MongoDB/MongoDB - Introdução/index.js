@@ -25,6 +25,9 @@ const { MongoClient } = require("mongodb");
     console.log("Exercise 5");
     console.log(await bios.find().limit(3).toArray());
     
+    console.log("Exercise 6");
+    console.log(await bios.find().skip(5).limit(2).toArray());
+    
   } catch (error) {
     console.error(`Something went wrong: ${error}`);
   } finally {

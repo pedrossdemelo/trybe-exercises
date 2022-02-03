@@ -100,6 +100,10 @@ const { MongoClient } = require("mongodb");
     console.log(await movies.updateMany({}, { $set: { sequels: 0 } }));
     console.log("Set sequels to 0 on all movies");
 
+    console.log("Exercise 12");
+    console.log(await movies.updateMany({}, { $unset: { budget: "", estimatedBudget: "" } }));
+    console.log("Removed budget and estimatedBudget from all movies");
+
   } catch (error) {
     console.error(error);
   } finally {

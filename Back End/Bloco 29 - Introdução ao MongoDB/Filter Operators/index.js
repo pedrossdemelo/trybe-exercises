@@ -52,6 +52,11 @@ const { MongoClient } = require('mongodb');
       "aspects.eyeColor": "green"
     }).toArray());
 
+    console.log("Exercise 8")
+    console.log(await superheroes.find({
+      "aspects.eyeColor": "blue"
+    }).count());
+
   } catch (error) {
     console.log(`Something went wrong: ${error}`);
   } finally {

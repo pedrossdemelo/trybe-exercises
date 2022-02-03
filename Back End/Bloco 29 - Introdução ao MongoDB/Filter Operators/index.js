@@ -126,6 +126,13 @@ const { MongoClient } = require('mongodb');
         $lt: 100,
       },
     }).toArray());
+
+    console.log("Exercise 16");
+    console.log(await superheroes.find({
+      race: {
+        $exists: 0
+      }
+    }).count());
   } catch (error) {
     console.log(`Something went wrong: ${error}`);
   } finally {

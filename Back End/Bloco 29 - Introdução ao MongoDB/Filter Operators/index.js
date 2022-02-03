@@ -78,6 +78,14 @@ const { MongoClient } = require('mongodb');
       }
     }).count());
 
+    console.log("Exercise 12")
+    console.log(await superheroes.find({
+      "aspects.height": {
+        $not: {
+          $gt: 180
+        }
+      }
+    }).count());
   } catch (error) {
     console.log(`Something went wrong: ${error}`);
   } finally {

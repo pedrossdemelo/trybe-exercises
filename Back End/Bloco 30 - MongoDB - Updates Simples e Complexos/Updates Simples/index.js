@@ -60,6 +60,12 @@ const { MongoClient } = require("mongodb");
     )
     console.log("Increased Home Alone budget by 5");
 
+    console.log("Exercise 6");
+    console.log(
+      await movies.updateOne({ title: "Batman" }, { $mul: { imdbRating: 4 } })
+    );
+    console.log("Multiplied Batman imdbRating by 4");
+
   } catch (error) {
   } finally {
     await client.close();

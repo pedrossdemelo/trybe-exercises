@@ -104,6 +104,13 @@ const { MongoClient } = require("mongodb");
     console.log(await movies.updateMany({}, { $unset: { budget: "", estimatedBudget: "" } }));
     console.log("Removed budget and estimatedBudget from all movies");
 
+    console.log("Exercise 13");
+    console.log(await movies.updateMany(
+      { $or: [{ title: "Batman" }, { title: "Home Alone" }] },
+      { $max: { imdbRating: 17 } }
+    ));
+    console.log("Set imdbRating to 17 on Batman and Home Alone if they are less than 17");
+
   } catch (error) {
     console.error(error);
   } finally {

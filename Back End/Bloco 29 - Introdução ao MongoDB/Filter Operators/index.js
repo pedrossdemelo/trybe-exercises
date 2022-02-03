@@ -57,6 +57,13 @@ const { MongoClient } = require('mongodb');
       "aspects.eyeColor": "blue"
     }).count());
 
+    console.log("Exercise 9")
+    console.log(await superheroes.find({
+      "aspects.hairColor": {
+        $in: ["No Hair", "Black"]
+      }
+    }).toArray());
+
   } catch (error) {
     console.log(`Something went wrong: ${error}`);
   } finally {

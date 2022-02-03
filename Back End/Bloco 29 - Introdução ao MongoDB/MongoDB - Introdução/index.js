@@ -19,6 +19,9 @@ const { MongoClient } = require("mongodb");
     console.log("Exercise 3");
     console.log(await bios.findOne({ _id: 8 }, { name: 1, birth: 1 }));
     
+    console.log("Exercise 4");
+    console.log(await bios.find({ "name.first": "John" }).toArray());
+    
   } catch (error) {
     console.error(`Something went wrong: ${error}`);
   } finally {

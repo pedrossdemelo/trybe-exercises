@@ -109,6 +109,23 @@ const { MongoClient } = require('mongodb');
         {"aspects.height": 200}
       ]
     }).toArray())
+
+    console.log("Exercise 15")
+    console.log(await superheroes.find({
+      publisher: {
+        $not: {
+          $eq: "DC Comics"
+        }
+      },
+      $or: [
+        {race: "Human"},
+        {race: "Mutant"}
+      ],
+      "aspects.weight": {
+        $gt: 80,
+        $lt: 100,
+      },
+    }).toArray());
   } catch (error) {
     console.log(`Something went wrong: ${error}`);
   } finally {

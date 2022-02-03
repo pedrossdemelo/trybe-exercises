@@ -79,7 +79,18 @@ const { MongoClient } = require("mongodb");
     ));
     console.log("Set Home Alone budget to 5 if it is more than 5");
 
+    console.log("Exercise 9");
+    console.log(await movies.updateOne(
+      { title: "Godzilla", category: "adventure" },
+      {
+        $max: { imdbRating: 8.6 },
+        $set: { "category.$": "thriller" },
+      }
+    ));
+    console.log("Removed adventure from Godzilla category list, set imdbRating to 8.6 and added thriller to categories");
+
   } catch (error) {
+    console.error(error);
   } finally {
     await client.close();
   }

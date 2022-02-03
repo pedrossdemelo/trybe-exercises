@@ -140,6 +140,11 @@ const { MongoClient } = require('mongodb');
         $exists: 1
       }
     }).count())
+
+    console.log("Exercise 18");
+    console.log(await superheroes.deleteOne({
+      publisher: "Sony Pictures"
+    }));
   } catch (error) {
     console.log(`Something went wrong: ${error}`);
   } finally {

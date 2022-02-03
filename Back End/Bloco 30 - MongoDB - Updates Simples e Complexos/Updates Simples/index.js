@@ -73,6 +73,12 @@ const { MongoClient } = require("mongodb");
     ));
     console.log("Renamed budget to estimatedBudget on Batman");
 
+    console.log("Exercise 8");
+    console.log(await movies.updateOne(
+      { title: "Home Alone" }, { $min: { budget: 5 } }
+    ));
+    console.log("Set Home Alone budget to 5 if it is more than 5");
+
   } catch (error) {
   } finally {
     await client.close();

@@ -66,6 +66,13 @@ const { MongoClient } = require("mongodb");
     );
     console.log("Multiplied Batman imdbRating by 4");
 
+    console.log("Exercise 7");
+    console.log(await movies.updateOne(
+      { title: "Batman" },
+      { $rename: { budget: "estimatedBudget" } }
+    ));
+    console.log("Renamed budget to estimatedBudget on Batman");
+
   } catch (error) {
   } finally {
     await client.close();

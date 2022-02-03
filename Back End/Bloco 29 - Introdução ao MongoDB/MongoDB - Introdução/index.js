@@ -36,6 +36,15 @@ const { MongoClient } = require("mongodb");
     console.log("Exercise 8");
     console.log(await books.countDocuments({ status: "PUBLISH" }));
     
+    console.log("Exercise 9");
+    console.log(
+      await books
+        .find()
+        .limit(3)
+        .project({ _id: 0, title: 1, isbn: 1, pageCount: 1 })
+        .toArray()
+    );
+
   } catch (error) {
     console.error(`Something went wrong: ${error}`);
   } finally {

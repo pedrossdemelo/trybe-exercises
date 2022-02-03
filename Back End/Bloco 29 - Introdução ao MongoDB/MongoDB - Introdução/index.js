@@ -28,6 +28,11 @@ const { MongoClient } = require("mongodb");
     console.log("Exercise 6");
     console.log(await bios.find().skip(5).limit(2).toArray());
     
+    // Using the books collection
+
+    console.log("Exercise 7");
+    console.log(await books.countDocuments());
+    
   } catch (error) {
     console.error(`Something went wrong: ${error}`);
   } finally {

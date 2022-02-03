@@ -133,6 +133,13 @@ const { MongoClient } = require('mongodb');
         $exists: 0
       }
     }).count());
+
+    console.log("Exercise 17");
+    console.log(await superheroes.find({
+      "aspects.hairColor": {
+        $exists: 1
+      }
+    }).count())
   } catch (error) {
     console.log(`Something went wrong: ${error}`);
   } finally {

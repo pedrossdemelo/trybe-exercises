@@ -39,6 +39,15 @@ const { MongoClient } = require("mongodb");
     console.log(await movies.updateOne({ title: "Godzilla" }, { $set: { budget: 1 } }))
     console.log("Updated Godzilla budget to 1");
 
+    console.log("Exercise 3");
+    console.log(
+      await movies.updateMany(
+        { title: "Home Alone" },
+        { $set: { budget: 15, imdbRating: 5.5 } }
+      )
+    );
+    console.log("Updated Home Alone budget and imdbRating to 15 and 5.5");
+
   } catch (error) {
   } finally {
     await client.close();

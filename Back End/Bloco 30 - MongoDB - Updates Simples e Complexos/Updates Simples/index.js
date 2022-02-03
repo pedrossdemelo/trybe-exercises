@@ -96,6 +96,10 @@ const { MongoClient } = require("mongodb");
     ));
     console.log("Set lastUpdated to current date on Home Alone");
 
+    console.log("Exercise 11");
+    console.log(await movies.updateMany({}, { $set: { sequels: 0 } }));
+    console.log("Set sequels to 0 on all movies");
+
   } catch (error) {
     console.error(error);
   } finally {

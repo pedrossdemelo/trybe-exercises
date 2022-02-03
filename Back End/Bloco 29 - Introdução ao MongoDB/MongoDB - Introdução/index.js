@@ -45,6 +45,15 @@ const { MongoClient } = require("mongodb");
         .toArray()
     );
 
+    console.log("Exercise 10");
+    console.log(
+      await books
+        .find({ status: "MEAP" })
+        .skip(5)
+        .limit(10)
+        .project({ _id: 1, title: 1, authors: 1, status: 1 })
+        .toArray()
+    );
   } catch (error) {
     console.error(`Something went wrong: ${error}`);
   } finally {

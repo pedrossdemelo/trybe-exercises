@@ -54,6 +54,12 @@ const { MongoClient } = require("mongodb");
     )
     console.log("Increased Batman imdbRating by 2");
 
+    console.log("Exercise 5");
+    console.log(
+      movies.updateOne({ title: "Home Alone" }, { $inc: { budget: 5 } })
+    )
+    console.log("Increased Home Alone budget by 5");
+
   } catch (error) {
   } finally {
     await client.close();

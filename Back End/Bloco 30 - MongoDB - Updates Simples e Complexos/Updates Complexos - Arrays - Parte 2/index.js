@@ -192,6 +192,11 @@ const { MongoClient } = require("mongodb");
     console.log(
       await movies.find({ description: { $regex: /^The/ } }).toArray()
     );
+
+    console.log("Exercise 19");
+    console.log(
+      await movies.find({ description: { $regex: /humanity.$/ } }).toArray()
+    );
   } catch (error) {
     console.error(error);
   } finally {

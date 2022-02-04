@@ -205,6 +205,11 @@ const { MongoClient } = require("mongodb");
     console.log(
       await movies.find({ $text: { $search: "vacation" } }).toArray()
     );
+
+    console.log("Exercise 22");
+    console.log(
+      await movies.find({ $text: { $search: "monstrous criminal" } }).toArray()
+    );
   } catch (error) {
     console.error(error);
   } finally {

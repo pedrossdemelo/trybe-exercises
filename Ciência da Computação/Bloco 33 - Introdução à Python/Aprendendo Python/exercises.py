@@ -11,3 +11,17 @@ def average(*num):
 
 
 print(average(1, 2, 3, 4, 5))  # 3.0
+
+
+def create_sqr(size):
+    return f"{'*' * size}\n" * size
+
+
+print(create_sqr(5))
+"""
+*****
+*****
+*****
+*****
+*****
+"""

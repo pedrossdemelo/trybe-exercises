@@ -25,3 +25,10 @@ print(create_sqr(5))
 *****
 *****
 """
+
+
+def longest_word(words):
+    return max(words, key=len)
+
+
+print(longest_word(["hello", "my", "name", "is", "Pedro Sousa"]))  # Pedro Sousa

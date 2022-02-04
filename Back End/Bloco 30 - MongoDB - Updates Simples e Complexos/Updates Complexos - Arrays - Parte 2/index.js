@@ -200,6 +200,11 @@ const { MongoClient } = require("mongodb");
 
     console.log("Exercise 20");
     console.log(await movies.createIndex({ description: "text" }));
+
+    console.log("Exercise 21");
+    console.log(
+      await movies.find({ $text: { $search: "vacation" } }).toArray()
+    );
   } catch (error) {
     console.error(error);
   } finally {

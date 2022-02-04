@@ -117,6 +117,13 @@ const { MongoClient } = require("mongodb");
         .project({ _id: 0, title: 1 })
         .toArray()
     );
+
+    console.log("Exercise 12");
+    console.log(
+      await movies
+        .find({ budget: { $mod: [5, 0] }, category: { $size: 2 } })
+        .toArray()
+    );
   } catch (error) {
     console.error(error);
   } finally {

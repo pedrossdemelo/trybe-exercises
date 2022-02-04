@@ -35,6 +35,13 @@ const { MongoClient } = require("mongodb");
         .find({ category: { $all: ["action", "adventure"] } })
         .toArray()
     );
+
+    console.log("Exercise 2");
+    console.log(
+      await movies
+        .find({ category: { $all: ["action"] }, imdbRating: { $gt: 7 } })
+        .toArray()
+    );
   } catch (error) {
     console.error(error);
   } finally {

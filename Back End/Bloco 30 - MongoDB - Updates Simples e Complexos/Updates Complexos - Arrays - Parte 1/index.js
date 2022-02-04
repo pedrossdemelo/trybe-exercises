@@ -166,6 +166,26 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Added actors to Batman, Alfred and Coringa");
+
+    console.log("Exercise 12");
+    console.log(
+      await movies.findOneAndUpdate(
+        { title: "Batman" },
+        {
+          $push: {
+            cast: {
+              $each: [
+                { actor: "Michael Keaton" },
+                { actor: "Val Kilmer" },
+                { actor: "George Clooney" },
+              ],
+              $sort: { actor: 1 },
+            },
+          },
+        }
+      )
+    );
+    console.log("Added actors to Batman in alphabetical order");
   } catch (error) {
     console.error(error)
   } finally {

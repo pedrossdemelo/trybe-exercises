@@ -159,6 +159,20 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Added a description for the Batman movie");
+
+    console.log("Exercise 16");
+    console.log(
+      await movies.updateOne(
+        { title: "Godzilla" },
+        {
+          $set: {
+            description:
+              "The world is beset by the appearance of monstrous creatures, but one of them may be the only one who can save humanity.",
+          },
+        }
+      )
+    );
+    console.log("Created a description for the Godzilla movie");
   } catch (error) {
     console.error(error);
   } finally {

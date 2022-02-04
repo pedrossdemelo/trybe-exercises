@@ -132,6 +132,19 @@ const { MongoClient } = require("mongodb");
         .project({ _id: 0, title: 1, ratings: 1, category: 1 })
         .toArray()
     );
+
+    console.log("Exercise 14");
+    console.log(
+      await movies
+        .find({
+          $and: [
+            { ratings: { $size: 4 } },
+            { $or: [{ category: "adventure" }, { category: "family" }] },
+            { imdbRating: { $gte: 7 } },
+          ],
+        })
+        .toArray()
+    );
   } catch (error) {
     console.error(error);
   } finally {

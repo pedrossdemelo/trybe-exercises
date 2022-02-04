@@ -74,6 +74,15 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Removed last element from category array of Batman");
+
+    console.log("Exercise 6");
+    console.log(
+      await movies.findOneAndUpdate(
+        { title: "Batman" },
+        { $addToSet: { category: "action" } }
+      )
+    );
+    console.log("Added category action to Batman if not already present");
   } catch (error) {
     console.error(error)
   } finally {

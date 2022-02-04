@@ -77,6 +77,14 @@ const { MongoClient } = require("mongodb");
         .project({ _id: 0, title: 1, ratings: 1 })
         .toArray()
     );
+
+    console.log("Exercise 7");
+    console.log(
+      await movies
+        .find({ ratings: { $elemMatch: { $gt: 100, $lt: 105 } } })
+        .project({ _id: 0, title: 1, ratings: 1 })
+        .toArray()
+    );
   } catch (error) {
     console.error(error);
   } finally {

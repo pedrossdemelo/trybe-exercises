@@ -14,3 +14,10 @@ def create_square_triangle(size):
 
 
 print(create_square_triangle(5))
+
+
+def sum_range(end):
+    return sum(range(1, end + 1))
+
+
+print(sum_range(5))

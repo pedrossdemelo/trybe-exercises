@@ -145,6 +145,20 @@ const { MongoClient } = require("mongodb");
         })
         .toArray()
     );
+
+    console.log("Exercise 15");
+    console.log(
+      await movies.updateOne(
+        { title: "Batman" },
+        {
+          $set: {
+            description:
+              "The Dark Knight of Gotham City begins his war on crime with his first major enemy being Jack Napier, a criminal who becomes the clownishly homicidal Joker.",
+          },
+        }
+      )
+    );
+    console.log("Added a description for the Batman movie");
   } catch (error) {
     console.error(error);
   } finally {

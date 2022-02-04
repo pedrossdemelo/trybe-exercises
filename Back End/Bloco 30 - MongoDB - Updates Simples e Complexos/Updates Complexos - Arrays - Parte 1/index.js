@@ -47,6 +47,15 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Added categories villain and comic-based to Batman");
+
+    console.log("Exercise 3");
+    console.log(
+      await movies.findOneAndUpdate(
+        { title: "Batman" },
+        { $pull: { category: "action" } }
+      )
+    );
+    console.log("Removed category action from Batman");
   } catch (error) {
     console.error(error)
   } finally {

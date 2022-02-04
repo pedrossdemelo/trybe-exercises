@@ -111,6 +111,20 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Added an array of actors to the cast of Home Alone");
+
+    console.log("Exercise 9");
+    console.log(
+      await movies.findOneAndUpdate(
+        { title: "Home Alone" },
+        {
+          $set: {
+            "cast.$[i].character": "Marv",
+          },
+        },
+        { arrayFilters: [{ "i.actor": "Daniel Stern" }] }
+      )
+    );
+    console.log("Added character Marv to the cast of Home Alone");
   } catch (error) {
     console.error(error)
   } finally {

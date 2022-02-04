@@ -187,6 +187,11 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Created a description for the Home Alone movie");
+
+    console.log("Exercise 18");
+    console.log(
+      await movies.find({ description: { $regex: /^The/ } }).toArray()
+    );
   } catch (error) {
     console.error(error);
   } finally {

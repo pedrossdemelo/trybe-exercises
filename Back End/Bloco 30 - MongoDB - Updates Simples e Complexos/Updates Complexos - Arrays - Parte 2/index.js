@@ -69,6 +69,14 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Created an array of ratings for the Home Alone movie");
+
+    console.log("Exercise 6");
+    console.log(
+      await movies
+        .find({ ratings: { $elemMatch: { $gt: 103 } } })
+        .project({ _id: 0, title: 1, ratings: 1 })
+        .toArray()
+    );
   } catch (error) {
     console.error(error);
   } finally {

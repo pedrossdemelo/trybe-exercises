@@ -83,6 +83,15 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Added category action to Batman if not already present");
+
+    console.log("Exercise 7");
+    console.log(
+      await movies.findOneAndUpdate(
+        { $or: [{ title: "Batman" }, { title: "Home Alone" }] },
+        { $push: { category: "90's" } }
+      )
+    );
+    console.log("Added category 90's to Batman and Home Alone");
   } catch (error) {
     console.error(error)
   } finally {

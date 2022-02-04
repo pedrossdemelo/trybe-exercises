@@ -4,3 +4,10 @@ def higher(x, y):
 
 
 print(higher(10, 5))  # 10
+
+
+def average(*num):
+    return sum(num) / len(num)
+
+
+print(average(1, 2, 3, 4, 5))  # 3.0

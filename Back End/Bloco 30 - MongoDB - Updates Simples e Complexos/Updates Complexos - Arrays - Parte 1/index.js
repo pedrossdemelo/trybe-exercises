@@ -144,6 +144,28 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Added an array of characters to the cast of Batman");
+
+    console.log("Exercise 11");
+    console.log(
+      await movies.findOneAndUpdate(
+        { title: "Batman" },
+        {
+          $set: {
+            "cast.$[i].actor": "Christian Bale",
+            "cast.$[j].actor": "Michael Caine",
+            "cast.$[k].actor": "Heath Ledger",
+          },
+        },
+        {
+          arrayFilters: [
+            { "i.character": "Batman" },
+            { "j.character": "Alfred" },
+            { "k.character": "Coringa" },
+          ],
+        }
+      )
+    );
+    console.log("Added actors to Batman, Alfred and Coringa");
   } catch (error) {
     console.error(error)
   } finally {

@@ -92,6 +92,25 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Added category 90's to Batman and Home Alone");
+
+    console.log("Exercise 8");
+    console.log(
+      await movies.findOneAndUpdate(
+        { title: "Home Alone" },
+        {
+          $push: {
+            cast: {
+              $each: [
+                { actor: "Macaulay Culkin", character: "Kevin" },
+                { actor: "Joe Pesci", character: "Harry" },
+                { actor: "Daniel Stern" },
+              ],
+            },
+          },
+        }
+      )
+    );
+    console.log("Added an array of actors to the cast of Home Alone");
   } catch (error) {
     console.error(error)
   } finally {

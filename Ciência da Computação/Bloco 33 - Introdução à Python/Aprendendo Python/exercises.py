@@ -1,4 +1,7 @@
 # Using python 3.10.1
+from math import ceil
+
+
 def higher(x, y):
     return x if x > y else y
 
@@ -31,4 +34,14 @@ def longest_word(words):
     return max(words, key=len)
 
 
-print(longest_word(["hello", "my", "name", "is", "Pedro Sousa"]))  # Pedro Sousa
+# Pedro Sousa
+print(longest_word(["hello", "my", "name", "is", "Pedro Sousa"]))
+
+
+def calc_paint_needed(wall_size):
+    paint_needed = wall_size / 3
+    paint_buckets_needed = ceil(paint_needed / 18)
+    return (paint_buckets_needed, paint_buckets_needed * 80)
+
+
+print(calc_paint_needed(100))  # (2, 160)

@@ -29,6 +29,15 @@ const { MongoClient } = require("mongodb");
       },
     ]);
     console.log("Done!");
+
+    console.log("Exercise 1");
+    console.log(
+      await movies.findOneAndUpdate(
+        { title: "Batman" },
+        { $push: { category: "superhero" } }
+      )
+    );
+    console.log("Added category superhero to Batman");
   } catch (error) {
     console.error(error)
   } finally {

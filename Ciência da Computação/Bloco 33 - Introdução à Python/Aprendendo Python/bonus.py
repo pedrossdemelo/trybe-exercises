@@ -21,3 +21,13 @@ def sum_range(end):
 
 
 print(sum_range(5))
+
+
+def price(amount, fuel_type):
+    fuel_price = {"A": 1.9, "G": 2.5}
+    discount = {"A": 0.05 if amount > 20 else 0.03,
+                "G": 0.06 if amount > 20 else 0.04}
+    return amount * fuel_price[fuel_type] * (1 - discount[fuel_type])
+
+
+print(price(10, "A"))

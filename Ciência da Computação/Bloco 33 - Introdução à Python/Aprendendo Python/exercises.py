@@ -45,3 +45,19 @@ def calc_paint_needed(wall_size):
 
 
 print(calc_paint_needed(100))  # (2, 160)
+
+
+def typeof_triangle(*sides):
+    if len(sides) != 3:
+        return "Not a triangle"
+    a, b, c = sorted(sides)
+    if a + b <= c:
+        return "Not a triangle"
+    if a == b == c:
+        return "Equilateral"
+    if a == b or b == c or a == c:
+        return "Isosceles"
+    return "Scalene"
+
+
+print(typeof_triangle(2, 2, 3))  # Isosceles

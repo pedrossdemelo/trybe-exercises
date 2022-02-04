@@ -51,6 +51,15 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Created an array of ratings for the Batman movie");
+
+    console.log("Exercise 4");
+    console.log(
+      await movies.updateOne(
+        { title: "Godzilla" },
+        { $push: { ratings: { $each: [78, 52, 95, 102] } } }
+      )
+    );
+    console.log("Created an array of ratings for the Godzilla movie");
   } catch (error) {
     console.error(error);
   } finally {

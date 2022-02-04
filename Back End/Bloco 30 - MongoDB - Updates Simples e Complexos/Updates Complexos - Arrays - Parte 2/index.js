@@ -197,6 +197,9 @@ const { MongoClient } = require("mongodb");
     console.log(
       await movies.find({ description: { $regex: /humanity.$/ } }).toArray()
     );
+
+    console.log("Exercise 20");
+    console.log(await movies.createIndex({ description: "text" }));
   } catch (error) {
     console.error(error);
   } finally {

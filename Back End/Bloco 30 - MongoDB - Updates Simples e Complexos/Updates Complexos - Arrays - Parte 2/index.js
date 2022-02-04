@@ -28,6 +28,13 @@ const { MongoClient } = require("mongodb");
         imdbRating: 7.4,
       },
     ]);
+
+    console.log("Exercise 1");
+    console.log(
+      await movies
+        .find({ category: { $all: ["action", "adventure"] } })
+        .toArray()
+    );
   } catch (error) {
     console.error(error);
   } finally {

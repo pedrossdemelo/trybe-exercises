@@ -38,6 +38,15 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Added category superhero to Batman");
+
+    console.log("Exercise 2");
+    console.log(
+      await movies.findOneAndUpdate(
+        { title: "Batman" },
+        { $push: { category: { $each: ["villain", "comic-based"] } } }
+      )
+    );
+    console.log("Added categories villain and comic-based to Batman");
   } catch (error) {
     console.error(error)
   } finally {

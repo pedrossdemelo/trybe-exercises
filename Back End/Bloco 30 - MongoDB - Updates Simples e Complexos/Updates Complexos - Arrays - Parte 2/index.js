@@ -42,6 +42,15 @@ const { MongoClient } = require("mongodb");
         .find({ category: { $all: ["action"] }, imdbRating: { $gt: 7 } })
         .toArray()
     );
+
+    console.log("Exercise 3");
+    console.log(
+      await movies.updateOne(
+        { title: "Batman" },
+        { $push: { ratings: { $each: [85, 100, 102, 105] } } }
+      )
+    );
+    console.log("Created an array of ratings for the Batman movie");
   } catch (error) {
     console.error(error);
   } finally {

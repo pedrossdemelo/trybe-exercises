@@ -56,6 +56,15 @@ const { MongoClient } = require("mongodb");
       )
     );
     console.log("Removed category action from Batman");
+
+    console.log("Exercise 4");
+    console.log(
+      await movies.findOneAndUpdate(
+        { title: "Batman" },
+        { $pop: { category: -1 } }
+      )
+    );
+    console.log("Removed first element from category array of Batman");
   } catch (error) {
     console.error(error)
   } finally {

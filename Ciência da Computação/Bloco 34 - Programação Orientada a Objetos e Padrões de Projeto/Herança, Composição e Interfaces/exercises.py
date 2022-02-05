@@ -1,4 +1,7 @@
-from abc import abstractmethod, abstractproperty
+from datetime import datetime
+from platform import java_ver
+import sys
+from abc import abstractclassmethod, abstractmethod, abstractproperty, abstractstaticmethod
 
 
 class TV:
@@ -68,7 +71,7 @@ class Shape:
     @abstractproperty
     def area(self):
         raise NotImplementedError
-    
+
     @abstractproperty
     def perimeter(self):
         raise NotImplementedError
@@ -113,3 +116,61 @@ class Circle(Shape):
     def perimeter(self):
         return self.radius * 2 * 3.14
 
+
+class Log_Manipulator:
+    @abstractstaticmethod
+    def log():
+        raise NotImplementedError
+
+
+class Log_File(Log_Manipulator):
+    @staticmethod
+    def log(message, path="logs.txt"):
+        original_stdout = sys.stdout
+        with open(path, 'a') as file:
+            sys.stdout = file
+            print(message)
+            sys.stdout = original_stdout
+
+
+class Log_Console(Log_Manipulator):
+    @staticmethod
+    def log(message):
+        print(message)
+
+
+class Log:
+    __manipulators = [Log_Console, Log_File]
+
+    @classmethod
+    def append_manipulator(cls, manipulator):
+        cls.__manipulators.append(manipulator)
+
+    @classmethod
+    def __log(cls, message):
+        for manipulator in cls.__manipulators:
+            manipulator.log(message)
+
+    @classmethod
+    def __format(cls, severity, message):
+        d = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        return f"[{severity} - {d}]: {message}"
+
+    @classmethod
+    def info(cls, message):
+        cls.__log(cls.__format("INFO", message))
+
+    @classmethod
+    def alert(cls, message):
+        cls.__log(cls.__format("ALERT", message))
+
+    @classmethod
+    def error(cls, message):
+        cls.__log(cls.__format("ERROR", message))
+
+    @classmethod
+    def debug(cls, message):
+        cls.__log(cls.__format("DEBUG", message))
+
+
+Log.debug("This is a debug message")

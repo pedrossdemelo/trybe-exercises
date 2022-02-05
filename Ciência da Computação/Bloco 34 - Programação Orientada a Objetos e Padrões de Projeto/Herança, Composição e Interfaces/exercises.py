@@ -29,3 +29,30 @@ class TV:
         else:
             self.__on = True
             print("TV is now on")
+
+
+class Statistics:
+    data = [9243, 234923, 92, 9234, 91234,
+            4756, 234, 4358, 12, 324, 8439, 2348]
+
+    @classmethod
+    def mean(cls):
+        return sum(cls.data) / len(cls.data)
+
+    @classmethod
+    def median(cls):
+        cls.data.sort()
+        if len(cls.data) % 2 == 0:
+            return (cls.data[len(cls.data) // 2] + cls.data[(len(cls.data) // 2) - 1]) / 2
+        else:
+            return cls.data[len(cls.data) // 2]
+
+    @classmethod
+    def mode(cls):
+        mode_dict = {}
+        for item in cls.data:
+            if item in mode_dict:
+                mode_dict[item] += 1
+            else:
+                mode_dict[item] = 1
+        return max(mode_dict, key=mode_dict.get)

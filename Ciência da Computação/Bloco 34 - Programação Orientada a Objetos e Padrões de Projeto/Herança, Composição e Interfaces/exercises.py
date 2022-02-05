@@ -1,31 +1,31 @@
 class TV:
     def __init__(self, size):
-        self.size = size
-        self.channel = 50
-        self.volume = 1
-        self.on = False
+        self.__size = size
+        self.__channel = 50
+        self.__volume = 1
+        self.__on = False
 
     def increase_volume(self):
-        if self.volume < 100:
-            self.volume += 1
-            print(f"Volume is now at {self.volume}")
+        if self.__volume < 100:
+            self.__volume += 1
+            print(f"Volume is now at {self.__volume}")
 
     def decrease_volume(self):
-        if self.volume > 1:
-            self.volume -= 1
-            print(f"Volume is now at {self.volume}")
+        if self.__volume > 1:
+            self.__volume -= 1
+            print(f"Volume is now at {self.__volume}")
 
     def change_channel(self, channel):
-        if channel is not int or channel < 1 or channel > 99:
+        if type(channel) is not int or channel < 1 or channel > 99:
             raise ValueError("Channel must be an integer between 1 and 99")
-        self.on = True
-        self.channel = channel
-        print(f"Channel is now at {self.channel}")
+        self.__on = True
+        self.__channel = channel
+        print(f"Channel is now at {self.__channel}")
 
     def toggle_power(self):
-        if self.on:
-            self.on = False
+        if self.__on:
+            self.__on = False
             print("TV is now off")
         else:
-            self.on = True
+            self.__on = True
             print("TV is now on")

@@ -36,10 +36,12 @@ class Statistics:
             4756, 234, 4358, 12, 324, 8439, 2348]
 
     @classmethod
+    @property
     def mean(cls):
         return sum(cls.data) / len(cls.data)
 
     @classmethod
+    @property
     def median(cls):
         cls.data.sort()
         if len(cls.data) % 2 == 0:
@@ -48,6 +50,7 @@ class Statistics:
             return cls.data[len(cls.data) // 2]
 
     @classmethod
+    @property
     def mode(cls):
         mode_dict = {}
         for item in cls.data:

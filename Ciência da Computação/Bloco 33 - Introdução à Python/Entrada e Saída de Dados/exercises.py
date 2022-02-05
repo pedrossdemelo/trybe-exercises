@@ -1,4 +1,5 @@
 import random
+import csv
 import json
 
 
@@ -27,4 +28,31 @@ def guessing_game():
                   0 else f"You lose! The word was {chosen_word}")
 
 
-guessing_game()
+# guessing_game()
+
+
+def calc_percent_of_category(path):
+    with open(path) as file:
+        data = json.load(file)
+    total = len(data)
+    percentages = {}
+    for book in data:
+        categories = book["categories"]
+        for category in categories:
+            if category not in percentages:
+                percentages[category] = 1 / total * 100
+            else:
+                percentages[category] += 1 / total * 100
+    return dict(sorted(percentages.items(), key=lambda x: x[1], reverse=True))
+
+
+
+def write_to_file_csv(path, data, headers):
+    with open(path, "w") as file:
+        writer = csv.writer(file)
+        writer.writerow(headers)
+        for key, value in data.items():
+            writer.writerow([key, value])
+
+
+write_to_file_csv("percentages.csv", calc_percent_of_category("books.json"), ["Category", "Percentage"])

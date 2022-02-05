@@ -1,4 +1,5 @@
 import random
+import json
 
 
 def print_as_sqr_tri(string):
@@ -10,8 +11,8 @@ def print_as_sqr_tri(string):
 # print_as_sqr_tri("PEDRO")
 
 def guessing_game():
-    words = ["CHOSEN", "PYTHON", "CODING", "CRYING",
-             "SLEEPY", "SLEEPS", "SOWING", "SEWING"]
+    with open("words.json") as file:
+        words = json.load(file)
     chosen_word, tries = random.choice(words), 3
     while tries > 0:
         scrambled_word = "".join(random.sample(chosen_word, len(chosen_word)))

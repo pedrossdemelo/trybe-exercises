@@ -22,8 +22,6 @@ class Circle:
         return 2 * 3.14 * self.radius
 
 
-# Exercício 4: Vamos mudar um pouco nosso contexto para um sistema de vendas de uma cafeteria. Como podemos abstrair um pedido composto por vários itens? Qual seu nome, atributos e comportamentos?
-
 class OrderItem:
     def __init__(self, name, price, quantity) -> None:
         self.name, self.price, self.quantity = name, price, quantity

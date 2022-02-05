@@ -1,3 +1,6 @@
+import re
+
+
 def fizzbuzz_seq(end):
     result = []
     for i in range(1, end+1):
@@ -27,3 +30,19 @@ def sequence_to_phonenum(sequence):
         for char in key:
             sequence = sequence.replace(char, str(map[key]))
     return sequence
+
+
+def valid_email(email):
+    regex = re.compile(r'^[a-zA-Z0-9_\-\.]+@[a-zA-Z0-9_\-]+\.[a-zA-Z]{1,3}$')
+    if regex.fullmatch(email):
+        return True
+    else:
+        return False
+
+
+def remove_invalid_emails(array):
+    result = []
+    for email in array:
+        if valid_email(email):
+            result.append(email)
+    return result

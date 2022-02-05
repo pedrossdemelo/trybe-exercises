@@ -39,9 +39,24 @@ class Order:
         for item in self.items:
             total += item.get_total()
         return total
-    
+
     def get_item_names(self) -> list:
         names = []
         for item in self.items:
             names.append(item.name)
         return names
+
+
+class Television:
+    def __init__(self, name, price, inches) -> None:
+        self.name, self.price, self.inches, self.state = name, price, inches, "off"
+
+    def turn_on(self) -> None:
+        if self.state == "off":
+            self.state = "on"
+            print("The TV is on.")
+
+    def turn_off(self) -> None:
+        if self.state == "on":
+            self.state = "off"
+            print("The TV is off.")

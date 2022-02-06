@@ -14,6 +14,14 @@ class Jedi:
         return self.level * 100
 
 
+class JediAdapter(Jedi):
+    def __init__(self, level):
+        super().__init__(level)
+
+    def attack(self):
+        return self.attackWithSaber()
+
+
 class StarWarsGame:
     def __init__(self, character):
         self.character = character
@@ -23,4 +31,4 @@ class StarWarsGame:
 
 
 StarWarsGame(Soldier(5)).fight_enemy()
-StarWarsGame(Jedi(20)).fight_enemy() # Raises AttributeError
+StarWarsGame(JediAdapter(20)).fight_enemy()  # Raises AttributeError

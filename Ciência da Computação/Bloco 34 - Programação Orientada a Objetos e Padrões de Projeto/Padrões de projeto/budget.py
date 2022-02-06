@@ -1,19 +1,55 @@
+from abc import ABC, abstractproperty, abstractstaticmethod
+
+
+class TaxInterface(ABC):
+    name = None
+
+    @abstractstaticmethod
+    def calc(self):
+        raise NotImplementedError
+
+
+class ISS(TaxInterface):
+    name = "ISS"
+
+    @staticmethod
+    def calc(amount):
+        return amount * 0.1
+
+
+class ICMS(TaxInterface):
+    name = "ICMS"
+
+    @staticmethod
+    def calc(amount):
+        return amount * 0.06
+
+
 class Orcamento:
-    def __init__(self, valor):
+    def __init__(self, valor, taxes):
         self.valor = valor
+        self.taxes = taxes if isinstance(taxes, list) else [taxes]
 
-    def calcular_imposto(self, imposto):
-        if imposto == 'ISS':
-            return self.__calcular_iss()
-        elif imposto == 'ICMS':
-            return self.__calcular_icms()
+    @property
+    def imposto(self):
+        for tax in self.taxes:
+            print(f"{tax.name}: {tax.calc(self.valor)}")
 
-    def __calcular_iss(self):
-        return self.valor * 0.1
+        total = sum([tax.calc(self.valor) for tax in self.taxes])
+        print(f"Total: {total}")
+        return total
 
-    def __calcular_icms(self):
-        return self.valor * 0.06
 
-orcamento = Orcamento(1000)
-print(f"ISS: {orcamento.calcular_imposto('ISS')}")
-print(f"ICMS: {orcamento.calcular_imposto('ICMS')}")
+orcamento = Orcamento(1000, [ISS, ICMS])
+orcamento.imposto
+'''
+ISS: 100.0
+ICMS: 60.0
+Total: 160.0
+'''
+orcamento2 = Orcamento(2000, ICMS)
+orcamento2.imposto
+'''
+ICMS: 120.0
+Total: 120.0
+'''

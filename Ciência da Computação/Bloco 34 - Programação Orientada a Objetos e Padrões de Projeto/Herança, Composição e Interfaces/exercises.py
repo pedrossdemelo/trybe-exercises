@@ -173,4 +173,73 @@ class Log:
         cls.__log(cls.__format("DEBUG", message))
 
 
-Log.debug("This is a debug message")
+# Log.debug("This is a debug message")
+
+
+class Guest:
+    def __init__(self, name, cpf):
+        self.name = name
+        self.cpf = cpf
+
+
+class Room:
+    def __init__(self, number, floor, max_guests, price):
+        self.number = number
+        self.floor = floor
+        self.max_guests = max_guests
+        self.price = price
+        self.is_booked = False
+
+    def __str__(self):
+        return f"Room {self.number} - {self.floor} floor - {self.max_guests} guests - R${self.price}"
+
+    def __repr__(self):
+        return f"Room {self.number} - floor {self.floor} - {self.max_guests} guests - R${self.price}"
+
+
+class Reservation:
+    def __init__(self, guest, room):
+        self.guest = guest
+        self.room = room
+
+    def __repr__(self):
+        return f"{self.guest.name} booked room {self.room.number}"
+
+
+class Hotel:
+    def __init__(self, rooms=[], reservations=[]):
+        self.rooms = rooms
+        self.reservations = reservations
+
+    def check_in(self, guests):
+        guest_amount = len(guests)
+        for room in self.rooms:
+            if room.is_booked is False and guest_amount <= room.max_guests:
+                room.is_booked = True
+                for guest in guests:
+                    self.reservations.append(Reservation(guest, room))
+                return None
+        raise IndexError("No rooms available for the guests")
+
+    def check_out(self, room):
+        self.reservations = filter(
+            lambda reservation: reservation.room.number != room.number, self.reservations)
+        room.is_booked = False
+        self.rooms = map(
+            lambda other_room: other_room if other_room.number != room.number else room, self.rooms)
+
+    @property
+    def available_rooms(self):
+        available_rooms = list(
+            filter(lambda room: room.is_booked is False, self.rooms))
+        return available_rooms
+
+
+rooms = [Room(1, 1, 2, 100), Room(2, 1, 2, 100), Room(
+    3, 1, 2, 100), Room(4, 1, 2, 100), Room(5, 1, 2, 100)]
+guests = [Guest("John", "12345678901"), Guest("Mary", "12345678902")]
+hotel = Hotel(rooms)
+print(hotel.available_rooms)
+hotel.check_in(guests)
+print(hotel.available_rooms)
+print(hotel.reservations)

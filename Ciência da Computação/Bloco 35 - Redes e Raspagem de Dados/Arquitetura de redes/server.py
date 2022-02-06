@@ -3,6 +3,7 @@ import socketserver
 
 class MyTCPHandler(socketserver.BaseRequestHandler):
     def handle(self):
+        self.request.sendall(f"Hello, client @ {self.client_address[0]}\n".encode('utf-8'))
         self.data = self.request.recv(1024).strip()
         data = self.data
         print(f"[{self.client_address[0]}]: {data.decode('utf-8')}")

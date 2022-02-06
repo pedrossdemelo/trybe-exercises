@@ -31,4 +31,4 @@ class StarWarsGame:
 
 
 StarWarsGame(Soldier(5)).fight_enemy()
-StarWarsGame(JediAdapter(20)).fight_enemy()  # Raises AttributeError
+StarWarsGame(JediAdapter(20)).fight_enemy()

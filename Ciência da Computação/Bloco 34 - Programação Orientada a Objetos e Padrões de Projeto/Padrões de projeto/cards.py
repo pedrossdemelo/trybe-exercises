@@ -35,5 +35,24 @@ class Baralho:
 
 
 # Printing in sequential order <A de copas> to <K de paus>
-for carta in Baralho():
+# for carta in Baralho():
+#     print(carta)
+
+
+class BaralhoInverso(Baralho):
+    def __iter__(self):
+        self.__index = len(self._cartas)
+        return self
+
+    def __next__(self):
+        if self.__index <= 0:
+            self.__index = len(self._cartas)
+            raise StopIteration
+        carta = self._cartas[self.__index - 1]
+        self.__index -= 1
+        return carta
+
+
+# Printing in reverse order <K de paus> to <A de copas>
+for carta in BaralhoInverso():
     print(carta)

@@ -10,49 +10,45 @@ class Carta:
 class Baralho:
     naipes = 'copas ouros espadas paus'.split()
     valores = 'A 2 3 4 5 6 7 8 9 10 J Q K'.split()
-    __index = 0
 
-    def __init__(self):
-        self._cartas = [
+    def __init__(self, reverse_order = False):
+        self.__cards = [
             Carta(valor, naipe)
             for naipe in self.naipes
             for valor in self.valores
         ]
+        self.__reverse_order = reverse_order
+        self.__index = len(self) if reverse_order else 0
 
     def __len__(self):
-        return len(self._cartas)
+        return len(self.__cards)
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        if self.__index >= len(self._cartas):
-            self.__index = 0
-            raise StopIteration
-        carta = self._cartas[self.__index]
-        self.__index += 1
-        return carta
+        if self.__reverse_order:
+            if self.__index <= 0:
+                self.__index = len(self)
+                raise StopIteration
+            else:
+                carta = self.__cards[self.__index - 1]
+                self.__index -= 1
+                return carta
+        
+        else:
+            if self.__index >= len(self.__cards):
+                self.__index = 0
+                raise StopIteration
+            else:
+                carta = self.__cards[self.__index]
+                self.__index += 1
+                return carta
 
+print("\nTraversing a deck of cards:\n")
+for carta in Baralho():
+    print(carta)
 
-# Printing in sequential order <A de copas> to <K de paus>
-# for carta in Baralho():
-#     print(carta)
-
-
-class BaralhoInverso(Baralho):
-    def __iter__(self):
-        self.__index = len(self._cartas)
-        return self
-
-    def __next__(self):
-        if self.__index <= 0:
-            self.__index = len(self._cartas)
-            raise StopIteration
-        carta = self._cartas[self.__index - 1]
-        self.__index -= 1
-        return carta
-
-
-# Printing in reverse order <K de paus> to <A de copas>
-for carta in BaralhoInverso():
+print("\nTraversing a deck of cards in reverse order:\n")
+for carta in Baralho(reverse_order=True):
     print(carta)

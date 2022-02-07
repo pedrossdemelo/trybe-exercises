@@ -31,7 +31,9 @@ def get_book(book_url):
     thumbnail_url = selector.css(".thumbnail img::attr(src)").get()[
         len("../.."):]
     thumbnail = requests.get(base_url + thumbnail_url).content
-    formatted_book = f"{title} - {price}\n{description}"
+    in_stock = list(filter(lambda text: "available" in text,
+        selector.css(".instock.availability::text").getall()))[0].strip()
+    formatted_book = f"{title} - {price} - {in_stock}\n{description}"
 
     with open(f"{title}.txt", "wb") as description_file:
         description_file.write(formatted_book.encode("utf-8"))

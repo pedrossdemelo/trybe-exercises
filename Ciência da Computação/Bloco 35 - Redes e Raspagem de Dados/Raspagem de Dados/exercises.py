@@ -11,5 +11,9 @@ github_users = ["{} {}".format(user["login"], user["url"]) for user in github_js
 #     print(user)
 
 
-test_bot_detection = requests.get("https://scrapethissite.com/pages/advanced/?gotcha=headers").text
-print("bot detected" not in test_bot_detection) # False
+spoofed_headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0",
+    "Accept": "text/html"
+}
+test_bot_detection = requests.get("https://scrapethissite.com/pages/advanced/?gotcha=headers", headers=spoofed_headers).text
+print("bot detected" not in test_bot_detection) # True

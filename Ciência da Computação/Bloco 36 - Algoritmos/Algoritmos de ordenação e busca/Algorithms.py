@@ -7,7 +7,7 @@ from Stopwatch import Stopwatch
 # array look like?
 
 
-def bubbleSort(arr):
+def bubble_sort(arr):
     print(arr)
     iterations = 0
     n = len(arr)
@@ -22,7 +22,7 @@ def bubbleSort(arr):
 
 
 with Stopwatch("Bubble sort"):
-    print(bubbleSort(["zebra", "monkey", "elephant", "macaw", "boar"]))
+    print(bubble_sort(["zebra", "monkey", "elephant", "macaw", "boar"]))
 
 
 def merge(left, right):
@@ -121,4 +121,4 @@ with Stopwatch("Merge sort"):
 
 
 with Stopwatch("Bubble sort"):
-    print(bubbleSort(randomized[:])) # Randomized n=10000. Time: 6.12s O(n^2)
+    print(bubble_sort(randomized[:])) # Randomized n=10000. Time: 6.12s O(n^2)

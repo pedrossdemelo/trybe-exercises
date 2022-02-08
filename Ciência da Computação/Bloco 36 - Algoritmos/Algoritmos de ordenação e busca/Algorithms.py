@@ -5,6 +5,7 @@ from Stopwatch import Stopwatch
 # "arara", "javali"], after two iterations using bubble sort , what would this
 # array look like?
 
+
 def bubbleSort(arr):
     print(arr)
     iterations = 0
@@ -20,3 +21,37 @@ def bubbleSort(arr):
 
 with Stopwatch("Bubble sort"):
     print(bubbleSort(["zebra", "monkey", "elephant", "macaw", "boar"]))
+
+
+def merge(left, right):
+    left_index, right_index = 0, 0
+    result = []
+    while left_index < len(left) and right_index < len(right):
+        if left[left_index] < right[right_index]:
+            result.append(left[left_index])
+            left_index += 1
+        else:
+            result.append(right[right_index])
+            right_index += 1
+
+    result += left[left_index:]
+    result += right[right_index:]
+    print(left, right)
+    return result
+
+
+def merge_sort(array):
+    if len(array) <= 1:  # base case
+        return array
+    half = len(array) // 2
+    left = merge_sort(array[:half])
+    right = merge_sort(array[half:])
+    return merge(left, right)
+
+
+# Demonstre o passo a passo, do processo de mistura, de um array sendo ordenado,
+# utilizando merge sort . Comece o passo a passo a partir da linha abaixo: 
+# 73    5 4    6 8    2 1
+
+with Stopwatch("Merge sort"):
+    print(merge_sort([7, 3, 5, 4, 6, 8, 2, 1]))

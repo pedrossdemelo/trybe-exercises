@@ -20,3 +20,18 @@ def contains_duplicate(numbers):
 # Worst case scenario:
 # Array is unsorted and the duplicate is at the last index
 # Time complexity is O(n log n)
+
+##########################################################################################
+
+#  Suppose you are writing a function for a naval battle game. Given a
+#  two-dimensional array with n rows and m columns, and a pair of coordinates x
+#  for rows and y for columns, the algorithm checks whether there is a ship at
+#  the target coordinate. For example:
+
+# input = [ 0 0 0 0 1
+#           0 0 0 0 1
+#           1 1 1 1 1
+#           0 0 0 1 0 ]
+
+# result for (0, 4) = True
+# result for (1, 1) = False

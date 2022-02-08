@@ -38,3 +38,16 @@ def contains_duplicate(numbers):
 
 # Time complexity: 0(n * m)
 # Space complexity: 0(n * m)
+
+# Exercício 5 Utilize o módulo random da linguagem Python para gerar um array com
+# 100 números. Cada um desses números deve ser a média de dez números gerados
+# aleatóriamente. Qual é a ordem de complexidade de tempo e de espaço deste
+# programa? 
+
+import random
+
+def random_array(size):
+    array = []
+    for i in range(size):
+        array.append(random.randint(1, 10))
+    return array

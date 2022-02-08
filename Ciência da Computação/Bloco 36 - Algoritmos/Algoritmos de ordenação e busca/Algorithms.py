@@ -49,8 +49,8 @@ def merge_sort(array):
     return merge(left, right)
 
 
-# Demonstre o passo a passo, do processo de mistura, de um array sendo ordenado,
-# utilizando merge sort . Comece o passo a passo a partir da linha abaixo: 
+# Demonstrate the step by step, merge process, of an array being sorted, using
+# merge sort . Start the step by step from the line below: 
 # 73    5 4    6 8    2 1
 
 with Stopwatch("Merge sort"):

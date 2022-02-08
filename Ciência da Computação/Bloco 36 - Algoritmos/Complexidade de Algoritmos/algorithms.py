@@ -11,7 +11,7 @@ def contains_duplicate(numbers):
 
 # Best case scenario:
 # Array is already sorted and the duplicate is at the second index
-# Time complexity is O(2)
+# Time complexity is O(1)
 
 # Average case scenario:
 # Array is unsorted and the duplicate is at the middle index

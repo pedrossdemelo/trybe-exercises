@@ -30,3 +30,16 @@ def is_prime_recursive(n, divisor=3):
     if n % divisor == 0: return False
     if divisor ** 2 > n: return True
     return is_prime_recursive(n, divisor + 2)
+
+# Write a recursive algorithm that solves the hanoi tower problem, following the instructions:
+# The disks start lined up in the first column, and should be arranged in order of size in the last column.
+
+def hanoi(n, start, auxilliary, destination):
+    if n == 1:
+        print(f'Move disc 1 from {start} to {destination}')
+        return
+    hanoi(n - 1, start, destination, auxilliary)
+    print(f'Move disc {n} from {start} to {destination}')
+    hanoi(n - 1, auxilliary, start, destination)
+
+hanoi(3, 'A', 'B', 'C')

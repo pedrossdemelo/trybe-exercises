@@ -35,3 +35,6 @@ def contains_duplicate(numbers):
 
 # result for (0, 4) = True
 # result for (1, 1) = False
+
+# Time complexity: 0(n * m)
+# Space complexity: 0(n * m)

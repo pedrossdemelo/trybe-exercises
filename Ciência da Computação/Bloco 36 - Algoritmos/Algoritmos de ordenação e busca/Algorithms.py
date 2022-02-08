@@ -116,12 +116,12 @@ def insertion_sort(array):
 #     print(selection_sort(inverse_sorted[:])) # Sorted n=10000. Time: 1.97s
 
 
-with Stopwatch("Merge sort"):
-    print(merge_sort(randomized[:])) # Randomized n=10000. Time: 0.05s O(n log n)
+# with Stopwatch("Merge sort"):
+#     print(merge_sort(randomized[:])) # Randomized n=10000. Time: 0.05s O(n log n)
 
 
-with Stopwatch("Bubble sort"):
-    print(bubble_sort(randomized[:])) # Randomized n=10000. Time: 6.12s O(n^2)
+# with Stopwatch("Bubble sort"):
+#     print(bubble_sort(randomized[:])) # Randomized n=10000. Time: 6.12s O(n^2)
 
 
 # Convert a recursive binary search into an iterative one.
@@ -150,3 +150,24 @@ def binary_search_iterative(arr, target):
         else:
             low = mid + 1
     return -1
+
+
+# To find out which commit introduced an error into the system, we need to go
+# back in time by checking old commits in order to discover a commit where the
+# tests fail. Assuming this will be represented as an array of booleans , find
+# the index where the error first occurred.  Since tests take time to run, solve
+# the problem by running as few tests as possible. 
+
+def binary_search_first_error(commits):
+    left, right = 0, len(commits) - 1
+    result = "No error found"
+    while left <= right:
+        mid = (left + right) // 2
+        if commits[mid] == False:
+            result = mid
+            right = mid - 1
+        else:
+            left = mid + 1
+    return result
+
+print(binary_search_first_error([True, True, True, True, False, False, False])) # Expected: 4

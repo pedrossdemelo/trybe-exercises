@@ -96,5 +96,13 @@ with Stopwatch("Selection sort"):
     print(selection_sort(randomized[:])) # Randomized n=10000. Time: 1.87s
 
 
+with Stopwatch("Selection sort (sorted)"):
+    print(selection_sort(sorted[:])) # Sorted n=10000. Time: 1.87s
+
+
 with Stopwatch("Insertion sort"):
     print(insertion_sort(randomized[:])) # Randomized n=10000. Time: 2.02s
+
+
+with Stopwatch("Insertion sort (sorted)"):
+    print(insertion_sort(sorted[:])) # Sorted n=10000. Time: 0.001s

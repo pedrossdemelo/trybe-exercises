@@ -15,3 +15,9 @@ def largest_int(nums, largest=float('-inf')):
     if len(nums) == 0: return largest
     if nums[0] > largest: largest = nums[0]
     return largest_int(nums[1:], largest)
+
+# Write a recursive algorithm to find the greatest common divisor of two integers. 
+
+def gcd(a, b):
+    if b == 0: return a
+    return gcd(b, a % b)

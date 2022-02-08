@@ -8,3 +8,10 @@ def count_evens_recursive(nums):
     if len(nums) == 0: return 0
     if nums[0] % 2 == 0: return 1 + count_evens_recursive(nums[1:])
     else: return count_evens_recursive(nums[1:])
+
+# Create a recursive algorithm that finds the largest integer in a list. 
+
+def largest_int(nums, largest=float('-inf')):
+    if len(nums) == 0: return largest
+    if nums[0] > largest: largest = nums[0]
+    return largest_int(nums[1:], largest)

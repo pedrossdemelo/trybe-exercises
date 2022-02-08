@@ -21,3 +21,12 @@ def largest_int(nums, largest=float('-inf')):
 def gcd(a, b):
     if b == 0: return a
     return gcd(b, a % b)
+
+# Write a recursive algorithm that identifies whether a number is prime.
+
+def is_prime_recursive(n, divisor=3):
+    if n == 1: return False
+    if n == 2: return True
+    if n % divisor == 0: return False
+    if divisor ** 2 > n: return True
+    return is_prime_recursive(n, divisor + 2)

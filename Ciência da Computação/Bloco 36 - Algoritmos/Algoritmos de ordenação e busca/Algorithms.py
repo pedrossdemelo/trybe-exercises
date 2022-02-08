@@ -113,7 +113,7 @@ def insertion_sort(array):
 
 
 # with Stopwatch("Insertion sort (inverse sorted)"):
-#     print(selection_sort(inverse_sorted[:])) # Sorted n=10000. Time: 1.97s
+#     print(insertion_sort(inverse_sorted[:])) # Sorted n=10000. Time: 4.16s
 
 
 # with Stopwatch("Merge sort"):

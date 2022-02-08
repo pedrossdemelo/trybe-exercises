@@ -1,3 +1,4 @@
+from random import shuffle
 from Stopwatch import Stopwatch
 
 
@@ -15,7 +16,8 @@ def bubbleSort(arr):
             if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
             iterations += 1
-            if (iterations == 2): print(f"After {iterations} iterations: {arr}")
+            if (iterations == 2):
+                print(f"After {iterations} iterations: {arr}")
     return arr
 
 
@@ -50,8 +52,49 @@ def merge_sort(array):
 
 
 # Demonstrate the step by step, merge process, of an array being sorted, using
-# merge sort . Start the step by step from the line below: 
+# merge sort . Start the step by step from the line below:
 # 73    5 4    6 8    2 1
+
 
 with Stopwatch("Merge sort"):
     print(merge_sort([7, 3, 5, 4, 6, 8, 2, 1]))
+
+
+# Run the sorting by selection and insertion algorithms for sorted, inversely
+# sorted, and random data entries, then compare them. Make tests for entries of
+# size 10,000, 100,000, 1,000,000.
+
+
+sorted = list(range(10000))
+inverse_sorted = list(reversed(range(10000)))
+randomized = sorted[:]
+shuffle(randomized)
+
+
+def selection_sort(array):
+    for i in range(len(array)):
+        min_idx = i
+        for j in range(i+1, len(array)):
+            if array[min_idx] > array[j]:
+                min_idx = j
+        array[i], array[min_idx] = array[min_idx], array[i]
+    return array
+
+
+def insertion_sort(array):
+    for i in range(1, len(array)):
+        key = array[i]
+        j = i-1
+        while j >= 0 and key < array[j] :
+                array[j + 1] = array[j]
+                j -= 1
+        array[j + 1] = key
+    return array
+
+
+with Stopwatch("Selection sort"):
+    print(selection_sort(randomized[:])) # Randomized n=10000. Time: 1.87s
+
+
+with Stopwatch("Insertion sort"):
+    print(insertion_sort(randomized[:])) # Randomized n=10000. Time: 2.02s

@@ -92,25 +92,33 @@ def insertion_sort(array):
     return array
 
 
-with Stopwatch("Selection sort"):
-    print(selection_sort(randomized[:])) # Randomized n=10000. Time: 1.87s
+# with Stopwatch("Selection sort"):
+#     print(selection_sort(randomized[:])) # Randomized n=10000. Time: 1.87s
 
 
-with Stopwatch("Selection sort (sorted)"):
-    print(selection_sort(sorted[:])) # Sorted n=10000. Time: 1.87s
+# with Stopwatch("Selection sort (sorted)"):
+#     print(selection_sort(sorted[:])) # Sorted n=10000. Time: 1.87s
 
 
-with Stopwatch("Selection sort (inverse sorted)"):
-    print(selection_sort(inverse_sorted[:])) # Sorted n=10000. Time: 1.97s
+# with Stopwatch("Selection sort (inverse sorted)"):
+#     print(selection_sort(inverse_sorted[:])) # Sorted n=10000. Time: 1.97s
 
 
-with Stopwatch("Insertion sort"):
-    print(insertion_sort(randomized[:])) # Randomized n=10000. Time: 2.02s
+# with Stopwatch("Insertion sort"):
+#     print(insertion_sort(randomized[:])) # Randomized n=10000. Time: 2.02s
 
 
-with Stopwatch("Insertion sort (sorted)"):
-    print(insertion_sort(sorted[:])) # Sorted n=10000. Time: 0.001s
+# with Stopwatch("Insertion sort (sorted)"):
+#     print(insertion_sort(sorted[:])) # Sorted n=10000. Time: 0.001s
 
 
-with Stopwatch("Insertion sort (inverse sorted)"):
-    print(selection_sort(inverse_sorted[:])) # Sorted n=10000. Time: 1.97s
+# with Stopwatch("Insertion sort (inverse sorted)"):
+#     print(selection_sort(inverse_sorted[:])) # Sorted n=10000. Time: 1.97s
+
+
+with Stopwatch("Merge sort"):
+    print(merge_sort(randomized[:])) # Randomized n=10000. Time: 0.05s O(n log n)
+
+
+with Stopwatch("Bubble sort"):
+    print(bubbleSort(randomized[:])) # Randomized n=10000. Time: 6.12s O(n^2)

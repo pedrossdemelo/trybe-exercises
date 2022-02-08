@@ -51,3 +51,5 @@ def random_array(size):
     for i in range(size):
         array.append(random.randint(1, 10))
     return array
+# Time complexity: O(n)
+# Space complexity: O(n)

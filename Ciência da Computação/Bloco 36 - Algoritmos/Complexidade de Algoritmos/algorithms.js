@@ -3,4 +3,4 @@ numbers.map(n => n*n) // Time complexity: O(n)
 
 numbers.map(n => n*n)
        .filter(n => n%2 === 0)
-       .reduce((acc, n) => acc + n)
+       .reduce((acc, n) => acc + n) // Time complexity: O(n)

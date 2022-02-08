@@ -122,3 +122,31 @@ with Stopwatch("Merge sort"):
 
 with Stopwatch("Bubble sort"):
     print(bubble_sort(randomized[:])) # Randomized n=10000. Time: 6.12s O(n^2)
+
+
+# Convert a recursive binary search into an iterative one.
+
+
+def binary_search_recursive(arr, low, high, target):
+    if high >= low:
+        mid = (high + low) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] > target:
+            return binary_search_recursive(arr, low, mid - 1, target)
+        else:
+            return binary_search_recursive(arr, mid + 1, high, target)
+    else: return -1
+
+
+def binary_search_iterative(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (high + low) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] > target:
+            high = mid - 1
+        else:
+            low = mid + 1
+    return -1

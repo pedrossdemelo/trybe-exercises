@@ -66,5 +66,11 @@ def len_of_words_from_chars(words, chars):
 
 
 def calculate_score(person):
-    # Code here
-    pass
+    print(person)
+    if "subordinates" in person:
+        # Assuming that there can only be one manager for each subordinate
+        return sum(calculate_score(subordinate) for subordinate in person["subordinates"]) + 1
+        # If there were multiple managers, we would need to store the subordinates in a set of ids
+    return 1
+person = {"id": 1, "subordinates": [{"id": 2, "subordinates": [{"id": 4, "subordinates": [{"id": 5, "subordinates": [{"id": 7}]}, {"id": 6}]}]}, {"id": 3}]}
+print(calculate_score(person)) # 7

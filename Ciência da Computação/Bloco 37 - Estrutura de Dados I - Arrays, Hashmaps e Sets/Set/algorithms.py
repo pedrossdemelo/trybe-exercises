@@ -48,6 +48,17 @@ print(get_winner(competitors)) # Marco
 # characters. Acceptable time limit complexity: O(n^2).
 
 
-def largest_non_repeated_substring(string):
-    # Code here
-    pass
+def largest_non_repeated_substring_size(string):
+    max_length_substring = []
+    current_substring = []
+    for letter in string:
+        if letter in current_substring:
+            current_substring = current_substring[current_substring.index(letter)+1:]
+            current_substring.append(letter)
+        else: current_substring.append(letter)
+        if len(max_length_substring) < len(current_substring):
+            max_length_substring = current_substring
+    return len(max_length_substring)
+
+
+print(largest_non_repeated_substring_size("abacabad")) # 3

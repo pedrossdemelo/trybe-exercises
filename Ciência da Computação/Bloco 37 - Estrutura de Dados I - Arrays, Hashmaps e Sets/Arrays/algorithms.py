@@ -96,4 +96,45 @@ def students_in_library(entries, exits, search_instant):
             students -= 1
     return students
 
+# In a server manager software, we need to check the number of servers that
+# communicate. The servers are represented as a two-dimensional array where the
+# value 1 represents a computer and 0 represents no computer. Two servers
+# communicate if they are in the same row or the same column. 
 
+# servers = [[1,0],[0,1]]
+# result: 0
+# Rows and columns are different.
+
+# servers = [[1,0],[1,1]]
+# result: 3
+# All servers communicate with at least one other server.
+
+# servers = [[1, 0, 0],
+#            [1, 0, 0],
+#            [0, 0, 1]]
+# result: 2
+# The server of index (2, 2) has no other server in the same row and column.
+
+def is_inbounds(matrixlen, coord):
+    row, column = coord
+    return row >= 0 and row < matrixlen and column >= 0 and column < matrixlen
+
+def near_me(matrixlen, coord):
+    row, column = coord
+    near = []
+    possible = [(row-1, column), (row+1, column), (row, column-1), (row, column+1)]
+    for possible_coord in possible:
+        if is_inbounds(matrixlen, possible_coord):
+            near.append(possible_coord)
+    return near
+
+def server_connection_count(servers):
+    matrixlen = len(servers)
+    connected_servers = set()
+    for i in range(matrixlen):
+        for j in range(matrixlen):
+            if servers[i][j] == 1:
+                for near_coord in near_me(matrixlen, (i, j)):
+                    if servers[near_coord[0]][near_coord[1]] == 1:
+                        connected_servers.add((i, j))
+    return len(connected_servers)

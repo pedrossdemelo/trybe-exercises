@@ -1,3 +1,4 @@
+import os
 import time
 import platform
 from subprocess import check_output
@@ -36,3 +37,13 @@ def get_memory_usage():
         elif platform.system() == "Darwin":
             print(check_output("top -l 1 | head -n 10 | grep PhysMem", shell=True).decode('utf-8'))
         time.sleep(1)
+
+
+def get_pid():
+    current_pid = os.getpid()
+    all_pids = check_output("ps -e", shell=True).decode('utf-8')
+    my_pid = [pid for pid in all_pids.split("\n") if pid.startswith(str(current_pid))][0]
+    print(my_pid)
+
+
+get_pid() # 20401 ??         0:00.04 /opt/homebrew/Cellar/python@3.10/3.10.1/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/Contents/MacOS/Python -u /Users/pedrosousa/Documents/Trybe/trybe-exercises/Ciência da Computação/Bloco 37 - Estrutura de Dados I - Arrays, Hashmaps e Sets/Arquitetura de Computadores/resources.py

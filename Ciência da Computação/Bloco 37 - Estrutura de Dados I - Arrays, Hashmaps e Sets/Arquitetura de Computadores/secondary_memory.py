@@ -18,12 +18,15 @@ class SecondaryMemory:
         value = str(value)
         next_index = str(len(listdir(self.disk_path)))
         next_file_name = join(self.disk_path, next_index)
-        # Sua implementação
+        with open(next_file_name, "w") as f:
+            f.write(value)
 
     def get(self, index):
         index = str(index)
         file_name = join(self.disk_path, index)
-        # Sua implementação
+        with open(file_name, "r") as f:
+            value = f.read()
+            return float(value)
 
     def clean(self):
         rmtree(self.disk_path)

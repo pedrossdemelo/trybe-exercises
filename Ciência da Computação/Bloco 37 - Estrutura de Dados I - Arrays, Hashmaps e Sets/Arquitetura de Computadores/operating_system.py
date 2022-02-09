@@ -22,16 +22,18 @@ for number in RANDOM_NUMBERS:
 timer("Números carregados na memória principal", main_load_init_time)
 # Time: 0.000055s for 100 numbers
 # Time: 0.000102s for 200 numbers
+# Time: 0.000089s for 200 numbers without cleanup
 
 main_get_init_time = perf_counter()
 main_sum = sum([main.get(i) for i in range(len(RANDOM_NUMBERS))])
 timer(f"Soma na memória principal: {main_sum}", main_get_init_time)
 # Time: 0.000047s for 100 numbers
 # Time: 0.000102s for 200 numbers
+# Time: 0.000099s for 200 numbers without cleanup
 
-main_clean_init_time = perf_counter()
-main.clean()
-timer("Clean na memória principal", main_clean_init_time)
+# main_clean_init_time = perf_counter()
+# main.clean()
+# timer("Clean na memória principal", main_clean_init_time)
 # Time: 0.000003s for 100 numbers 
 # Time: 0.000004s for 200 numbers 
 
@@ -43,6 +45,7 @@ for number in RANDOM_NUMBERS:
 timer("Números carregados na memória secundária", secondary_load_initial_time)
 # Time: 0.029877s for 100 numbers
 # Time: 0.087865s for 200 numbers
+# Time: 0.324601s for 200 numbers without cleanup
 
 secondary_get_init_time = perf_counter()
 secondary_sum = sum([secondary.get(i) for i in range(len(RANDOM_NUMBERS))])
@@ -50,8 +53,9 @@ timer(f"Soma na memória secundária: {secondary_sum}", secondary_get_init_time)
 # Time: 0.003471s for 100 numbers
 # Time: 0.007136s for 200 numbers
 
-secondary_clean_init_time = perf_counter()
-secondary.clean()
-timer("Clean na memória secundária", secondary_clean_init_time)
+# secondary_clean_init_time = perf_counter()
+# secondary.clean()
+# timer("Clean na memória secundária", secondary_clean_init_time)
 # Time: 0.006941s for 100 numbers
 # Time: 0.020439s for 200 numbers
+# Time: 0.024360s for 200 numbers without cleanup

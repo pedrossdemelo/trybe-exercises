@@ -46,3 +46,29 @@ def shuffle_cards(cards):
         for idx in random_idxs:
             right[idx], left[idx] = left[idx], right[idx]
     return left + right
+
+
+# Given an array of integer numbers that represent products in an e-commerce
+# store. Check how many products form good combinations, considering that a good
+# combination is when one product is equal to another and its index is higher
+# than the previous one. This combination can be used to modify the products on
+# a page. For example: 
+
+# Example 1:
+# products = [1, 3, 1, 1, 1, 2, 3]
+# result = 4
+# The indices (0, 2), (0, 3), (1, 5), (2, 3) form combinations.
+
+# Example 2:
+# products = [1, 1, 2, 3]
+# result = 1
+# The key figures (0, 1) form a single combination.
+
+def good_combinations(products):
+    counter = {}
+    for i, product in enumerate(products):
+        if product in counter:
+            counter[product].append(i)
+        else:
+            counter[product] = [i]
+    return sum([len(counter[key]) - 1 for key in counter if len(counter[key]) > 1])

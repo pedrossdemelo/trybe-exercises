@@ -23,9 +23,25 @@
 # output: 'Marco'
 
 
-def winner():
-    # Code here
-    pass
+def get_winner(competitors):
+    intersection = set.intersection(*[set(list) for list in competitors.values()])
+    players = competitors.keys()
+    scores = {}
+    for player in players:
+        not_in_intersection = sorted([num for num in competitors[player] if num not in intersection])
+        if len(not_in_intersection) == 0: return "Tie"
+        if len(not_in_intersection) == 1: scores[player] = not_in_intersection[0]
+        else: scores[player] = not_in_intersection[1] - not_in_intersection[0] 
+    return max(scores, key=scores.get)
+
+
+competitors = {
+    'Clara': [0, 1, 5, 9, 10],
+    'Marco': [0, 2, 8, 9, 10]
+}
+
+
+print(get_winner(competitors)) # Marco
 
 
 # Given a string, find the size of the largest substring that has no repeated

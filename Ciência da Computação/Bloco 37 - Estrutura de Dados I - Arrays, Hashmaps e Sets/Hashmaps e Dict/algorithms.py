@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 # You will be given a list of words and a string . Write a function that decides
 # which words can be formed from the characters in the string (each character
 # can only be used once). Return the sum of the lengths of the chosen words. 
@@ -14,8 +17,14 @@
 
 
 def words_from_string(words, chars):
-    # Code here
-    pass
+    result = 0
+    char_count = Counter(chars)
+    for word in words:
+        word_count = Counter(word)
+        print(type(word_count))
+        if word_count & char_count == word_count:
+            result += len(word)
+    return result
 
 
 # A certain company has a hierarchical structure where each person reports to

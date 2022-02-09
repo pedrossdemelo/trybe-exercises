@@ -16,7 +16,7 @@ from collections import Counter
 #                are "hello" (length 5) and "world" (length 5).""""
 
 
-def words_from_string(words, chars):
+def len_of_words_from_chars(words, chars):
     result = 0
     char_count = Counter(chars)
     for word in words:

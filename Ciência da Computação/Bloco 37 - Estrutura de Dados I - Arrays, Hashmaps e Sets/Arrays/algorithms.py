@@ -72,3 +72,28 @@ def good_combinations(products):
         else:
             counter[product] = [i]
     return sum([len(counter[key]) - 1 for key in counter if len(counter[key]) > 1])
+
+# Given two arrays of integers that represent instants of entry and exit in a
+# library, and a number that represents an instant to be fetched. Return how
+# many people students are in the library at that instant. Consider that every
+# student that entered, left the library. 
+
+# entries = [1, 2, 3]
+# exits = [3, 2, 7]
+# search_instant = 4
+# result: 1
+
+# Student 1 entered at time 1 and exited at time 3, the second student entered
+# and exited at time 2, and the last student was the only one to be present at time 4.
+
+def students_in_library(entries, exits, search_instant):
+    students = 0
+    for entry in entries:
+        if entry <= search_instant:
+            students += 1
+    for exit in exits:
+        if exit <= search_instant:
+            students -= 1
+    return students
+
+

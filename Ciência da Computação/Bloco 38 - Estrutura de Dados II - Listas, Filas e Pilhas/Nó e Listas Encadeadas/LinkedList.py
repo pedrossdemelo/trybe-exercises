@@ -58,12 +58,12 @@ class LinkedList:
     def remove_last(self):
         if len(self) <= 1:
             return self.remove_first()
-        return self.remove_at(len(self))
+        return self.remove_at(len(self)-1)
 
     def remove_at(self, position):
         if position < 1:
             return self.remove_first()
-        if position > len(self):
+        if position >= len(self):
             return self.remove_last()
 
         previous_to_be_removed = self.__get_node_at(position - 1)
@@ -79,6 +79,15 @@ class LinkedList:
     def is_empty(self):
         return not self.__length
 
+    def index_of(self, value):
+        position = 0
+        value_to_be_returned = self.head_value
+        while value_to_be_returned:
+            if value_to_be_returned.value == value:
+                return position
+            value_to_be_returned = value_to_be_returned.next
+            position += 1
+        return -1
 
 if __name__ == "__main__":
     linked_list = LinkedList()
@@ -124,3 +133,4 @@ if __name__ == "__main__":
     linked_list.remove_at(3)
     linked_list.insert_last(69)
     print(linked_list)
+    print(linked_list.index_of(69))

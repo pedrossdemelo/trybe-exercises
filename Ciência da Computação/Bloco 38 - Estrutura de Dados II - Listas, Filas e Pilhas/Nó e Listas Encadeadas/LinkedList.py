@@ -12,6 +12,18 @@ class LinkedList:
 
     def __len__(self):
         return self.__length
+    
+    def clear(self):
+        self.__init__()
+
+    def __get_node_at(self, position):
+        if position < 1: return self.head_value
+        value_to_be_returned = self.head_value
+        if value_to_be_returned:
+            while position > 1 and value_to_be_returned.next:
+                value_to_be_returned = value_to_be_returned.next
+                position -= 1
+        return value_to_be_returned
 
     def insert_first(self, value):
         first_value = Node(value)

@@ -88,6 +88,21 @@ class LinkedList:
             value_to_be_returned = value_to_be_returned.next
             position += 1
         return -1
+    
+    def remove_duplicates(self):
+        if not self.__length:
+            return
+        current_node = self.head_value
+        while current_node:
+            next_node = current_node.next
+            while next_node:
+                if current_node.value == next_node.value:
+                    next_node = next_node.next
+                    self.remove_at(self.index_of(current_node.value) + 1)
+                else:
+                    next_node = next_node.next
+            current_node = current_node.next
+
 
 if __name__ == "__main__":
     linked_list = LinkedList()
@@ -134,3 +149,6 @@ if __name__ == "__main__":
     linked_list.insert_last(69)
     print(linked_list)
     print(linked_list.index_of(69))
+
+    linked_list.remove_duplicates()
+    print(linked_list)

@@ -102,6 +102,7 @@ class LinkedList:
                 seen.add(current_node.value)
                 currIndex += 1
             current_node = current_node.next
+        return self
 
 
 
@@ -151,5 +152,4 @@ if __name__ == "__main__":
     print(linked_list)
     print(linked_list.index_of(69))
 
-    linked_list.remove_duplicates()
-    print(linked_list)
+    print(linked_list.remove_duplicates())

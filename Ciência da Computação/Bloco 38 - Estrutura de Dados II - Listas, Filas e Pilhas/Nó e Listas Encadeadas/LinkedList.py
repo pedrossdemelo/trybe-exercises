@@ -93,15 +93,16 @@ class LinkedList:
         if not self.__length:
             return
         current_node = self.head_value
+        seen = set()
+        currIndex = 0
         while current_node:
-            next_node = current_node.next
-            while next_node:
-                if current_node.value == next_node.value:
-                    next_node = next_node.next
-                    self.remove_at(self.index_of(current_node.value) + 1)
-                else:
-                    next_node = next_node.next
+            if current_node.value in seen:
+                self.remove_at(currIndex)
+            else:
+                seen.add(current_node.value)
+                currIndex += 1
             current_node = current_node.next
+
 
 
 if __name__ == "__main__":

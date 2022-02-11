@@ -1,3 +1,4 @@
+from math import factorial
 from stack import Stack
 from queue import Queue
 
@@ -42,4 +43,24 @@ if __name__ == '__main__':
             print(f"{str(garage.unshift(street.pop()))} is getting back in")
         return garage
 
-    print(remove_car(garage, 4))
+    # print(remove_car(garage, 4)) # output: Queue(1, 2, 3, 5, 6, 7, 8, 9, 10)
+
+    def solve_expression(expr):
+        stack = Stack()
+        tokens_list = expr.split(' ')
+
+        for token in tokens_list:
+            match token:
+                case '+': stack.push(stack.pop() + stack.pop())
+                case '-': stack.push(stack.pop() - stack.pop())
+                case '*': stack.push(stack.pop() * stack.pop())
+                case '/': stack.push(stack.pop() / stack.pop())
+                case '^': stack.push(stack.pop() ** stack.pop())
+                case '%': stack.push(stack.pop() % stack.pop())
+                case '!': stack.push(factorial(stack.pop()))
+                case _: stack.push(int(token))
+        return stack.pop()
+
+    print(solve_expression("5 10 + 3 *")) # output: 45
+
+

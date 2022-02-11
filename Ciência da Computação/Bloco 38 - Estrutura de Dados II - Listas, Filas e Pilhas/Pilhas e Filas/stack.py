@@ -10,6 +10,7 @@ class Stack():
 
     def push(self, value):
         self._data.append(value)
+        return value
 
     def pop(self):
         if self.is_empty():
@@ -40,6 +41,9 @@ class Stack():
     
     def min_value(self):
         return min(self._data)
+    
+    def index(self, value):
+        return self._data.index(value)
 
 
 if __name__ == "__main__":

@@ -15,8 +15,6 @@ class Stack():
         if self.is_empty():
             return None
 
-        # -1 se refere ao último objeto da pilha.
-        # Ou seja, o valor do topo da pilha
         value = self._data[-1]
         del self._data[-1]
         return value
@@ -39,6 +37,9 @@ class Stack():
                 str_items += ", "
 
         return "Stack(" + str_items + ")"
+    
+    def min_value(self):
+        return min(self._data)
 
 
 if __name__ == "__main__":
@@ -50,6 +51,7 @@ if __name__ == "__main__":
 
     print(content_stack) # output: Stack(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     print(content_stack.size()) # output: 10
+    print(content_stack.min_value()) # output: 1, the minimum value in the stack
 
     print(content_stack.peek()) # output: 10
     print(content_stack.pop()) # output: 10, the function returns the item being removed

@@ -5,6 +5,10 @@ class Queue(Stack):
     def __init__(self):
         super().__init__()
 
+    def unshift(self, value):
+        self._data.insert(0, value)
+        return value
+
     def pop(self):
         if self.is_empty():
             return None

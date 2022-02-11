@@ -63,4 +63,15 @@ if __name__ == '__main__':
 
     print(solve_expression("5 10 + 3 *")) # output: 45
 
-
+    def reverse_substring_inside_parentheses(string):
+        main_stack = [[]]
+        for char in string:
+            match char:
+                case '(': main_stack.append([])
+                case ')':
+                    last_chain = main_stack.pop()
+                    main_stack[-1] += last_chain[::-1]
+                case _: main_stack[-1].append(char)
+        return ''.join(main_stack.pop())
+    
+    print(reverse_substring_inside_parentheses("oie(abcd)")) # output: oiedcba

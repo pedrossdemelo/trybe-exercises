@@ -1,0 +1,69 @@
+ Agora, a prática:
+Exercício 1: Um zoológico precisa de um banco de dados para armazenar
+informações sobre os seus animais. As informações a serem armazenadas sobre cada
+animal são:
+
+* Nome;
+
+* Espécie;
+
+* Sexo;
+
+* Idade;
+
+* Localização.
+
+Cada animal também possui vários cuidadores, e cada cuidador pode ser
+responsável por mais de um animal. Além disso, cada cuidador possui um gerente,
+sendo que cada gerente pode ser responsável por mais de um cuidador.  Siga os
+passos aprendidos no dia de hoje para modelar essa base de dados. 
+
+DROP SCHEMA IF EXISTS `Zoo`;
+CREATE SCHEMA `Zoo`;
+USE `Zoo` ;
+
+CREATE TABLE `Animal` (
+  `id` smallint(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `species_id` smallint(11) NOT NULL,
+  `sex` varchar(6) NOT NULL,
+  `age` int(11) NOT NULL,
+  `location_id` smallint(11) NOT NULL,
+  PRIMARY KEY (`id`)
+  FOREIGN KEY (`especie_id`) REFERENCES `Especie` (`id`)
+  FOREIGN KEY (`location_id`) REFERENCES `Location` (`id`)
+);
+
+CREATE TABLE `Carer` (
+  `id` smallint(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `manager_id` smallint(11) NOT NULL,
+  PRIMARY KEY (`id`)
+  FOREIGN KEY (`manager_id`) REFERENCES `Manager` (`id`)
+);
+
+CREATE TABLE `Animal_Carer` (
+  `animal_id` smallint(11) NOT NULL,
+  `carer_id` smallint(11) NOT NULL,
+  PRIMARY KEY (`animal_id`,`carer_id`)
+  FOREIGN KEY (`animal_id`) REFERENCES `Animal` (`id`)
+  FOREIGN KEY (`carer_id`) REFERENCES `Carer` (`id`)
+);
+
+CREATE TABLE `Especie` (
+  `id` smallint(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `Location` (
+  `id` smallint(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `Manager` (
+  `id` smallint(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+);

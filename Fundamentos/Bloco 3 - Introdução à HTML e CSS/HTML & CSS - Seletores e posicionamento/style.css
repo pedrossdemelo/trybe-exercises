@@ -1,0 +1,56 @@
+ol li {
+  background-color: lightgoldenrodyellow;
+}
+ol li.odd {
+  color: darkgreen;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: red;
+}
+
+h1, h2, h3, h4, h5, h6 em {
+  font-size: 40px;
+  border: 1px solid black;
+}
+
+li {
+  font-size: 20px;
+}
+
+li em {
+  font-weight: bold;
+}
+
+.top3 {
+  color: darkblue;
+}
+
+.contains-java {
+  background-color: pink;
+}
+
+#so:hover {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+}
+#w3:hover {
+  background-color: green;
+  color: white;
+  font-weight: bold;
+}
+#mdn:hover {
+  background-color: black;
+  font-weight: bold;
+  color: white;
+}
+#dvd:hover {
+  font-weight: bold;
+  background-color: yellow;
+  color: black;
+}
+#trb:hover {
+  font-weight: bold;
+  background-color: rgb(14, 150, 80);
+  color: white;
+}

@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "name": "mocks-and-inputs",
+  "version": "1.0.0",
+  "description": "jest learning exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Pedro Sousa",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.7",
+    "babel-jest": "^27.4.6",
+    "jest": "^27.4.7"
+  },
+  "dependencies": {
+    "node-fetch": "2.6"
+  }
+}

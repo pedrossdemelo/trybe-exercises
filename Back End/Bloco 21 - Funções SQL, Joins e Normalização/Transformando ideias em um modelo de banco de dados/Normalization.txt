@@ -1,0 +1,99 @@
+Consulte as imagens associadas aos exercícios como referência para resolução.
+Não é necessário montar queries para resolver os exercícios. Crie novas
+planilhas com suas respostas.
+
+Exercício 2: Converta a tabela desnormalizada abaixo para a 1ª Forma Normal.
+
+CREATE TABLE `Residence` (
+  `id` int(11) NOT NULL,
+  `landlord` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `tenants` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+R: CREATE TABLE `Residence` (
+    `id` int(11) NOT NULL,
+    `landlord` varchar(45) NOT NULL,
+    `type` varchar(45) NOT NULL,
+    `address` varchar(255) NOT NULL,
+    PRIMARY KEY (`id`)
+   );
+
+   CREATE TABLE `Tenants` (
+    `id` int(11) NOT NULL,
+    `name` varchar(45) NOT NULL,
+    `residence_id` int(11) NOT NULL,
+    PRIMARY KEY (`id`)
+    FOREIGN KEY (residence_id) REFERENCES Residence(id)
+   );
+
+Exercício 3: Converta a tabela desnormalizada abaixo (que já está nos padrões da
+1ª Forma Normal) para a 2ª Forma Normal.
+
+CREATE TABLE `Hero` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `league` varchar(45) NOT NULL,
+  `universe` varchar(45) NOT NULL,
+  `creator` varchar(45) NOT NULL,
+  `creator_age` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+R: CREATE TABLE `Hero` (
+    `id` int(11) NOT NULL,
+    `name` varchar(45) NOT NULL,
+    `league_id` int(11) NOT NULL,
+    `author_id` int(11) NOT NULL,
+    PRIMARY KEY (`id`)
+    FOREIGN KEY (author_id) REFERENCES Author(id)
+    FOREIGN KEY (league_id) REFERENCES League(id)
+   );
+
+   CREATE TABLE `League` (
+    `id` int(11) NOT NULL,
+    `name` varchar(45) NOT NULL,
+    `universe_id` varchar(45) NOT NULL,
+    PRIMARY KEY (`id`)
+    FOREIGN KEY (universe_id) REFERENCES Universe(id)
+   );
+
+   CREATE TABLE `Universe` (
+     `id` int(11) NOT NULL,
+     `name` varchar(45) NOT NULL,
+     PRIMARY KEY (`id`)
+   );
+
+   CREATE TABLE `Author` (
+     `id` int(11) NOT NULL,
+     `name` varchar(45) NOT NULL,
+     `age` int(11) NOT NULL,
+     PRIMARY KEY (`id`)
+   );
+
+Exercício 4: Agora, converta essa outra tabela (que já está nos moldes das duas
+primeiras formas) para a 3ª Forma Normal.
+
+CREATE TABLE `Unnormalized` (
+  `film_id` int(11) NOT NULL,
+  `genre_id` int(11) NOT NULL,
+  `genre` varchar(45) NOT NULL,
+  `ticket_price` int(11) NOT NULL,
+)
+
+R: CREATE TABLE `Genre` (
+    `id` int(11) NOT NULL,
+    `name` varchar(45) NOT NULL,
+    PRIMARY KEY (`id`)
+   );
+
+   CREATE TABLE `Film` (
+    `id` int(11) NOT NULL,
+    `title` varchar(45) NOT NULL,
+    `ticket_price` int(11) NOT NULL,
+    `genre_id` int(11) NOT NULL,
+    PRIMARY KEY (`id`)
+    FOREIGN KEY (genre_id) REFERENCES Genre(id)
+   );

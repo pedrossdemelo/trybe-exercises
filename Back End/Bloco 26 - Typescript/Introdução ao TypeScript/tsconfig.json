@@ -1,0 +1,9 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json", // estendemos a configuração base para o Node 14
+  "compilerOptions": {
+    "outDir": "./dist", // pasta onde nossos arquivos compilados serão salvos
+  },
+  "include": [
+    "src/**/*.ts" // incluímos todos os arquivos .ts dentro da pasta src
+  ],
+}

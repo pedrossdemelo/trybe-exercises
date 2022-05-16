@@ -1,0 +1,30 @@
+{
+  "name": "exercise-sequelize-associations",
+  "version": "1.0.0",
+  "description": "Esse é um projeto para o conteúdo de `React Testing Library`.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tryber/exercise-sequelize-associations.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tryber/exercise-sequelize-associations/issues"
+  },
+  "homepage": "https://github.com/tryber/exercise-sequelize-associations#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "sequelize-cli": "^6.2.0"
+  }
+}

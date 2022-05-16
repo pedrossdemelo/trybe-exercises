@@ -1,0 +1,18 @@
+{
+  "name": "playground-scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "imc": "node imc.js",
+    "speed": "node speed.js",
+    "giveaway": "node giveaway.js"
+  },
+  "author": "Pedro Sousa",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}

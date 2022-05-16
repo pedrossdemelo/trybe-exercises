@@ -1,7 +1,41 @@
-# [Trybe](https://www.betrybe.com/)  ![imageTrybe25](https://user-images.githubusercontent.com/7903924/138901059-bdc7263a-a924-43e1-88a5-1d4fe5d7a50f.png)  
+<!-- markdownlint-disable-next-line first-line-h1 -->
+<div align="center" id="top">
 
-This repository is a store for all projects and exercises made during the XP Inc. sponsored Trybe full stack web development course
+  [![Stargazers][stars-shield]][stars-url]
+  [![LinkedIn][linkedin-shield]][linkedin-url]
 
-## _About Trybe_
+</div>
 
->[_Trybe_](https://www.betrybe.com/) _is a school of the future for anyone who wants to improve their life and build a successful career in technology. At Trybe, you only pay when you get a good job. The program has over 1,500 hours of classroom and online classes, introducing students to software development, front-end, back-end, computer science, software engineering, agile methodologies and behavioral skills._
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/83181309/168681166-3d650c7f-e88f-4f4a-812b-07eecff59298.png" width="200" height="200">
+
+  <h1>Trybe Exercises</h1>
+
+  <p>
+    <strong>All exercises from the Trybe course</strong><br>
+    <a href="https://www.betrybe.com/">betrybe.com</a>
+  </p>
+
+  <br>
+  <br>
+</div>
+
+This repository is a store for all projects and exercises made during the Trybe full stack web development course, sponsored by XP Inc.
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+
+## Contact
+
+- [pedrosousa.dev](https://pedrosousa.dev)
+
+<p align="right"><a href="#top">Back to top</a></p>
+
+[stars-shield]: https://img.shields.io/github/stars/PedroSSM2000/trybe-exercises?style=for-the-badge
+[stars-url]: https://github.com/PedroSSM2000/trybe-exercises/stargazers
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/pedrossdemelo/

@@ -17,7 +17,6 @@
   </p>
 
   <br>
-  <br>
 </div>
 
 This repository is a store for all projects and exercises made during the Trybe full stack web development course, sponsored by XP Inc.
@@ -33,8 +32,6 @@ This repository is a store for all projects and exercises made during the Trybe 
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
-
-<br>
 
 ## Fundamentals
 

@@ -1,0 +1,11 @@
+certifi==2021.10.8
+charset-normalizer==2.0.11
+cssselect==1.1.0
+idna==3.3
+lxml==4.7.1
+parsel==1.6.0
+pymongo==4.0.1
+requests==2.27.1
+six==1.16.0
+urllib3==1.26.8
+w3lib==1.22.0

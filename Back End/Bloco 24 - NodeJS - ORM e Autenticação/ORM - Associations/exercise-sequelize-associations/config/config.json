@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "Big@Ch69",
+    "database": "hospital_control",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "admin",
+    "password": "Big@Ch69",
+    "database": "hospital_control",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "admin",
+    "password": "Big@Ch69",
+    "database": "hospital_control",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}

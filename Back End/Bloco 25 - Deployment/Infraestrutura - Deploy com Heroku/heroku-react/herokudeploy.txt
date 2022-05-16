@@ -1,0 +1,4 @@
+1. Deploy app to heroku using mars/create-react-app buildpack
+
+    heroku create -b mars/create-react-app
+    git push heroku master

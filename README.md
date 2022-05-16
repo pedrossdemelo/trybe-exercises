@@ -77,7 +77,7 @@ The commit history was lost due to me being too lazy to use git mv when changing
 - [x] [Block 35 - Networks & Data Scraping](https://github.com/PedroSSM2000/trybe-exercises/tree/main/Computer%20Science/Block%2035%20-%20Networks%20%26%20Data%20Scraping)
 - [x] [Block 36 - Algorithms](https://github.com/PedroSSM2000/trybe-exercises/tree/main/Computer%20Science/Block%2036%20-%20Algorithms)
 - [x] [Block 37 - Data Structures I - Arrays, Hashmaps & Sets](https://github.com/PedroSSM2000/trybe-exercises/tree/main/Computer%20Science/Block%2037%20-%20Data%20Structures%20I%20-%20Arrays,%20Hashmaps%20%26%20Sets)
-- [x] [Block 38 - Lists, Queues & Stacks](https://github.com/PedroSSM2000/trybe-exercises/tree/main/Computer%20Science/Block%2038%20-%20Data%20Structures%20II%20-%20Lists%2C%20Queues%20%26%20Stacks)
+- [x] [Block 38 - Data Structures II - Lists, Queues & Stacks](https://github.com/PedroSSM2000/trybe-exercises/tree/main/Computer%20Science/Block%2038%20-%20Data%20Structures%20II%20-%20Lists%2C%20Queues%20%26%20Stacks)
 
 ## Contact
 

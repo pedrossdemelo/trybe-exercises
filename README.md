@@ -21,7 +21,7 @@
 
 This repository is a store for all projects and exercises made during the Trybe full stack web development course, sponsored by XP Inc.
 
-The commit history was lost due to file name changes, to look at the commit history, [you must search for the exercise number in the branches](https://github.com/PedroSSM2000/trybe-exercises/branches/all)
+The commit history was lost due to me being too lazy to use git mv, to look at the commit history, [you must search for the exercise number in the branches](https://github.com/PedroSSM2000/trybe-exercises/branches/all)
 <br>
 
 <details>
